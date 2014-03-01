@@ -1,6 +1,7 @@
 // written @josecao5
-//28feb14
-//Part of CaosPercLib 0.1
+//28_feb_14
+//simple percussive bass line
+// bass note are set in MIDI notes
 CaosBass {
 	*ar {|att = 0.1, rel = 0.5, nota = 36, filtminf = 60, filtmaxf = 2600, filtime = 0.2, rq = 0.5,  iphase = 0.25, gate = 0, amp1 = 1, amp2 = 1|
 		var bass,env,filtro;
