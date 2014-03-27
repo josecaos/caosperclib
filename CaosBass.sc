@@ -1,4 +1,4 @@
-// written by @josecao5
+T// written by @josecao5
 //28feb14
 //Part of CaosPercLib 0.1
 //Notes on MIDI values
