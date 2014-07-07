@@ -1,9 +1,9 @@
 //Written by @joseCao5
 //07Jul14
 //Part of CaosPercLib 0.1
-//Generator of chords over a triangular wave
+//Chord generator over a pulse wave
 CaosChords {
-		*ar{|chord = 'mmaj7', att = 0.1, rel = 1, note = 57, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
+		*ar{|chord = 'mmaj7', att = 0.1, rel = 1, note = 57, iphase = 0.025, width = 0.25, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
 			var sint,filt,env,chords,notes;
 				chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'dim', 'aug'];
 				if(chord==chords[0],{notes = Mix.new(note,note+4,note+7,note+12);},
@@ -23,7 +23,7 @@ CaosChords {
 							)};
 						)};
 					);
-		sint=LFTri.ar(notes.midicps,0,amp);
+		sint=LFPulse.ar(notes.midicps,iphase,width,amp);
 		filt=RLPF.ar(sint,cutf,rq);
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2)
 		  ^Pan2.ar(filt*env,pan);					
