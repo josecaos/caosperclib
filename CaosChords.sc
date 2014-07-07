@@ -3,18 +3,18 @@
 //Part of CaosPercLib 0.1
 //Chord generator over a pulse wave
 CaosChords {
-		*ar{|chord = 'mmaj7', att = 0.1, rel = 1, note = 57, iphase = 0.025, width = 0.25, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
+		*ar{|chord = 'M', att = 0.1, rel = 1, note = 57, iphase = 0.025, width = 0.25, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
 			var sint,filt,env,chords,notes;
 				chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'dim', 'aug'];
-				if(chord==chords[0],{notes = Mix.new(note,note+4,note+7,note+12);},
-					{if(chord==chords[1],{notes = Mix.new(note,note+3,note+7,note+12);},
-						{if(chord==chords[2],{notes = Mix.new(note,note+4,note+7,note+10);},
-							{if(chord==chords[3],{notes = Mix.new(note,note+3,note+7,note+10);},
-								{if(chord==chords[4],{notes = Mix.new(note,note+4,note+7,note+11);},
-									{if(chord==chords[5],{notes = Mix.new(note,note+3,note+7,note+11);},
-										{if(chord==chords[6],{notes = Mix.new(note,note+4,note+6,note+12);},										
-											 {if(chord==chords[7],{notes = Mix.new(note,note+4,note+8,note+12);},
-					{8.do{"Please Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'dim' or 'aug' only as first CaosChord argument".postln}}//if none of above
+				if(chord==chords[0],{notes = [note,note+4,note+7,note+12]},
+					{if(chord==chords[1],{notes = [note,note+3,note+7,note+12]},
+						{if(chord==chords[2],{notes = [note,note+4,note+7,note+10]},
+							{if(chord==chords[3],{notes = [note,note+3,note+7,note+10]},
+								{if(chord==chords[4],{notes = [note,note+4,note+7,note+11]},
+									{if(chord==chords[5],{notes = [note,note+3,note+7,note+11]},
+										{if(chord==chords[6],{notes = [note,note+4,note+6,note+12]},										
+											 {if(chord==chords[7],{notes = [note,note+4,note+8,note+12]},
+					{8.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'dim' or 'aug' only as first CaosChord argument".postln}}//if none of above
 							 					)};
 											)};
 										)};
