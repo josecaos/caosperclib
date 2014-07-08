@@ -4,7 +4,8 @@
 //Chord generator as common Guitar disposition over 2 triangular waves
 CaosGuitChords {
 		*ar{|chord = 'M', att = 0.1, rel = 1, note = 57, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
-			var sint,filt,env,chords,notes;
+			var sint,filt,env;
+			var notes,chords,ton,third,fifth,seventh,oct,octfifth;
 			chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
 			if(chord==chords[0],{notes = [note,note+7,note+12,note+16,note+19,note+24]},
 				{if(chord==chords[1],{notes = [note,note+7,note+12,note+15,note+19,note+24]},
@@ -27,10 +28,17 @@ CaosGuitChords {
 					)};
 				)};
 			);
-		sint=Saw.ar(notes.midicps,amp);
-		filt=RLPF.ar(sint,cutf,rq);
+		ton=notes[0]; 
+		third=notes[3];
+		fifth=notes[1];
+		seventh=notes[2];
+		octfifth=notes[4];
+		oct=notes[5];
+		sint=LFTri.ar(notes.midicps,0,amp/2.3)+Pulse.ar(fifth.midicps,0.1,amp/2.4)+Pulse.ar(seventh.midicps,0.1,amp/2.3)+
+							Pulse.ar(third.midicps,0.3,amp/2.4)+Pulse.ar(octfifth.midicps,0.2,amp/2.6)+Pulse.ar(oct.midicps,0.1,amp/2.6);
+		filt=LPF.ar(sint,cutf,rq);
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2)
-		  ^Pan2.ar(filt*env,pan);					
+		^Pan2.ar(filt*env,pan);					
 		}
 }
 /*
