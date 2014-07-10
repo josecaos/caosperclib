@@ -3,7 +3,7 @@
 //Part of CaosPercLib 0.1
 //A LFO Envelope: 
 CaosEnv {
-		*ar {|waveform = 'sin',att = 0.1, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
+		*ar {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
 				var lfo,env,osc,tag,waveindex,iphase;
 					osc=[SinOsc,LFTri,Pulse];
 					tag=['sin','tri','pulse'];
@@ -19,7 +19,7 @@ CaosEnv {
 					env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 				^lfo*env
 				}
-		*kr {|waveform = 'sin',att = 0.1, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
+		*kr {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
 				var lfo,env,osc,tag,waveindex,iphase;
 					osc=[SinOsc,LFTri,Pulse];
 					tag=['sin','tri','pulse'];
