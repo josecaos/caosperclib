@@ -1,5 +1,5 @@
-caosperclib01
-=============
+caosperclib v1.0
+================
 
 CaosPercLib 1.0 is Collection of Percussion and Synth PseudoClasses for SuperCollider.
 
