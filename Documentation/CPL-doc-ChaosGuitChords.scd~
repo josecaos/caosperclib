@@ -3,6 +3,7 @@ s.boot;
 //Pseudo Class, Chord Generator in the common
 //Guitarr disposition.
 ////////////////////////////////////////////////////////
+
 //Example CaosGuit Chords.ar:
 //arguments:
 //|chord = 'M', att = 0.1, rel = 1, note = 57, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
@@ -16,6 +17,6 @@ Tdef(\progression,{
 	loop{{CaosGuitChords.ar(chtime.next,0.01,2,48,MouseX.kr(120,12000),0.5,0,1,1)}.play;
 	chtime.value.postln;
 	5.wait}//1
-	}).quant_(4);
+	});
 );
-Tdef(\progression).play;
+Tdef(\progression).play ;

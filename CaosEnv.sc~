@@ -1,6 +1,6 @@
 // written by @josecao5
 //24mar14
-//Part of CaosPercLib 1.0
+//Part of CaosPercLib 0.1
 //A LFO Envelope: 
 CaosEnv {
 		*ar {|waveform = 'sin',att = 0.1, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |

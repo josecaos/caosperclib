@@ -41,3 +41,16 @@ CaosGuitChords {
 		^Pan2.ar(filt*env,pan);					
 		}
 }
+/*
+// chords as Guitar disposition
+'M' = Mix.new(note,note+7,note+12,note+16,note+19,note+24);//mayor third on second octave
+'m' = Mix.new(note,note+7,note+12,note+15,note+19,note+24);//minor third on second octave
+'M7'= Mix.new(note,note+7,note+10,note+16,note+19,note+24);
+'m7' = Mix.new(note,note+7,note+10,note+15,note+19,note+24);
+'Mmaj7' = Mix.new(note,note+7,note+11,note+16,note+19,note+24);
+'mmaj7' = Mix.new(note,note+7,note+11,note+15,note+19,note+24);
+'M9' = Mix.new(note,note+7,note+14,note+16,note+19,note+24);//Mayor M9th
+'M9m' = Mix.new(note,note+7,note+13,note+16,note+19,note+24);//Mayor m9th
+'m9' = Mix.new(note,note+7,note+14,note+15,note+19,note+24);//minor M9th
+'m9m' = Mix.new(note,note+7,note+13,note+15,note+19,note+24);//minor m9th
+*/

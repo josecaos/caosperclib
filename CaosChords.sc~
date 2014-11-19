@@ -35,3 +35,14 @@ CaosChords {
 		^Pan2.ar(filt*env,pan);					
 		}
 }
+/*
+// chords
+'M' = Mix.new(note,note+4,note+7,note+12);
+'m' = Mix.new(note,note+3,note+7,note+12);
+'M7'=Mix.new(note,note+4,note+7,note+10);
+'m7' = Mix.new(note,note+3,note+7,note+10);
+'Mmaj7' = Mix.new(note,note+4,note+7,note+11);
+'mmaj7' = Mix.new(note,note+3,note+7,note+11);
+'dim' = Mix.new(note,note+4,note+6,note+12);
+'aug' = Mix.new(note,note+4,note+8,note+12);
+*/
