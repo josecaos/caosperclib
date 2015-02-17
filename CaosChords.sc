@@ -1,11 +1,8 @@
 //Written by @joseCao5
 //07Jul14
 //Part of CaosPercLib 1.0
-<<<<<<< HEAD
-//Chord generator over a pulse wave
-=======
 //Chord generator over LFPulse wave
->>>>>>> fa309c5c5af6b1c5409311a9c555194898d74a7b
+
 CaosChords {
 		*ar{|chord = 'Mmaj7', att = 0.1, rel = 1, note = 57, iphase = 0.025, width = 0.1, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
 			var sint,filt,env;
