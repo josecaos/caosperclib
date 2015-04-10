@@ -8,22 +8,15 @@ CaosChords {
 			var sint,filt,env;
 			var notes,chords,ton,third,fifth,seventh;
 			chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7', '5aug7'];
-			if(chord==chords[0],{notes = [note,note+4,note+7,note+12]}, //here seventh is actualy the octave
-				{if(chord==chords[1],{notes = [note,note+3,note+7,note+12]}, //here seventh is actualy the octave
-					{if(chord==chords[2],{notes = [note,note+4,note+7,note+10]},
-						{if(chord==chords[3],{notes = [note,note+3,note+7,note+10]},
-							{if(chord==chords[4],{notes = [note,note+4,note+7,note+11]},
-								{if(chord==chords[5],{notes = [note,note+3,note+7,note+11]},
-									{if(chord==chords[6],{notes = [note,note+4,note+6,note+12]},	//here seventh is actualy the octave
-										 {if(chord==chords[7],{notes = [note,note+4,note+8,note+12]},//here seventh is actualy the octave
+		if(chord==chords[0],{notes = [note,note+4,note+7,note+12]}); //here seventh is actualy the octave
+		if(chord==chords[1],{notes = [note,note+3,note+7,note+12]}); //here seventh is actualy the octave
+		if(chord==chords[2],{notes = [note,note+4,note+7,note+10]});
+		if(chord==chords[3],{notes = [note,note+3,note+7,note+10]});
+		if(chord==chords[4],{notes = [note,note+4,note+7,note+11]});
+		if(chord==chords[5],{notes = [note,note+3,note+7,note+11]});
+		if(chord==chords[6],{notes = [note,note+4,note+6,note+12]});//here seventh is actualy the octave
+		if(chord==chords[7],{notes = [note,note+4,note+8,note+12]},//here seventh is actualy the octave
 									{8.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7' or '5aug7' only as first CaosChord.sc argument".postln}}//if none of above
-						 					)};
-										)};
-									)};
-								)};
-							)};
-						)};
-					)};
 				);
 		ton=notes[0];
 		third=notes[1];
