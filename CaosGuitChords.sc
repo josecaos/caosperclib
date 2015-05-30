@@ -6,7 +6,7 @@ CaosGuitChords {
 		var sint,filt,env;
 		var notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
-		if(chords.include(chord),{
+		if(chords.includes(chord),{
 			//comprueba el valor del primer argumento
 			if(chord==chords[0],{notes = [note,note+7,note+12,note+16,note+19,note+24]});
 			if(chord==chords[1],{notes = [note,note+7,note+12,note+15,note+19,note+24]});
