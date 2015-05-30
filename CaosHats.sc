@@ -1,7 +1,6 @@
 //written by @joseCao5
-//oct_2_2013
 //simple hihats
-//Part of CaosPercLib 1.0
+//Part of CaosPercLib 1.1
 CaosHats {
 	*ar {|att= 0.01, rel= 0.15, highcutfreq= 10000, rq= 0.5 ,gate= 1, amp1= 1, amp2= 1|
 		var hats,env;

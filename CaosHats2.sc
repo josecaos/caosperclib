@@ -1,7 +1,6 @@
 //written by @joseCao5
-//oct_2_2013
-//Part of CaosPercLib 1.0
-//rougher hihats
+//rougher hihats / shakes
+//Part of CaosPercLib 1.1
 CaosHats2 {
 	*ar {|att= 0.05, rel= 0.2, highcutfreq= 8000, rq= 0.25, gate= 1, amp1= 1, amp2= 1|
 		var hats,env;

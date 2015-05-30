@@ -1,7 +1,6 @@
 //written by @joseCao5
-//30_03_14
-//Part of CaosPercLib 1.0
 //Pad of simple ambience
+//Part of CaosPercLib 1.1
 CaosPad {
 			*ar {|waveform = 'sin', att = 0.5, rel = 1, note = 57, trem = 0, vrel = 1, iphase = 0,
 						cutf = 920, rq = 0.7, gate = 0, amp = 0.5|

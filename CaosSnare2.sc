@@ -1,7 +1,6 @@
 //written by @joseCao5
-//oct_2_2013
-//Part of CaosPercLib 1.0
-//simple sharper snare 
+//sharper like snare
+//Part of CaosPercLib 1.1
 CaosSnare2 {
 	*ar {|att= 0.01, rel= 0.35, iphase= 0.01, bw= 0.5, highcutfreq= 1520, rq= 0.5, gate= 1, amp1= 1, amp2= 0.7|
 		var sna,env;

@@ -1,7 +1,6 @@
 // written by @josecao5
-//24mar14
-//Part of CaosPercLib 1.0
-//A LFO Envelope: 
+//A multi shape LFO Envelope:
+//Part of CaosPercLib 1.1
 CaosEnv {
 		*ar {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
 				var lfo,env,osc,tag,waveindex,iphase;
@@ -14,7 +13,7 @@ CaosEnv {
 									 	})
 								}
 						);
-					if(waveform==tag[2],{iphase=0.25},{iphase=0});									 
+					if(waveform==tag[2],{iphase=0.25},{iphase=0});
 					lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.5);
 					env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 				^lfo*env
@@ -30,7 +29,7 @@ CaosEnv {
 									 	})
 								}
 						);
-					if(waveform==tag[2],{iphase=0.25},{iphase=0});									 
+					if(waveform==tag[2],{iphase=0.25},{iphase=0});
 					lfo=osc[waveindex].kr([freq,freq+tremolo],iphase,0.75);
 					env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2);
 				^lfo*env

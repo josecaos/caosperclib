@@ -1,7 +1,6 @@
 //written by @joseCao5
-//30_03_14
-//Part of CaosPercLib 1.0
 //Pad of trippy ambience
+//Part of CaosPercLib 1.1
 CaosPad2 {
 			*ar {|att = 0.5, rel = 1, note = 220, fmax = 1, fm = 0.001, harm = 1, rmix = 0.5, rroom = 0.5, rfilt = 0.1,
 							gate = 0, amp1 = 0.5, amp2 = 0.5 |

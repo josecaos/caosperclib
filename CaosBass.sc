@@ -1,6 +1,6 @@
 // written by @josecao5
-//28feb14
-//Part of CaosPercLib 1.0
+//Simple Bass
+//Part of CaosPercLib 1.1
 CaosBass {
 		*ar {|att = 0.1, rel = 0.5, note = 36, filtminf = 60, filtmaxf = 2600, filtime = 0.2, rq = 0.5,  iphase = 0.25, gate = 0, amp1 = 1, amp2 = 1|
 						var bass,env,filtro;
