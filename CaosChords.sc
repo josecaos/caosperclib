@@ -22,8 +22,8 @@ CaosChords {
 		third=notes[1];
 		fifth=notes[2];
 		seventh=notes[3];
-		sint=LFPulse.ar(ton.midicps,iphase,width,amp/1.15)+LFPulse.ar(third.midicps,iphase,width,amp/1.1)+
-		LFPulse.ar(fifth.midicps,iphase,width,amp/1.05)+LFPulse.ar(seventh.midicps,iphase,width,amp/1.5);
+		sint=LFPulse.ar(ton.midicps,iphase,width,amp)+LFPulse.ar(third.midicps,iphase,width,amp/1.1)+
+			LFPulse.ar(fifth.midicps,iphase,width,amp/1.05)+LFPulse.ar(seventh.midicps,iphase,width,amp/1.35);
 		filt=LPF.ar(sint,cutf,rq);
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2)
 		^Pan2.ar(filt*env,pan);

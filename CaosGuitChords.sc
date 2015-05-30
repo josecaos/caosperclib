@@ -2,7 +2,7 @@
 //Chord generator as common Guitar interval disposition
 //Part of CaosPercLib 1.1
 CaosGuitChords {
-	*ar{|chord = 'M', att = 0.1, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
+	*ar{|chord = 'M', att = 0.1, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4|
 		var sint,filt,env;
 		var notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
@@ -26,12 +26,12 @@ CaosGuitChords {
 		seventh=notes[2];
 		octfifth=notes[4];
 		oct=notes[5];
-		sint=(SinOsc.ar(notes.midicps,0,amp/3)*
-			SinOsc.ar(fifth.midicps,0,amp/3.6)*
-			SinOsc.ar(seventh.midicps,0,amp/3.8)*
-			SinOsc.ar(third.midicps,0,amp/4.4)*
-			SinOsc.ar(octfifth.midicps,0,amp/4.6)*
-			SinOsc.ar(oct.midicps,0,amp/4.8);
+		sint=(LFTri.ar(ton.midicps,0,amp/2.8)+
+			SinOsc.ar(fifth.midicps,0,amp/3.4)+
+			SinOsc.ar(seventh.midicps,0,amp/3.2)+
+			SinOsc.ar(third.midicps,0,amp/3.8)+
+			SinOsc.ar(octfifth.midicps,0,amp/4)+
+			SinOsc.ar(oct.midicps,0,amp/4.2);
 		);
 		filt=LPF.ar(sint,cutf,rq);
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2)
