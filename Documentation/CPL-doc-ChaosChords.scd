@@ -6,7 +6,7 @@ s.boot;
 //Example CaosChords.ar:
 //arguments:
 //|chord = 'M', att = 0.1, rel = 1, note = 57, iphase = 0.025, width = 0.25, cutf = 120, rq = 0.5, pan = 0, gate = 0, amp = 0.5|
-//chord arg type=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7', '5aug7'];
+//chord arg types = ['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7', '5aug7'];
 x={CaosChords.ar('M',0.01,10,36,0.1,0.1,220,0.5,0,1,0.5)};
 x.play;
 //
@@ -20,4 +20,3 @@ Tdef(\progression,{
 )
 Tdef(\progression).play;
 s.scope
-
