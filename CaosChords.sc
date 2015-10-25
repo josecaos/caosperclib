@@ -18,16 +18,13 @@ CaosChords {
 		];
 		if(chords.includes(chord),{
 			notes = note+interval[chords.indexOf(chord)];
-			},{7.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7' or '5aug7' only as first CaosChord.sc argument".postln}}//if none of above
+			},{7.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7' or '5aug7' only as first CaosChord.sc argument".warn}}//if none of above
 		);
 		ton=notes[0];
 		third=notes[1];
 		fifth=notes[2];
 		seventh=notes[3];
-		sint=LFPulse.ar(ton.midicps,iphase,width,amp)+
-		    LFPulse.ar(third.midicps,iphase,width,amp/1.1)+
-		    LFPulse.ar(fifth.midicps,iphase,width,amp/1.05)+
-		    LFPulse.ar(seventh.midicps,iphase,width,amp/1.35);
+        sint=LFPulse.ar(ton.midicps,iphase,width,amp)+LFPulse.ar(third.midicps,iphase,width,amp/1.1)+LFPulse.ar(fifth.midicps,iphase,width,amp/1.05)+LFPulse.ar(seventh.midicps,iphase,width,amp/1.35);
 		filt=LPF.ar(sint,cutf,rq);
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:2)
 		^Pan2.ar(filt*env,pan);

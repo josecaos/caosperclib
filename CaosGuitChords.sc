@@ -21,7 +21,7 @@ CaosGuitChords {
 		];
 		if(chords.includes(chord),{
 			notes = note+interval[chords.indexOf(chord)];
-			},{7.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9',  'M9m', 'm9' or 'm9m' only as first CaosChord.ar argument".postln}
+			},{7.do{"ERR: Use 'M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9',  'M9m', 'm9' or 'm9m' only as first CaosChord.ar argument".warn}
 		});
 		ton=notes[0];
 		third=notes[3];
