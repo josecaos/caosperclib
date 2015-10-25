@@ -2,7 +2,7 @@
 //Chord generator as common Guitar interval disposition
 //Part of CaosPercLib 1.1
 CaosGuitChords {
-	*ar{|chord = 'm', att = 0.1, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4|
+	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
@@ -30,11 +30,11 @@ CaosGuitChords {
 		octfifth=notes[4];
 		oct=notes[5];
 		sint=(
-			SinOsc.ar(ton.midicps,0,amp/2)+
+			SinOsc.ar(ton.midicps,0,amp/1.8)+
 			LFTri.ar(fifth.midicps,0.15,amp/3.4)+
 			LFTri.ar(seventh.midicps,0.25,amp/3.2)+
 			LFTri.ar(third.midicps,0.5,amp/3.8)+
-			SinOsc.ar(octfifth.midicps,0.75,amp/4)+
+			LFTri.ar(octfifth.midicps,0.75,amp/4)+
 			SinOsc.ar(oct.midicps,1,amp/4.2);
 		);
 		filt=LPF.ar(sint,cutf,rq);
