@@ -2,7 +2,7 @@
 //rough two amp kick
 //Part of CaosPercLib 1.1
 CaosKick2 {
-	*ar {|modFreq= 1, modbw= 0.1, bw= 0.1, freq1= 60, freq2= 62, lowcutfreq= 50, att= 0.01, rel= 0.5, gate= 1, amp= 0.5|
+	*ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, bw= 0.1, freq1= 60, freq2= 62, lowcutfreq= 50,  gate= 1, amp= 0.5|
 		var kick,env;
    	     		kick=RHPF.ar(
 						 Pulse.ar(

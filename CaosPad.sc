@@ -10,7 +10,7 @@ CaosPad {
 						if(waveform==tag[0],{waveindex=0},
 								{if(waveform==tag[1],{waveindex=1},
 										 {if(waveform==tag[2],{waveindex=2},
-												 {8.do{"Use 'sin', 'tri' or 'pulse' only as first CaosPad argument".postln};nil})
+												 {8.do{"Use 'sin', 'tri' or 'pulse' only as first CaosPad argument".warn};nil})
 											})
 									}
 							);
