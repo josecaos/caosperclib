@@ -10,7 +10,7 @@ CaosKick {
 								SinOsc.ar(Mix(60,82,280),0,amp2)+
         		               		LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2);
         		kick=CompanderD.ar(kick,0.6,0.59,0.8);
-        		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:donaction);
+        		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:doneaction);
     		^Pan2.ar(kick*env,[-1,0.98]);
 		}
 	/*
