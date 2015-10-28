@@ -35,7 +35,7 @@ CaosEnv {
 				^lfo*env
 				}
 
-		*robot {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0, t=1 |
+		*robot {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0, t=1, tp=0 |
 				var lfo,env,osc,tag,waveindex,iphase;
 					osc=[SinOsc,LFTri,Pulse];
 					tag=['sin','tri','pulse'];
@@ -48,7 +48,7 @@ CaosEnv {
 						);
 					if(waveform==tag[2],{iphase=0.25},{iphase=0});
 					lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.5);
-		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t),doneAction:0);
+		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
 				^lfo*env
 				}
 }
