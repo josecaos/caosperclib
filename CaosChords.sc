@@ -29,7 +29,7 @@ CaosChords {
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:doneaction)
 		^Pan2.ar(filt*env,pan);
 	}
-		*robot{|chord = 'Mmaj7', att = 0.05, rel = 1, note = 57, iphase = 0.025, width = 0.1, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.5,t=1|
+		*robot{|chord = 'Mmaj7', att = 0.05, rel = 1, note = 57, iphase = 0.025, width = 0.1, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.5, t = 1, tp = 0|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', '5dim7', '5aug7'];
@@ -53,7 +53,7 @@ CaosChords {
 		seventh=notes[3];
         sint=LFPulse.ar(ton.midicps,iphase,width,amp)+LFPulse.ar(third.midicps,iphase,width,amp/1.1)+LFPulse.ar(fifth.midicps,iphase,width,amp/1.05)+LFPulse.ar(seventh.midicps,iphase,width,amp/1.35);
 		filt=LPF.ar(sint,cutf,rq);
-		env=EnvGen.kr(Env.perc(att,rel),Impulse.kr(t),doneAction:0)
+		env=EnvGen.kr(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0)
 		^Pan2.ar(filt*env,pan);
 	}
 }
