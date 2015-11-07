@@ -2,7 +2,7 @@
 //Pad of trippy ambience
 //Part of CaosPercLib 1.1
 CaosPad2 {
-			*ar {|att = 0.5, rel = 1, note = 220, fmax = 1, fm = 0.001, harm = 1, rmix = 0.5, rroom = 0.5, rfilt = 0.1,
+			*ar {|att = 0.5, rel = 1, note = 220, fmax = 1, fm = 0.001, harm = 1, rmix = 0.75, rroom = 0.5, rfilt = 0.1,
 							gate = 0, amp1 = 0.5, amp2 = 0.5 |
 					var sig1,sig2,pad,nota,env;
 						nota=note.midicps;
@@ -12,7 +12,7 @@ CaosPad2 {
 					    pad=FreeVerb2.ar(sig1*env,sig2*env,rmix,rroom,rfilt);
 					   ^Pan2.ar(pad,[1, -0.976])
 			}
-			*robot {|att = 0.5, rel = 1, note = 220, fmax = 1, fm = 0.001, harm = 1, rmix = 0.5, rroom = 0.5, rfilt = 0.1,
+			*robot {|att = 0.5, rel = 1, note = 220, fmax = 1, fm = 0.001, harm = 1, rmix = 0.75, rroom = 0.5, rfilt = 0.1,
 							gate = 0, amp1 = 0.5, amp2 = 0.5, t = 0.0125, tp = 0 |
 					var sig1,sig2,pad,nota,env;
 						nota=note.midicps;
