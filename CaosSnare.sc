@@ -13,7 +13,7 @@ CaosSnare {
 		}
 
 
-*robot {|att= 0.01, rel= 0.35, highcutfreq= 520, rq= 0.75, gate= 1, amp1= 1, amp2= 1, t=1,tp=0|
+*robot {|att= 0.01, rel= 0.35, highcutfreq= 520, rq= 0.75, amp1= 1, amp2= 1, t=1,tp=0|
 		var sna,env;
    	     		sna=Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
    	     									LFTri.ar(Mix(220,480,1125,2220,4218),0,amp2/2)+

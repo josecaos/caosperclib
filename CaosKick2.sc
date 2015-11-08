@@ -13,7 +13,7 @@ CaosKick2 {
         		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
     		^Pan2.ar(kick*env,[-1,0.98]);
 		}
-		*robot {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, bw= 0.1, freq1= 60, freq2= 62, lowcutfreq= 50,  gate= 1, amp= 0.5, t=1, tp=0 |
+		*robot {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, bw= 0.1, freq1= 60, freq2= 62, lowcutfreq= 50, amp= 0.5, t=1, tp=0 |
 		var kick,env;
    	     		kick=RHPF.ar(
 						 Pulse.ar(

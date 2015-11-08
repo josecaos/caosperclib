@@ -16,7 +16,7 @@ CaosPad {
 		^pad=AllpassN.ar(filt*env,0.25,0.25,vrel);
 	}
 	*robot {|waveform = 'sin', att = 0.5, rel = 1, note = 57, trem = 0, vrel = 1, iphase = 0,
-		cutf = 920, rq = 0.7, gate = 0, amp = 0.5, t = 0.0125, tp = 0|
+		cutf = 920, rq = 0.7, amp = 0.5, t = 0.0125, tp = 0|
 		var sig,filt,pad,env,osc,tag,waveindex;
 		osc=[SinOsc,LFTri,Pulse];
 		tag=['sin','tri','pulse'];

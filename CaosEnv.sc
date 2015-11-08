@@ -25,7 +25,7 @@ CaosEnv {
 		^lfo*env
 	}
 
-	*robot {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0, t = 1, tp = 0 |
+	*robot {|waveform = 'sin',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0 |
 		var lfo,env,osc,tag,waveindex,iphase;
 		osc=[SinOsc,LFTri,Pulse];
 		tag=['sin','tri','pulse'];

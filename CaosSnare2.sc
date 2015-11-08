@@ -11,7 +11,7 @@ CaosSnare2 {
         		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
     		^Pan2.ar(sna*env,[1, -0.98]);
 		}
-		*robot {|att= 0.01, rel= 0.35, iphase= 0.01, bw= 0.5, highcutfreq= 2520, rq= 0.5, gate= 1, amp1= 0.75, amp2= 0.5, t=1,tp=0|
+		*robot {|att= 0.01, rel= 0.35, iphase= 0.01, bw= 0.5, highcutfreq= 2520, rq= 0.5, amp1= 0.75, amp2= 0.5, t=1,tp=0|
 		var sna,env;
    	     		sna=Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
    	     								LFPulse.ar(Mix(220,480,1125,2220,4218),iphase,bw,amp2/4)+
