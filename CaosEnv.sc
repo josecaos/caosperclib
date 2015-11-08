@@ -30,8 +30,8 @@ CaosEnv {
 		osc=[SinOsc,LFTri,Pulse];
 		tag=['sin','tri','pulse'];
 		waveindex=tag.find([waveform]);
-		if(tag==nil,{7.do{"Only use: 'sin', 'tri' or 'pulse' as first CaosEnv argument".warn}});
-		if(waveindex==tag[2],{iphase=0.25},{iphase=0});
+		if(waveindex==nil,{7.do{"Only use: 'sin', 'tri' or 'pulse' as first CaosEnv argument".warn}});
+		if(waveform==tag[2],{iphase=0.25},{iphase=0});
 		lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.5);
 		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
 		^lfo*env
