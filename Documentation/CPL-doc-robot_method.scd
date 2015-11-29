@@ -1,4 +1,4 @@
-//The .robot method is a fix for the clases to work in ProxySpace enviroment.
+//The .robot method is a fix for the classes to work in ProxySpace enviroment.
 //
 p=ProxySpace.push(s.boot);
 s.scope(2,0);
@@ -20,7 +20,8 @@ s.scope(2,0);
 ~snare={CaosSnare.robot()};
 ~snare2={CaosSnare2.robot()};
 //
-~o=~kick;
+~o=~hats+~kick+~bass2;
+~o=~synth
 //
 //change the arguments to shape the timber
 ~bass={CaosBass.robot()};
@@ -30,9 +31,9 @@ s.scope(2,0);
 ~chords2={CaosGuitChords.robot()};
 ~hats={CaosHats.robot()};
 ~hats2={CaosHats2.robot()};
-~kick={CaosKick.robot(att:0.01,rel:0.25,modFreq:0.25,modbw:0.5,freq1:60,freq2:64,lowcutfreq:80,amp1:0.75,amp2:0.5,t:4,tp:[2,4]/4)};
+~kick={CaosKick.robot(att:0.01,rel:2.5,modFreq:32,modbw:0.5,freq1:60,freq2:64,lowcutfreq:80,amp1:1,amp2:0.5,t:~t,tp:[3,7]/3)};
 ~kick2={CaosKick2.robot()};
-~synth={CaosPad.robot()};
-~synth2={CaosPad2.robot()};
+~synth={CaosPad.robot('tri',0.01,1,48,4,2,0.5,2820,0.08,0.5,0.5)};
+~synth2={CaosPad2.robot(0.5,1,190,200,4,120,1,0.01,0.01,0.3,0.5,~t)};
 ~snare={CaosSnare.robot()};
 ~snare2={CaosSnare2.robot()};
