@@ -1,6 +1,6 @@
 //written by @joseCao5
 //Simple two amp kick
-//Part of CaosPercLib 1.1
+//Part of CaosPercLib 2.0
 CaosKick {
 	*ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate= 0, amp1= 0.75, amp2= 0.75, doneaction= 2|
 		var kick,env;
@@ -20,9 +20,9 @@ CaosKick {
 
 	*signal {|modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq|
 
-		^RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2),lowcutfreq,0.5)+
+		^RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+
 		SinOsc.ar(Mix(60,82,280),0,amp2/2)+
-		LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/3);
+		LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/3),lowcutfreq,0.75);
 
 	}
 
@@ -31,11 +31,12 @@ CaosKick {
 		^CompanderD.ar(in,0.5,0.59,0.8,0.01,0.52);
 	}
 
-	*grain {|in,trigger=1,dur=0.25|
+	*text {|in,trigger=1,dur=0.25|
 
 		/* var x = GrainFM.ar(2,Impulse.kr(trigger),dur,720,500,1);
 		^thisThread*x */
-		^in*GrainFM.ar(2,Impulse.kr(trigger),dur,720,500,1);
+		// ^in*GrainFM.ar(2,Impulse.kr(trigger),dur,720,500,1);
+		^"Warning".postcln;
 
 	}
 
