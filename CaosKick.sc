@@ -1,6 +1,7 @@
 //written by @joseCao5
 //Simple two amp kick
 //Part of CaosPercLib 2.0
+/*
 CaosKick {
 	*ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate= 0, amp1= 0.75, amp2= 0.75, doneaction= 2|
 		var kick,env;
@@ -41,12 +42,12 @@ CaosKick {
 	}
 
 }
+*/
 
 
 
 
 
-/*
 CaosKick {
 *ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate= 0, amp1= 0.75, amp2= 0.75, doneaction= 2|
 var kick,env;
@@ -71,4 +72,3 @@ env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
 ^Pan2.ar(kick*env,[-1,0.98]);
 }
 }
-*/
