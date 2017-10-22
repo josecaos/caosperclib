@@ -29,8 +29,8 @@ p = ProxySpace.push();
 ~out.play;
 ~out.quant_(4);
 s.scope(0,2);
-~t = 2;
-~kontrol = {Demand.kr(Impulse.kr(~t),0,Dxrand((60..12400),inf))};
+~t = 16;
+~kontrol = {Demand.kr(Impulse.kr(~t),0,Dxrand((60..8400),inf))};
 
 ~ambient.quant_(4)[0] = {CaosKick.robot(att:1,rel:32,modFreq:~kontrol.kr,modbw:0.5,lowcutfreq:~kontrol.kr/1.25,t:~t,amp1:0.5,amp2:0.5)}
 
