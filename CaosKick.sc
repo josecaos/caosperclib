@@ -6,13 +6,8 @@ CaosKick {
 
 	*new {
 
-		^super.new.init;
+		^super.new;
 
-	}
-
-	init {
-
-		^"CaosKick instance Created";
 	}
 
 	*ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate= 0, amp1= 0.75, amp2= 0.75,pan=#[-0.95,0.94]|
@@ -49,6 +44,7 @@ CaosKick {
 		}, {
 
 			^"Use of 'func' argument is obligatory";
+
 		});
 	}
 

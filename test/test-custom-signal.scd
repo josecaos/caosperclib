@@ -6,7 +6,7 @@ s. boot;
 {CaosKick2.customSignal({Pulse.ar(8)},0.1,10)}.play;//no
 //
 a = CaosKick2.new;
-a.ar
+{a.ar}.play;
 //
 s. boot;
 (
@@ -25,7 +25,7 @@ Tdef(\testCustomInput,{
 		0.125.wait;
 	}
 
-});
+}).quant_(4);
 );
 Tdef(\testCustomInput).play;
 Tdef(\testCustomInput).stop;
@@ -40,14 +40,14 @@ Tdef(\testCustomInput2,{
 	loop{
 		var i = arr.choose;
 		if(i == 0,{
-			{~y.ar(gate:1)}.play;
+			{~y.ar(0.01,0.15,gate:1)}.play;
 		},{
 			{~y.customSignal({WhiteNoise.ar(0.5)+LFTri.ar(Mix(snare.choose,320,snare.choose*2))},0.01,0.1)}.play;//si
 		});
-		0.25.wait;
+		0.125.wait;
 	}
 
-});
+}).quant_(4);
 );
 Tdef(\testCustomInput2).play;
 Tdef(\testCustomInput2).stop;

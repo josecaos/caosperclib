@@ -1,18 +1,15 @@
 //written by @Ill_Slide
 //rough  kick
 //Part of CaosPercLib 2.0
-CaosKick2 {
+CaosKick2 : CaosKick {
 
 	*new {
 
-		^super.new.init;
+		^super.new;
 
 	}
 
-	init {
 
-		^"CaosKick2 instance Created";
-	}
 
 	*ar {|att= 0.01,rel= 0.5,modFreq= 1,modbw= 0.1,bw= 0.1,freq1= 60,freq2= 62,lowcutfreq= 50, gate= 1, amp=1,pan=#[-9,0.9]|
 		var kick,env;
@@ -36,7 +33,7 @@ CaosKick2 {
 
 	}
 
-	*customSignal {|ugenFunc=nil,att= 0.01,rel= 0.5,pan=#[-0.96,0.95]|
+/*	*customSignal {|ugenFunc=nil,att= 0.01,rel= 0.5,pan=#[-0.96,0.95]|
 		var kick,env;
 
 		if (ugenFunc != nil, {
@@ -51,9 +48,9 @@ CaosKick2 {
 
 			^"Use of 'func' argument is obligatory";
 		});
-	}
+	}*/
 
-	customSignal {|ugenFunc = nil,att= 0.01, rel= 0.5,pan=#[-0.96,0.95]|
+/*	customSignal {|ugenFunc = nil,att= 0.01, rel= 0.5,pan=#[-0.96,0.95]|
 		var kick,env;
 
 		if (ugenFunc != nil, {
@@ -69,7 +66,7 @@ CaosKick2 {
 			^"Use of 'func' argument is obligatory";
 		});
 
-	}
+	}*/
 
 	*robot {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, bw= 0.1, freq1= 60, freq2= 62, lowcutfreq= 50, amp= 1, t=1, tp=0,pan=#[-0.9,0.91] |
 		var kick,env;
