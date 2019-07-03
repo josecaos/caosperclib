@@ -1,6 +1,7 @@
 //written by @Ill_Slide
 //rough  kick
 //Part of CaosPercLib 2.0
+
 CaosKick2 : CaosKick {
 
 	*ar {|att= 0.01,rel= 0.5,modFreq= 1,modbw= 0.1,bw= 0.1,freq1= 60,freq2= 62,lowcutfreq= 50, gate= 1, amp=1,pan=#[-9,0.9]|
@@ -35,7 +36,7 @@ CaosKick2 : CaosKick {
 
 	*signal {|modFreq,modbw,bw,freq1,freq2,amp,lowcutfreq|
 
-		^RHPF.ar(Pulse.ar(	Pulse.ar(modFreq,modbw,freq1,freq2),bw,amp/4),lowcutfreq,0.95);
+		^RHPF.ar(Pulse.ar(Pulse.ar(modFreq,modbw,freq1,freq2),bw,amp/4),lowcutfreq,0.95);
 
 	}
 

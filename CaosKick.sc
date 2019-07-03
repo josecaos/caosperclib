@@ -76,15 +76,15 @@ CaosKick {
 
 	}
 
-	*comp {|in|
+	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-		^CompanderD.ar(in,0.5,0.5,0.9,0.01,0.25);
+		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
 
 	}
 
-	comp {|in|
+	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-		^CompanderD.ar(in,0.5,0.5,0.9,0.01,0.25);
+		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
 
 	}
 
