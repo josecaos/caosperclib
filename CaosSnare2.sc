@@ -10,27 +10,27 @@ CaosSnare2 : CaosKick {
 
 	}
 
-	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=1920,rq=0.85,gate=1,amp1=0.75,amp2=0.5|
+	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=1920,rq=0.85,gate=1,amp1=0.75,amp2=0.5,pan=#[0.97, -0.98]|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
 		sna=this.comp(sna,0.4,0.39,0.7);
 		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
-		^Pan2.ar(sna*env,[1, -0.98]);
+		^Pan2.ar(sna*env,pan);
 
 	}
 
-	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.85,gate=1,amp1=0.75,amp2=0.5|
+	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.85,gate=1,amp1=0.75,amp2=0.5,pan=#[0.97, -0.98]|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
 		sna=this.comp(sna,0.4,0.39,0.7);
 		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
-		^Pan2.ar(sna*env,[1, -0.98]);
+		^Pan2.ar(sna*env,pan);
 
 	}
 
-	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.75,amp2=0.5,t=1,tp=0|
+	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.75,amp2=0.5,t=1,tp=0,pan=#[0.97, -0.98]|
 		var sna,env;
 
 		sna=Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
@@ -38,7 +38,7 @@ CaosSnare2 : CaosKick {
 			GrayNoise.ar(amp1/1.5),highcutfreq,rq),0.7);
 		sna=CompanderD.ar(sna,0.4,0.39,0.7);
 		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
-		^Pan2.ar(sna*env,[1, -0.98]);
+		^Pan2.ar(sna*env,pan);
 
 	}
 
