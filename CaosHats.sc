@@ -12,7 +12,7 @@ CaosHats : CaosKick {
 	*ar {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,gate=1,amp1=0.95,amp2=0.9,pan=#[-0.9,0.91]|
 		var hats,env;
 
-		hats=this.signal();
+		hats=this.signal(highcutfreq,rq,amp1,amp2);
 		hats=this.comp(hats,0.6,0.58,0.8);
 		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 		^Pan2.ar(hats*env,pan);
@@ -31,7 +31,7 @@ CaosHats : CaosKick {
 
 	*robot {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,amp1=1,amp2=1,t=1,tp=0,pan=#[-0.9,0.91] |
 		var hats,env;
-		hats=this.signal(highcutfreq,rq,amp1,amp2)
+		hats=this.signal(highcutfreq,rq,amp1,amp2);
 		hats=this.comp(hats,0.6,0.58,0.8);
 		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
 		^Pan2.ar(hats*env,pan);
