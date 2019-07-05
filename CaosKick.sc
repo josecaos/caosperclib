@@ -20,7 +20,7 @@ CaosKick {
 		^Pan2.ar(kick*env,pan);
 	}
 
-	ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate= 0, amp1= 0.75, amp2= 0.75,pan=#[-0.95,0.94]|
+	ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate=1, amp1= 0.75, amp2= 0.75,pan=#[-0.95,0.94]|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
