@@ -118,6 +118,31 @@ Tdef(\testCustomInput5,{
 );
 Tdef(\testCustomInput5).play;
 Tdef(\testCustomInput5).stop;
+//
+s.boot;
+{CaosBass.ar(rel:100,gate:1)}.play;
+{CaosBass2.ar(gate:1)}.play;
+{CaosBass2.customSignal({Dust.ar(440)})}.play
+(
+~y = CaosBass.new;
+Tdef(\testCustomInput6,{
+	var arr = [0,1];
+	var q = Scale.minor.degrees+12;
+	q = q*24;
+	loop{
+		var i = arr.choose;
+		if(i == 0,{
+			{~y.ar(0.01,0.15)}.play;
+		},{
+			// {~y.customSignal({WhiteNoise.ar(0.15)+LFTri.ar(Mix([q.choose,q.choose*2,q.choose*4]),0,0.25)},0.01,0.1)}.play;//si
+			{CaosBass2.ar(0.01,0.15)}.play;
+		});
+		0.125.wait;
+	}
+}).quant_(1);
+);
+Tdef(\testCustomInput6).play;
+Tdef(\testCustomInput6).stop;
 value{x.ar}
 //CaosBox update test
 c = CaosBox;
