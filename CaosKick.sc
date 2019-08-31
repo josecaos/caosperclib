@@ -15,28 +15,27 @@ CaosKick : CaosEnv {
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
 		kick = this.comp(kick);
-		// env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 		env = this.envAR(att,rel,gate)
 
 		^Pan2.ar(kick*env,pan);
 	}
 
-	ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate=1, amp1= 0.75, amp2= 0.75,pan=#[-0.95,0.94]|
+	ar {|att= 0.01, rel= 0.5, modFreq= 1, modbw= 0.1, freq1= 60, freq2= 66, lowcutfreq= 50,  gate=1, amp1= 0.75, amp2= 0.75,pan=0|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
 		kick = this.comp(kick);
-		env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+		env = this.envAR(att,rel,gate)
 
 		^Pan2.ar(kick*env,pan);
 	}
 
-	*robot {|att=0.01,rel=0.25,modFreq=2,modbw=0.5,freq1= 60,freq2= 64,lowcutfreq= 50,amp1= 0.75, amp2= 0.75,pan=#[-0.95,0.94],t=1,tp=0|
+	*robot {|att=0.01,rel=0.25,modFreq=2,modbw=0.5,freq1= 60,freq2= 64,lowcutfreq= 50,amp1= 0.75, amp2= 0.75,pan=0,t=1,tp=0|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
 		kick = this.comp(kick);
-		env = EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
+		env = this.envAR(att,rel,Impulse.kr(t,tp))
 
 		^Pan2.ar(kick*env,pan);
 
@@ -56,14 +55,14 @@ CaosKick : CaosEnv {
 
 	}
 
-		*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=#[-0.95,0.94]|
+		*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
 		var kick,env;
 
 		if (func != nil and: {func.isFunction}, {
 
 			kick = func;
 			kick = this.comp(kick);
-			env = EnvGen.ar(Env.perc(att,rel),1,doneAction:2);
+			env = this.envAR(att,rel,1)
 
 			^Pan2.ar(kick*env,pan);
 
@@ -74,7 +73,7 @@ CaosKick : CaosEnv {
 		});
 	}
 
-	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=#[-0.95,0.94]|
+	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
 		var kick,env;
 
 		if (func != nil and: {func.isFunction}, {
