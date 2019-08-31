@@ -1,7 +1,8 @@
 //Written by @joseCao5
 //Chord generator over LFPulse wave
 //Part of CaosPercLib 1.1
-CaosChords {
+CaosChords  {
+
 	*ar{|chord = 'Mmaj7', att = 0.05, rel = 1, note = 57, iphase = 0.025, width = 0.1, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.5,doneaction=2|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh;
@@ -29,6 +30,7 @@ CaosChords {
 		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:doneaction)
 		^Pan2.ar(filt*env,pan);
 	}
+
 		*robot{|chord = 'Mmaj7', att = 0.05, rel = 1, note = 57, iphase = 0.025, width = 0.1, cutf = 1200, rq = 0.5, pan = 0, amp = 0.5, t = 1, tp = 0|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh;

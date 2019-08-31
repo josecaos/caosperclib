@@ -1,7 +1,7 @@
 // written by @Ill_Slide
 //Simple Bass
 //Part of CaosPercLib 2.0
-CaosBass : CaosKick {
+CaosBass : CaosEnv {
 
 	*new {
 
@@ -9,25 +9,25 @@ CaosBass : CaosKick {
 
 	}
 
-	*ar {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5,iphase=0.25,gate=0,amp1=1,amp2=1,pan=#[0.98,-0.98]|
+	*ar {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
 		var bass,env;
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
-		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+		env = this.envKR(att,rel,gate);
 		^Pan2.ar(bass*env,pan);
 	}
 
-	ar {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5,iphase=0.25,gate=0,amp1=1,amp2=1,pan=#[0.98,-0.98]|
+	ar {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
 		var bass,env;
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
-		env=EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+		env = this.envKR(att,rel,gate);
 		^Pan2.ar(bass*env,pan);
 	}
 
-	*robot {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5, iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=#[0.98,-0.98]|
+	*robot {|att=0.1,rel=0.5,note=36,filtminf=60,filtmaxf=2600,filtime=0.2,rq=0.5, iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=0|
 		var bass,env;
 
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
-		env=EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
+		env = this.envKR(att,rel,Impulse.kr(t,tp));
 		^Pan2.ar(bass*env,pan);
 
 	}

@@ -39,18 +39,6 @@ CaosEnv {
 
 	}
 
-	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
-
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
-
-	}
-
-	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
-
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
-
-	}
-
 	*signal {|waveform ,freq ,tremolo|
 		var lfo,env,osc,tag,waveindex,iphase;
 		osc=[SinOsc,LFTri,Pulse];
@@ -63,6 +51,19 @@ CaosEnv {
 
 		^lfo
 	}
+
+	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
+
+		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
+
+	}
+
+	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
+
+		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
+
+	}
+
 
 	*envAR {|att,rel,gate|
 		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);

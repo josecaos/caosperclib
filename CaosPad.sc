@@ -1,7 +1,7 @@
 //written by @Ill_Slide
 //Simple ambience pad
 //Part of CaosPercLib 2.0
-CaosPad : CaosKick {
+CaosPad : CaosEnv {
 
 	*new {
 
@@ -9,33 +9,33 @@ CaosPad : CaosKick {
 
 	}
 
-	*ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=#[-1,1]|
+	*ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
 		var sig,env;
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
-		env = EnvGen.ar(Env.perc(att,rel+1),gate,doneAction:2);
+		env = this.envKR(att,rel,gate);
 		^Pan2.ar(sig*env,pan);
 
 	}
 
-	ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=#[-1,1]|
+	ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
 		var sig,env;
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
-		env = EnvGen.ar(Env.perc(att,rel+1),gate,doneAction:2);
+		env = this.envKR(att,rel,gate);
 		^Pan2.ar(sig*env,pan);
 
 	}
 
 	*robot {|waveform = 'sin', att = 0.5, rel = 1, note = 57, semi = 0, phase = 0,
-		cutf = 920, rq = 0.7, amp = 0.5,pan=#[-1,1] t = 0.25, tp = 0|
+		cutf = 920, rq = 0.7, amp = 0.5,pan=0, t = 0.25, tp = 0|
 		var sig,env;
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
-		env=EnvGen.ar(Env.perc(att+0.5,rel+1),Impulse.kr(t,tp))
+		env = this.envKR(att,rel,Impulse.kr(t,tp))
 		^Pan2.ar(sig*env,pan);
 	}
 
