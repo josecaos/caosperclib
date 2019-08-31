@@ -2,7 +2,7 @@
 //Simple two amp kick
 //Part of CaosPercLib 2.0
 
-CaosKick {
+CaosKick : CaosEnv {
 
 	*new {
 
@@ -15,7 +15,8 @@ CaosKick {
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
 		kick = this.comp(kick);
-		env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+		// env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+		env = this.envAR(att,rel,gate)
 
 		^Pan2.ar(kick*env,pan);
 	}
@@ -38,18 +39,6 @@ CaosKick {
 		env = EnvGen.ar(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0);
 
 		^Pan2.ar(kick*env,pan);
-
-	}
-
-	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
-
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
-
-	}
-
-	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
-
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
 
 	}
 
