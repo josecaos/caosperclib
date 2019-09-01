@@ -21,10 +21,10 @@
       &nbsp;&nbsp;&nbsp;*var out,sig;*<br/>
       &nbsp;&nbsp;&nbsp;*sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02);*<br/>
       &nbsp;&nbsp;&nbsp;*out = Out.ar(0,sig);*<br/>
-    &nbsp;*});*<br/>
+    &nbsp;*}).add;*<br/>
    *)*
    
-- ##### ProxySpace:
+- ##### ProxySpace support with .robot method:
    - *~node = {CaosKick.robot(t:2)}*
    
 - #### You can also use it as an envelope wrapper for custom signals, in two ways:
