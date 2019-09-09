@@ -25,11 +25,11 @@ CaosChords : CaosEnv  {
 
 	}
 
-	robot{|chord='Mmaj7',att=0.05,rel=1,note=57,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,amp=0.5,t=1,tp=0|
+	*robot{|chord='Mmaj7',att=0.05,rel=1,note=57,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,amp=0.5,t=1,tp=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env=this.envKR(att,rel,Impulse.kr(t,tp));
+		env=this.envAR(att,rel,Impulse.kr(t,tp));
 
 		^Pan2.ar(sig*env,pan);
 	}
