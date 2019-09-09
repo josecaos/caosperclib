@@ -5,12 +5,12 @@ play{CaosKick.ar()}
 play{CaosKick2.ar()}
 play{CaosSnare.ar()}
 play{CaosSnare2.ar()}
-play{CaosHats2.ar()}
 play{CaosHats.ar()}
+play{CaosHats2.ar()}
 play{CaosBass.ar()}
 play{CaosBass2.ar()}
 play{CaosPad.ar()}
-play{CaosPad2.ar()}
+play{CaosPad2.ar(1,60,60,2,0.1,2)}
 // play{CaosChords.ar()}
 // play{CaosGuitChords.ar()}
 
