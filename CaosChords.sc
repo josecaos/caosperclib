@@ -29,7 +29,7 @@ CaosChords : CaosEnv  {
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env=this.envAR(att,rel,Impulse.kr(t,tp));
+		env=this.envKR(att,rel,Impulse.kr(t,tp));
 
 		^Pan2.ar(sig*env,pan);
 	}
