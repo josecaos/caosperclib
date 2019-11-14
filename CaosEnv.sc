@@ -64,7 +64,6 @@ CaosEnv {
 
 	}
 
-
 	*envAR {|att,rel,gate|
 		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 	}

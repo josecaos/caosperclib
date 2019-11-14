@@ -35,7 +35,8 @@ CaosKick : CaosEnv {
 
 		kick = this.signal(modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq);
 		kick = this.comp(kick);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = EnvGen.ar(Env(att,rel),Impulse.kr(t,tp));
+		// env = this.envAR(att,rel,Impulse.kr(t,tp));
 
 		^Pan2.ar(kick*env,pan);
 
