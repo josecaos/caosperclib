@@ -3,11 +3,33 @@ p = ProxySpace.push(s.boot);
 // a = CaosKick.new;
 ~o.play;
 
-~synth = {CaosKick.robot(t:~t)}
+~synth = {CaosKick.robot(0.01,0.75,2,0.5,60,60,55,1,1,0,1)}
 // ~synth = {a.robot(t:~t)}
+~synth = {Pulse.ar(220,mul:0.35)*LFTri.kr(0.5)}
 
-~o = ~synth
+~o = ~synth;
 // ~o = 0
+//
+//
+
+s.boot;
+
+p = ProxySpace.new;
+p.fadeTime = 2; // fadeTime specifies crossfade
+p[\out].play; // monitor an empty placeholder through hardware output
+// set its source
+p[\out] = { SinOsc.ar([350, 351.3], 0, 0.2) };
+p[\out] = { Pulse.ar([350, 351.3] / 4, 0.4) * 0.2 };
+p[\out] = Pbind(\dur, 0.03, \freq, Pbrown(0, 1, 0.1, inf).linexp(0, 1, 200, 350));
+
+// route one proxy through another:
+p[\out] = { Ringz.ar(p[\in].ar, [350, 351.3] * 8, 0.2) * 4 };
+p[\in] = { Impulse.ar([5, 7]/2, [0, 0.5]) };
+
+a.clear(3); // clear after 3 seconds
+b.clear(3);
+
+//
 
 
 p.pop;
