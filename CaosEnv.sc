@@ -64,20 +64,20 @@ CaosEnv {
 
 	}
 
-	*envAR {|att,rel,gate|
-		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+	*envAR {|att,rel,gate,doneAction = 2|
+		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:doneAction);
 	}
 
-	envAR {|att,rel,gate|
-		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
+	envAR {|att,rel,gate,doneAction = 2|
+		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:doneAction);
 	}
 
-	*envKR {|att,rel,gate|
-		^EnvGen.kr(Env.perc(att,rel),gate,doneAction:2);
+	*envKR {|att,rel,gate,doneAction = 2|
+		^EnvGen.kr(Env.perc(att,rel),gate,doneAction:doneAction);
 	}
 
-	envKR {|att,rel,gate|
-		^EnvGen.kr(Env.perc(att,rel),gate,doneAction:2);
+	envKR {|att,rel,gate,doneAction = 2|
+		^EnvGen.kr(Env.perc(att,rel),gate,doneAction:doneAction);
 	}
 
 }

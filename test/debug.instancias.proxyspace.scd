@@ -11,7 +11,7 @@ p = ProxySpace.push(s.boot);
 // ~o = 0
 //
 //
-
+s.scope
 s.boot;
 
 p = ProxySpace.new;

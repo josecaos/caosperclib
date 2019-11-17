@@ -16,6 +16,7 @@ CaosSnare : CaosEnv {
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sna*env,pan);
 
 	}
@@ -26,6 +27,7 @@ CaosSnare : CaosEnv {
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sna*env,pan);
 
 	}
@@ -35,7 +37,8 @@ CaosSnare : CaosEnv {
 		var sna,env;
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
 		^Pan2.ar(sna*env,pan);
 
 	}

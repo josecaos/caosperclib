@@ -13,6 +13,7 @@ CaosBass : CaosEnv {
 		var bass,env;
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(bass*env,pan);
 	}
 
@@ -20,6 +21,7 @@ CaosBass : CaosEnv {
 		var bass,env;
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(bass*env,pan);
 	}
 
@@ -27,7 +29,8 @@ CaosBass : CaosEnv {
 		var bass,env;
 
 		bass = this.signal(note,filtminf,filtmaxf,filtime,rq,iphase,amp1,amp2);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
 		^Pan2.ar(bass*env,pan);
 
 	}
@@ -37,6 +40,7 @@ CaosBass : CaosEnv {
 
 		bass=SinOsc.ar(note.midicps,0,amp1/2)+LFSaw.ar(note.midicps,iphase,amp2/4);
 		filtro=RLPF.ar(bass,XLine.kr(filtminf,filtmaxf,filtime),rq);
+
 		^filtro;
 
 	}
@@ -46,6 +50,7 @@ CaosBass : CaosEnv {
 
 		bass=SinOsc.ar(note.midicps,0,amp1/2)+LFSaw.ar(note.midicps,iphase,amp2/4);
 		filtro=RLPF.ar(bass,XLine.kr(filtminf,filtmaxf,filtime),rq);
+
 		^filtro;
 
 	}

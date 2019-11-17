@@ -3,7 +3,7 @@
 //Part of CaosPercLib 1.1
 CaosGuitChords {
 
-	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4,doneaction=2|
+	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
@@ -39,9 +39,10 @@ CaosGuitChords {
 			SinOsc.ar(oct.midicps,1,amp/4.2);
 		);
 		filt=LPF.ar(sint,cutf,rq);
-		env=EnvGen.kr(Env.perc(att,rel),gate,doneAction:doneaction)
+		env=EnvGen.kr(Env.perc(att,rel),gate,2)
 		^Pan2.ar(sint*env,pan);//filt
 	}
+
 	*robot{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
 		var sint,filt,env;
 		var interval,notes,chords,ton,third,fifth,seventh,oct,octfifth;

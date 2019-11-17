@@ -15,6 +15,7 @@ CaosPad : CaosEnv {
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sig*env,pan);
 
 	}
@@ -25,6 +26,7 @@ CaosPad : CaosEnv {
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sig*env,pan);
 
 	}
@@ -35,7 +37,8 @@ CaosPad : CaosEnv {
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
 		sig = this.comp(sig,0.95,0.75,0.76,0.001);
-		env = this.envKR(att,rel,Impulse.kr(t,tp))
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0)
+
 		^Pan2.ar(sig*env,pan);
 	}
 

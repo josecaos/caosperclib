@@ -15,6 +15,7 @@ CaosPad2 :CaosEnv {
 		sig = this.signal(att,rel,note,maxNote,fm,harm,rmix,rroom,rfilt,gate,amp1/3,amp2/3);
 		sig = this.comp(sig);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sig,pan);
 
 	}
@@ -25,6 +26,7 @@ CaosPad2 :CaosEnv {
 		sig = this.signal(att,rel,note,maxNote,fm,harm,rmix,rroom,rfilt,gate,amp1/3,amp2/3);
 		sig = this.comp(sig);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sig*env,pan);
 
 	}
@@ -34,9 +36,9 @@ CaosPad2 :CaosEnv {
 
 		sig = this.signal(att,rel,note,maxNote,fm,harm,rmix,rroom,rfilt,amp1/3,amp2/3);
 		sig = this.comp(sig);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
 
-		^Pan2.ar(sig*env,[1, -0.976]);
+		^Pan2.ar(sig*env,pan);
 	}
 
 	*signal {|att,rel,note,maxNote,fm,harm,amp1,amp2|

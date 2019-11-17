@@ -15,6 +15,7 @@ CaosHats : CaosEnv {
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(hats*env,pan);
 
 	}
@@ -25,15 +26,18 @@ CaosHats : CaosEnv {
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
 		env =this.envKR(att,rel,gate);
+
 		^Pan2.ar(hats*env,pan);
 
 	}
 
 	*robot {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,amp1=1,amp2=1,t=1,tp=0,pan=0 |
 		var hats,env;
+
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
 		^Pan2.ar(hats*env,pan);
 	}
 

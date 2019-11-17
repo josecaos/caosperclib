@@ -16,6 +16,7 @@ CaosSnare2 : CaosEnv {
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.4,0.39,0.7);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sna*env,pan);
 
 	}
@@ -26,6 +27,7 @@ CaosSnare2 : CaosEnv {
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.4,0.39,0.7);
 		env = this.envKR(att,rel,gate);
+
 		^Pan2.ar(sna*env,pan);
 
 	}
@@ -37,7 +39,8 @@ CaosSnare2 : CaosEnv {
 			LFPulse.ar(Mix(220,480,1125,2220,4218),iphase,bw,amp2/4)+
 			GrayNoise.ar(amp1/1.5),highcutfreq,rq),0.7);
 		sna = CompanderD.ar(sna,0.4,0.39,0.7);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
 		^Pan2.ar(sna*env,pan);
 
 	}

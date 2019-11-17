@@ -28,9 +28,11 @@ CaosKick2 : CaosEnv {
 
 	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=62,lowcutfreq=50,amp=0.5,t=1,tp=0,pan=0|
 		var kick,env;
+
 		kick = this.signal(modFreq,modbw,bw,freq1,freq2,amp,lowcutfreq);
 		kick = this.comp(kick);
-		env = this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
 		^Pan2.ar(kick*env,pan);
 	}
 
