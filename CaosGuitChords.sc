@@ -1,10 +1,44 @@
 //Written by @joseCao5
 //Chord generator as common Guitar interval disposition
-//Part of CaosPercLib 1.1
-CaosGuitChords {
+//Part of CaosPercLib  2.0
+CaosGuitChords : CaosEnv {
 
-	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, gate = 0, amp = 0.4|
-		var sint,filt,env;
+	*new {
+
+		^super.new;
+
+	}
+
+	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+		var sig, env;
+
+		sig = this.signal(chord,note,cutf,rq,amp);
+		env = this.envKR(att,rel,gate);
+
+		^Pan2.ar(sig*env,pan);
+	}
+
+	ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+		var sig, env;
+
+		sig = this.signal(chord,note,cutf,rq,amp);
+		env = this.envKR(att,rel,gate);
+
+		^Pan2.ar(sig*env,pan);
+	}
+
+	*robot{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
+		var sig,env;
+
+		sig = this.signal(chord,note,cutf,rq,amp);
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+
+		env=EnvGen.kr(Env.perc(att,rel),Impulse.kr(t,tp),0)
+		^Pan2.ar(sig*env,pan);
+	}
+
+	*signal {|chord,note,cutf,rq,amp|
+		var sint,filt;
 		var interval,notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
 		interval = [
@@ -39,12 +73,12 @@ CaosGuitChords {
 			SinOsc.ar(oct.midicps,1,amp/4.2);
 		);
 		filt=LPF.ar(sint,cutf,rq);
-		env=EnvGen.kr(Env.perc(att,rel),gate,2)
-		^Pan2.ar(sint*env,pan);//filt
+
+		^sint+filt;
 	}
 
-	*robot{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 1200, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
-		var sint,filt,env;
+	signal {|chord,note,cutf,rq,amp|
+		var sint,filt;
 		var interval,notes,chords,ton,third,fifth,seventh,oct,octfifth;
 		chords=['M', 'm', 'M7', 'm7', 'Mmaj7', 'mmaj7', 'M9', 'M9m', 'm9', 'm9m'];
 		interval = [
@@ -79,7 +113,8 @@ CaosGuitChords {
 			SinOsc.ar(oct.midicps,1,amp/4.2);
 		);
 		filt=LPF.ar(sint,cutf,rq);
-		env=EnvGen.kr(Env.perc(att,rel),Impulse.kr(t,tp),doneAction:0)
-		^Pan2.ar(sint*env,pan);//filt
+
+		^sint+filt;
 	}
+
 }

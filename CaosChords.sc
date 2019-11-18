@@ -9,8 +9,9 @@ CaosChords : CaosEnv  {
 
 	*ar {|chord = 'Mmaj7',att=0.05,rel=1,note=57,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,gate=1,amp=0.5|
 		var sig,env;
+
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env=this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate);
 
 		^Pan2.ar(sig*env,pan);
 
@@ -29,7 +30,7 @@ CaosChords : CaosEnv  {
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env=this.envKR(att,rel,Impulse.kr(t,tp));
+		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
 
 		^Pan2.ar(sig*env,pan);
 	}
