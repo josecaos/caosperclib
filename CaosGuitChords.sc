@@ -9,7 +9,7 @@ CaosGuitChords : CaosEnv {
 
 	}
 
-	*ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+	*ar{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
@@ -18,7 +18,7 @@ CaosGuitChords : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	ar{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+	ar{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
@@ -27,7 +27,7 @@ CaosGuitChords : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	*robot{|chord = 'm', att = 0.05, rel = 1, note = 57, cutf = 12000, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
+	*robot{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
 		var sig,env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
