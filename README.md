@@ -1,8 +1,7 @@
 # CaosPercLib v1.1
-================
 
 ### CaosPercLib is Collection of instrument and percussion Classes for SuperCollider.
- 
+-------- 
  - Class:
  
    - ```{CaosKick.ar(...args)}```
@@ -12,8 +11,7 @@
    
  - Declare it + change it's arguments (parameters)
  
-#### Use examples:
-================
+### Use examples:
  - ##### Functions or SynthDefs:
    - ```{CaosKick.ar()}.play```
    - ```{CaosSnare.ar(0.01,0.5)}.play```
@@ -35,7 +33,7 @@
     - ```var x;```
     - ```x = {LFTri.ar() * LFNoise0.kr(8)}```
     - ```{CaosKick.customSignal(x,0.01,1)}.play```
-    
+
+---------
 #### CaosPercLib also has a sequencer: 
-================
 ## (CaosBox)[https://github.com/josecaos/caosbox]
