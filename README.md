@@ -12,7 +12,7 @@
  - Declare it + change it's arguments (parameters)
  
 ### Use examples:
- - ##### Functions or SynthDefs:
+ - #### Functions or SynthDefs:
    - ```{CaosKick.ar()}.play```
    - ```{CaosSnare.ar(0.01,0.5)}.play```
    - ```(```<br/>
@@ -23,7 +23,7 @@
     &nbsp;```}).add;```<br/>
    ```)```
    
-- ##### ProxySpace support with *.robot* method:
+- #### ProxySpace support with *.robot* method:
    - ```~node = {CaosKick.robot(t:2)}```
    
 - #### You can also use it as an envelope wrapper for custom signals, in two ways:
@@ -36,4 +36,4 @@
 
 ---------
 #### CaosPercLib also has a sequencer: 
-## (CaosBox)[https://github.com/josecaos/caosbox]
+## [CaosBox](https://github.com/josecaos/caosbox)
