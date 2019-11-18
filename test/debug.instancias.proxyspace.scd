@@ -1,12 +1,8 @@
 p = ProxySpace.push(s.boot);
-~t = 1;
-// a = CaosKick.new;
+~t = 4;
 ~o.play;
-
-~synth = {CaosKick.robot(0.01,0.75,2,0.5,60,60,55,1,1,0,1)}
-// ~synth = {a.robot(t:~t)}
-~synth = {Pulse.ar(220,mul:0.35)*LFTri.kr(0.5)}
-
+~synth = {CaosKick.robot(0.01,0.75,2,0.5,60,60,55,1,1,0,~t)}
+// ~synth = {Pulse.ar(220,mul:0.35)*LFTri.kr(0.5)}
 ~o = ~synth;
 // ~o = 0
 //

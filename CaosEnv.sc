@@ -64,6 +64,43 @@ CaosEnv {
 
 	}
 
+
+	*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
+		var kick,env;
+
+		if (func != nil and: {func.isFunction}, {
+
+			kick = func;
+			kick = this.comp(kick);
+			env = this.envAR(att,rel,1)
+
+			^Pan2.ar(kick*env,pan);
+
+		}, {
+
+			^"Use of 'func' argument is obligatory";
+
+		});
+	}
+
+	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
+		var kick,env;
+
+		if (func != nil and: {func.isFunction}, {
+
+			kick = func;
+			kick = this.comp(kick);
+			env = EnvGen.ar(Env.perc(att,rel),1,doneAction:2);
+
+			^Pan2.ar(kick*env,pan);
+
+		}, {
+
+			^"Use of 'func' argument is obligatory";
+		});
+
+	}
+
 	*envAR {|att,rel,gate,doneAction = 2|
 		^EnvGen.ar(Env.perc(att,rel),gate,doneAction:doneAction);
 	}
