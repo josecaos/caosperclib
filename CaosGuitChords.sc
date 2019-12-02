@@ -1,4 +1,4 @@
-//Written by @joseCao5
+//Written by @IllSlide
 //Chord generator as common Guitar interval disposition
 //Part of CaosPercLib  2.0
 CaosGuitChords : CaosEnv {

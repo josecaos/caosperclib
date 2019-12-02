@@ -44,8 +44,8 @@ CaosKick : CaosEnv {
 
 	*signal {|modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq|
 
-		^RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+
-			LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2),lowcutfreq,0.98);
+		^RHPF.ar(LFTri.ar(LFTri.kr(modFreq,modbw,freq1,freq2),0,amp1/2)+
+			Pulse.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/3),lowcutfreq,0.98);
 
 	}
 
