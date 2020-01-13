@@ -1,11 +1,20 @@
 s.boot;
 s.scope;
 //Kick
-(
-play{|modFreq,modbw,freq1,freq2,amp1,amp2,lowcutfreq|
 
-	^RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+
-		LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2),lowcutfreq,0.98);
+(
+play{|modFreq=2,modbw=0.15,freq1=60,freq2=60,amp1=1,amp2=1,lowcutfreq=50|
+
+/*	var head1 = amp1;
+	var head2 = amp2;
+		if((head1.postcln + head2) > 2, {
+	amp1 = 1;
+	amp2 = 1;
+	});*/
+	(
+		RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/1.5)+
+			LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/1.5),lowcutfreq,0.98);
+	)* EnvGen.ar(Env.perc(0.01,0.5),1,doneAction:2);
 
 }
 )
@@ -25,14 +34,12 @@ SynthDef(\test, {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=60,lowcutf
 	var sig, env;
 
 	sig = RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+(
-		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar([240, 960, 2880, 7680],amp1/16);
-
-	),lowcutfreq,0.98);
+		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar([240, 960, 2880, 7680],amp1/16)),lowcutfreq,0.98);
 	env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 
 	Out.ar([0,1],sig*env);
 }).add;
-)
+);
 Synth(\test,[\amp1,1,\amp2,1]);
 Synth(\test,[\amp1,1,\amp2,0]);
 Synth(\test,[\amp1,0,\amp2,1]);
