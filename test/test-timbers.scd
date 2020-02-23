@@ -53,3 +53,16 @@ t = Task({
 );
 t.play;
 t.stop;
+//
+(
+play{RLPF.ar(LFTri.ar(Pulse.kr(1,0.5,20,20),0,1) + LFPulse.ar(Pulse.kr(1,0.5,60,60),0.5,0.15,1/16),12200,1)*EnvGen.ar(Env.perc(0.01,0.5),1,doneAction:2)!2}
+)
+//
+s.boot;
+play{CaosKick.ar}
+x = CaosKick2.new;
+play{x.ar(rel:0.1)}
+play{CaosKick2.ar(0.5,0.15)}
+ProxySpace.push(s);
+~synth = {CaosKick2.robot(0.1,0.5,1,0.1,0.05,Demand.kr(Impulse.kr(1),0,Dseq([60,120,340]),inf),32,60,1,4)}
+~synth.quant_(1).play;

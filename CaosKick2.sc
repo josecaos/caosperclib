@@ -4,7 +4,7 @@
 
 CaosKick2 : CaosEnv {
 
-	*ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=62,lowcutfreq=50, gate=1,amp=0.5,pan=0|
+	*ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=62,lowcutfreq=38, gate=1,amp=1,pan=0|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,bw,freq1/2,freq2/2,lowcutfreq,gate,amp);
@@ -15,7 +15,7 @@ CaosKick2 : CaosEnv {
 
 	}
 
-	ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=62,lowcutfreq=50,gate=1,amp=0.5,pan=0|
+	ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=62,lowcutfreq=38,gate=1,amp=1,pan=0|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,bw,freq1,freq2,lowcutfreq,gate,amp);
@@ -26,7 +26,7 @@ CaosKick2 : CaosEnv {
 
 	}
 
-	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=62,lowcutfreq=50,amp=0.5,t=1,tp=0,pan=0|
+	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=62,lowcutfreq=38,amp=1,t=1,tp=0,pan=0|
 		var kick,env;
 
 		kick = this.signal(modFreq,modbw,bw,freq1,freq2,amp,lowcutfreq);
@@ -38,13 +38,18 @@ CaosKick2 : CaosEnv {
 
 	*signal {|modFreq,modbw,bw,freq1,freq2,amp,lowcutfreq|
 
-		^RHPF.ar(LFPulse.ar(Pulse.kr(modFreq,modbw,freq1,freq2),bw,0.5,amp*0.25),lowcutfreq,0.85);
-
+		^RHPF.ar(
+			LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2) ,0.5,amp) +
+			LFPulse.ar(Pulse.kr(modFreq,modbw,freq1,freq2),bw,0.25,amp/2.5),
+			lowcutfreq,1);
 	}
 
 	signal {|modFreq,modbw,bw,freq1,freq2,amp,lowcutfreq|
 
-		^RHPF.ar(LFPulse.ar(Pulse.kr(modFreq,modbw,freq1,freq2),bw,0.5,amp*0.25),lowcutfreq,0.85);
+		^RHPF.ar(
+			LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2) ,0.5,amp) +
+			LFPulse.ar(Pulse.kr(modFreq,modbw,freq1,freq2),bw,0.25,amp/2.5)
+			,lowcutfreq,1);
 
 	}
 
