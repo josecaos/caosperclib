@@ -5,9 +5,9 @@ s.scope;
 (
 play{|modFreq=2,modbw=0.15,freq1=60,freq2=60,amp1=1,amp2=1,lowcutfreq=50|
 
-/*	var head1 = amp1;
+	/*	var head1 = amp1;
 	var head2 = amp2;
-		if((head1.postcln + head2) > 2, {
+	if((head1.postcln + head2) > 2, {
 	amp1 = 1;
 	amp2 = 1;
 	});*/
@@ -17,24 +17,30 @@ play{|modFreq=2,modbw=0.15,freq1=60,freq2=60,amp1=1,amp2=1,lowcutfreq=50|
 	)* EnvGen.ar(Env.perc(0.01,0.5),1,doneAction:2);
 
 }
-)
-// s.boot
+);
+//
+s.boot
 // multiplos de 60
-(f = {
+(~armonicos = {|number = 32|
 	var fundamental = 60;
-	Array.series(5,0,1).collect({|item|
-		fundamental = fundamental + fundamental;
-		if(fundamental > 0,{
-			item*fundamental;
-		});
+	var armonicos = Array.series(number,1,1).collect({|i,item|
+
+			item = fundamental*i;
 	});
-}).value;
+
+	armonicos;
+
+});
+~armonicos.value;
+~armonicos.value();
+
 (
 SynthDef(\test, {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=60,lowcutfreq=80,gate=1,amp1=1,amp2=1,pan=0|
-	var sig, env;
+	var sig, arm, env;
 
-	sig = RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+(
-		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar([240, 960, 2880, 7680],amp1/16)),lowcutfreq,0.98);
+	arm = SinOsc.ar(~armonicos.value(32),0,amp1/2);
+	sig = RHPF.ar(arm+LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+(
+		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar(~armonicos.value(12),amp1/16)),lowcutfreq,0.98);
 	env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 
 	Out.ar([0,1],sig*env);
@@ -43,6 +49,7 @@ SynthDef(\test, {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=60,lowcutf
 Synth(\test,[\amp1,1,\amp2,1]);
 Synth(\test,[\amp1,1,\amp2,0]);
 Synth(\test,[\amp1,0,\amp2,1]);
+Synth(\test,[\amp1,0,\amp2,1,\modFreq,rrand(16,64)]);
 (
 t = Task({
 	loop {
