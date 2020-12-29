@@ -32,15 +32,15 @@ s.boot
 
 });
 ~armonicos.value;
-~armonicos.value();
+~armonicos.value(2);
 
 (
 SynthDef(\test, {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=60,lowcutfreq=80,gate=1,amp1=1,amp2=1,pan=0|
 	var sig, arm, env;
 
-	arm = SinOsc.ar(~armonicos.value(32),0,amp1/2);
-	sig = RHPF.ar(arm+LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+(
-		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar(~armonicos.value(12),amp1/16)),lowcutfreq,0.98);
+	arm = ~armonicos.value;
+	sig = RHPF.ar(LFTri.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp1/2)+(
+		SinOsc.ar(Pulse.ar(modFreq,modbw,freq1,freq2),0,amp2/2)+Saw.ar(~armonicos.value(4),amp1/16)),lowcutfreq,0.98);
 	env = EnvGen.ar(Env.perc(att,rel),gate,doneAction:2);
 
 	Out.ar([0,1],sig*env);
