@@ -10,7 +10,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=1920,rq=0.85,gate=1,amp1=0.75,amp2=0.5,pan=0|
+	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=2920,rq=0.95,gate=1,amp1=0.75,amp2=0.5,pan=0|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
@@ -21,7 +21,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.85,gate=1,amp1=0.75,amp2=0.5,pan=0|
+	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=2920,rq=0.95,gate=1,amp1=0.75,amp2=0.5,pan=0|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);

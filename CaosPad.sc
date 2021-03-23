@@ -9,7 +9,7 @@ CaosPad : CaosEnv {
 
 	}
 
-	*ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
+	*ar {|waveform='sin',att=3,rel=3,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
 		var sig,env;
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
@@ -20,7 +20,7 @@ CaosPad : CaosEnv {
 
 	}
 
-	ar {|waveform='sin',att=1,rel=1,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
+	ar {|waveform='sin',att=3,rel=3,note=57,semi=0,phase=0.5,cutf=2920,rq=0.85,gate=1,amp=0.5,pan=0|
 		var sig,env;
 
 		sig = this.signal(waveform,note,semi,phase,cutf,rq,amp);
@@ -31,7 +31,7 @@ CaosPad : CaosEnv {
 
 	}
 
-	*robot {|waveform = 'sin', att = 0.5, rel = 1, note = 57, semi = 0, phase = 0,
+	*robot {|waveform = 'sin', att = 3, rel = 3, note = 57, semi = 0, phase = 0,
 		cutf = 920, rq = 0.7, amp = 0.5,pan=0, t = 0.25, tp = 0|
 		var sig,env;
 
