@@ -1,6 +1,6 @@
-// written by @josecao5
-//Simple hard Bass
-//Part of CaosPercLib 1.1
+// written by @mixfuckedup
+// Simple hard Bass
+// Part of CaosPercLib 1.1
 CaosBass2 : CaosEnv {
 
 	*new {
@@ -9,7 +9,7 @@ CaosBass2 : CaosEnv {
 
 	}
 
-	*ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=2600,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
+	*ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);
@@ -19,7 +19,7 @@ CaosBass2 : CaosEnv {
 
 	}
 
-	ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=2600,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
+	ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0|
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);
@@ -29,7 +29,7 @@ CaosBass2 : CaosEnv {
 
 	}
 
-	*robot {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=2600,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=1|
+	*robot {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=1|
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);

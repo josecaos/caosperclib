@@ -48,5 +48,5 @@
     {CaosKick.customSignal(x,0.01,1)}.play
     ```
 ---------
-#### CaosPercLib also has a sequencer:  [CaosBox](https://github.com/josecaos/caosbox)
-#### Reference to Default [Timbers](https://github.com/josecaos/caosperclib/tree/master/test/timbres.scd)
+#### Reference to Default [Timbers](test/timbres.scd)
+#### CaosPercLib also has a sequencer: [CaosBox](https://github.com/josecaos/caosbox)
