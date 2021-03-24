@@ -3,37 +3,50 @@
 ### CaosPercLib is Collection of instrument and percussion Classes for SuperCollider.
 -------- 
  - Class:
- 
-   - ```{CaosKick.ar(...args)}```
+    ```
+    CaosKick.ar(...args)
+    ```
  - Instance: 
-   - ```x = new CaosKick()```
-   - ```x.ar(...args)```
+    ```
+    x = CaosKick.new()
+    x.ar(...args)
+    ```
    
  - Declare it + change it's arguments (parameters)
  
 ### Use examples:
- - #### Functions or SynthDefs:
-   - ```{CaosKick.ar()}.play```
-   - ```{CaosSnare.ar(0.01,0.5)}.play```
-   - ```(```<br/>
-    &nbsp;```SynthDef(\kick,{```<br/>
-      &nbsp;&nbsp;&nbsp;```var out,sig;```<br/>
-      &nbsp;&nbsp;&nbsp;```sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02);```<br/>
-      &nbsp;&nbsp;&nbsp;```out = Out.ar(0,sig);```<br/>
-    &nbsp;```}).add;```<br/>
-   ```)```
-   
+ - #### Function:
+    ```
+    {CaosKick.ar()}.play
+    
+    {CaosSnare.ar(0.01,0.5)}.play
+    ```
+ - #### SynthDef:
+    ```
+    (
+    SynthDef(\kick,{
+      var out,sig;
+      sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02;
+      out = Out.ar(0,sig);
+    }).add;
+   )
+   ```
 - #### ProxySpace support with *.robot* method:
-   - ```~node = {CaosKick.robot(t:2)}```
+  ```
+    ~node = {CaosKick.robot(t:2)}
+  ```
    
 - #### You can also use it as an envelope wrapper for custom signals, in two ways:
-  - Class:
-    - ```{LFTri.ar() * CaosEnv.ar('tri')}.play```
-  - Method:
-    - ```var x;```
-    - ```x = {LFTri.ar() * LFNoise0.kr(8)}```
-    - ```{CaosKick.customSignal(x,0.01,1)}.play```
-
+  - With CaosEnv:
+     ```
+    {LFTri.ar() * CaosEnv.ar('tri')}.play
+    ```
+  - With CustomSignal Method:
+    ```
+    var x;
+    x = {LFTri.ar()}
+    {CaosKick.customSignal(x,0.01,1)}.play
+    ```
 ---------
-#### CaosPercLib also has a sequencer: 
-## [CaosBox](https://github.com/josecaos/caosbox)
+#### CaosPercLib also has a sequencer:  [CaosBox](https://github.com/josecaos/caosbox)
+#### Reference to Default [Timbers](https://github.com/josecaos/caosperclib/tree/master/test/timbres.scd)
