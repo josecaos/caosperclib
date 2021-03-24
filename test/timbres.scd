@@ -1,6 +1,6 @@
 s.boot;
 s.scope;
-// caosPercLib default timbers
+// caosPercLib default timbres
 //Kick
 ~k = CaosKick.new
 play{CaosKick.ar}//class
@@ -30,12 +30,10 @@ play{~hh2.ar}//instance
 play{CaosBass.ar}//class
 play{~b.ar}//instance
 //bass 2
-s.boot;
 ~b2 =  CaosBass2.new
 play{CaosBass2.ar}//class
 play{~b2.ar}//instance
 //pad
-s.boot;
 ~p =  CaosPad.new
 play{CaosPad.ar}//class
 play{~p.ar}//instance
