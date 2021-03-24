@@ -26,7 +26,7 @@
     (
     SynthDef(\kick,{
       var out,sig;
-      sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02;
+      sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02);
       out = Out.ar(0,sig);
     }).add;
    )
@@ -39,7 +39,7 @@
 - #### You can also use it as an envelope wrapper for custom signals, in two ways:
   - With CaosEnv:
      ```
-    {LFTri.ar() * CaosEnv.ar('tri')}.play
+    {LFTri.ar() * CaosEnv.ar('saw')}.play
     ```
   - With CustomSignal Method:
     ```
