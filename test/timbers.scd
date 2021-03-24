@@ -49,21 +49,31 @@ play{~p2.ar(0.01,2,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).asStream.ne
 ~ch =  CaosChords.new
 play{CaosChords.ar}//class
 play{~ch.ar}//instance
-play{~ch.ar('M')}//Major
-play{~ch.ar('m')}//Minor
-play{~ch.ar('M7')}//Major seventh
-play{~ch.ar('Mmaj7')}//Major major seventh
-play{~ch.ar('mmaj7')}//Minor major seventh
-play{~ch.ar('5dim7')}//Diminished fifth, minor seventh
-play{~ch.ar('5aug7')}//Augmented fifth, minor seventh
+play{~ch.ar('M',0.01,2)}//Major
+play{~ch.ar('m',0.01,2)}//Minor
+play{~ch.ar('M7',0.01,2)}//Major seventh
+play{~ch.ar('Mmaj7',0.01,2)}//Major major seventh
+play{~ch.ar('mmaj7',0.01,2)}//Minor major seventh
+play{~ch.ar('5dim7',0.01,2)}//Diminished fifth, minor seventh
+play{~ch.ar('5aug7',0.01,2)}//Augmented fifth, minor seventh
 //chords guitar style
 ~ch2 =  CaosGuitChords.new
 play{CaosGuitChords.ar}//class
 play{~ch2.ar}//instance
-play{~ch2.ar('M')}//Major
-play{~ch2.ar('m')}//Minor
-play{~ch2.ar('M7')}//Major seventh
-play{~ch2.ar('Mmaj7')}//Major major seventh
-play{~ch2.ar('mmaj7')}//Minor major seventh
-play{~ch2.ar('M9')}//Major ninth
-play{~ch2.ar('M9m')}//Major, minor ninth
+play{~ch2.ar('M',0.01,2)}//Major
+play{~ch2.ar('m',0.01,2)}//Minor
+play{~ch2.ar('M7',0.01,2)}//Major seventh
+play{~ch2.ar('Mmaj7',0.01,2)}//Major major seventh
+play{~ch2.ar('mmaj7',0.01,2)}//Minor major seventh
+play{~ch2.ar('M9',0.01,2)}//Major ninth
+play{~ch2.ar('M9m',0.01,2)}//Major, minor ninth
+play{~ch2.ar('m9',0.01,2)}//Minor ninth
+play{~ch2.ar('m9m',0.01,2)}//Minor, minor ninth
+// wave driven envelope
+~e =  CaosEnv.new
+play{LFTri.ar!2*CaosEnv.ar}//class
+play{LFTri.ar!2*~e.ar}//instance
+play{LFTri.ar!2*~e.ar(\off,0.01,4)}
+play{LFTri.ar*~e.ar(\sin,0.01,4,2,1)}//sine
+play{LFTri.ar*~e.ar(\saw,0.01,4,2,1)}//saw
+play{LFTri.ar*~e.ar(\pulse,0.01,4,2,1)}//square
