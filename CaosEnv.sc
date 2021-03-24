@@ -1,4 +1,4 @@
-// written by @josecao5
+// written by @mixfuckedup
 //A multi shape LFO Envelope:
 //Part of CaosPercLib 2.0
 CaosEnv {
@@ -41,13 +41,32 @@ CaosEnv {
 
 	*signal {|waveform ,freq ,tremolo|
 		var lfo,env,osc,tag,waveindex,iphase;
-		osc=[SinOsc,LFTri,Pulse];
+		osc=["",SinOsc,LFTri,Pulse];
 		tag=['off','sin','tri','pulse'];
 		waveindex=tag.find([waveform]);
 
-		if(waveindex==nil,{7.do{"Only use: ''off, 'sin', 'tri' or 'pulse' as first CaosEnv argument".warn}});
-		if(waveform==tag[2],{iphase=0.25},{iphase=0});
-		lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.5);
+		if(waveindex==nil,{
+			7.do{"Only use: ''off, 'sin', 'tri' or 'pulse' as first CaosEnv argument".warn}
+		});
+		if(waveform==tag[3],{iphase=0.25},{iphase=0});
+
+		lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
+
+		^lfo
+	}
+
+	signal {|waveform ,freq ,tremolo|
+		var lfo,env,osc,tag,waveindex,iphase;
+		osc=["",SinOsc,LFTri,Pulse];
+		tag=['off','sin','tri','pulse'];
+		waveindex=tag.find([waveform]);
+
+		if(waveindex==nil,{
+			7.do{"Only use: ''off, 'sin', 'tri' or 'pulse' as first CaosEnv argument".warn}
+		});
+		if(waveform==tag[3],{iphase=0.25},{iphase=0});
+
+		lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
 
 		^lfo
 	}

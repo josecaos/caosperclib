@@ -56,8 +56,8 @@ CaosPad2 :CaosEnv {
 		var sig1,sig2,pad,notes,env;
 
 		notes=[note,maxNote].midicps;
-		sig1=SinOsc.ar(Pulse.kr(fm,0.25,notes[0],notes[1]),0,amp1/12);
-		sig2=Blip.ar(Blip.kr(fm,harm/3,notes[0],notes[1]),harm,amp2/12);
+		sig1=SinOsc.ar(Pulse.kr(fm,0.25,notes[0],notes[1]),0,amp1/4);
+		sig2=Blip.ar(Blip.kr(fm,harm/3,notes[0],notes[1]),harm,amp2/4);
 
 		^sig1+sig2;
 
