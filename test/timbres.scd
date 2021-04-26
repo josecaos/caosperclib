@@ -34,7 +34,7 @@ play{~b.ar}//instance
 ~b2 = CaosBass2.new
 play{CaosBass2.ar}//class
 play{~b2.ar}//instance
-play{~b2.ar(0.01,2,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).asStream.next+34)};
+play{~b2.ar(0.01,2,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).asStream.next+34,1,60,12000,0.25)};
 //pad
 ~p = CaosPad.new
 play{CaosPad.ar}//class
