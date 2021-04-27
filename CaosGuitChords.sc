@@ -105,12 +105,12 @@ CaosGuitChords : CaosEnv {
 		octfifth=notes[4];
 		oct=notes[5];
 		sint=(
-			SinOsc.ar(ton.midicps,0,amp/1.8)+
-			LFTri.ar(fifth.midicps,0.15,amp/3.4)+
-			LFTri.ar(seventh.midicps,0.25,amp/3.2)+
-			LFTri.ar(third.midicps,0.5,amp/3.8)+
-			LFTri.ar(octfifth.midicps,0.75,amp/4)+
-			SinOsc.ar(oct.midicps,1,amp/4.2);
+			SinOsc.ar(ton.midicps,0,amp/1.25)+
+			LFTri.ar(fifth.midicps,0.15,amp/2.4)+
+			LFTri.ar(seventh.midicps,0.25,amp/3.3)+
+			LFTri.ar(third.midicps,0.5,amp/3)+
+			LFTri.ar(octfifth.midicps,0.75,amp/3.3)+
+			Saw.ar(oct.midicps,amp/6);
 		);
 		filt=LPF.ar(sint,cutf,rq);
 
