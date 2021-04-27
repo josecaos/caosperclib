@@ -9,7 +9,7 @@ CaosGuitChords : CaosEnv {
 
 	}
 
-	*ar{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+	*ar{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, gate=1, amp=0.4, pan=0|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
@@ -18,7 +18,7 @@ CaosGuitChords : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	ar{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, gate = 1, amp = 0.4|
+	ar{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, gate=1, amp=0.4, pan=0|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
@@ -27,7 +27,7 @@ CaosGuitChords : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	*robot{|chord = 'm', att = 0.05, rel = 1, note = 60, cutf = 12000, rq = 0.5, pan = 0, amp = 0.4, t = 1, tp = 0|
+	*robot{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, amp=0.4, pan=0, t=1, tp=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
@@ -65,12 +65,12 @@ CaosGuitChords : CaosEnv {
 		octfifth=notes[4];
 		oct=notes[5];
 		sint=(
-			SinOsc.ar(ton.midicps,0,amp/1.8)+
-			LFTri.ar(fifth.midicps,0.15,amp/3.4)+
-			LFTri.ar(seventh.midicps,0.25,amp/3.2)+
-			LFTri.ar(third.midicps,0.5,amp/3.8)+
-			LFTri.ar(octfifth.midicps,0.75,amp/4)+
-			SinOsc.ar(oct.midicps,1,amp/4.2);
+			SinOsc.ar(ton.midicps,0,amp/1.25)+
+			LFTri.ar(fifth.midicps,0.15,amp/2.4)+
+			LFTri.ar(seventh.midicps,0.25,amp/3.3)+
+			LFTri.ar(third.midicps,0.5,amp/3)+
+			LFTri.ar(octfifth.midicps,0.75,amp/3.3)+
+			Saw.ar(oct.midicps,amp/6);
 		);
 		filt=LPF.ar(sint,cutf,rq);
 

@@ -1,13 +1,13 @@
 //Written by @joseCao5
 //Chord generator over LFPulse wave
-//Part of CaosPercLib 1.1
+//Part of CaosPercLib 2.0
 CaosChords : CaosEnv  {
 
 	*new {
 		^super.new;
 	}
 
-	*ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,gate=1,amp=0.5|
+	*ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
@@ -17,7 +17,7 @@ CaosChords : CaosEnv  {
 
 	}
 
-	ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,gate=1,amp=0.5|
+	ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0|
 		var sig,env;
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
 		env=this.envKR(att,rel,gate);
@@ -26,7 +26,7 @@ CaosChords : CaosEnv  {
 
 	}
 
-	*robot{|chord='Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,pan=0,amp=0.5,t=1,tp=0|
+	*robot{|chord='Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,amp=0.5,pan=0,t=1,tp=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);

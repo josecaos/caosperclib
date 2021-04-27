@@ -42,22 +42,22 @@ CaosPad2 :CaosEnv {
 	}
 
 	*signal {|att,rel,note,maxNote,fm,harm,amp1,amp2|
-		var sig1,sig2,pad,notes,env;
+		var sig1,sig2,notes;
 
 		notes=[note,maxNote].midicps;
 		sig1=SinOsc.ar(Pulse.kr(fm,0.25,notes[0],notes[1]),0,amp1/4);
-		sig2=Blip.ar(Blip.kr(fm,harm/3,notes[0],notes[1]),harm,amp2/4);
+		sig2=Blip.ar(Blip.ar(fm,harm/3,notes[0],notes[1]),harm,amp2/4);
 
 		^sig1*sig2;
 
 	}
 
 	signal {|att,rel,note,maxNote,fm,harm,amp1,amp2|
-		var sig1,sig2,pad,notes,env;
+		var sig1,sig2,notes;
 
 		notes=[note,maxNote].midicps;
 		sig1=SinOsc.ar(Pulse.kr(fm,0.25,notes[0],notes[1]),0,amp1/4);
-		sig2=Blip.ar(Blip.kr(fm,harm/3,notes[0],notes[1]),harm,amp2/4);
+		sig2=Blip.ar(Blip.ar(fm,harm/3,notes[0],notes[1]),harm,amp2/4);
 
 		^sig1*sig2;
 
