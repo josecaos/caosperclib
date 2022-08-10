@@ -10,34 +10,34 @@ CaosSnare : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.35,highcutfreq=310,rq=0.85,gate=1,amp1=0.4,amp2=1,pan=0|
+	*ar {|att=0.01,rel=0.35,highcutfreq=310,rq=0.85,gate=1,amp1=0.4,amp2=1,pan=0,doneAction=2|
 		var sna,env;
 
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sna*env,pan);
 
 	}
 
-	ar {|att=0.01,rel=0.35,highcutfreq=310,rq=0.85,gate=1,amp1=0.4,amp2=1,pan=0|
+	ar {|att=0.01,rel=0.35,highcutfreq=310,rq=0.85,gate=1,amp1=0.4,amp2=1,pan=0,doneAction=2|
 		var sna,env;
 
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sna*env,pan);
 
 	}
 
-	*robot {|att=0.01,rel=0.35,highcutfreq=310,rq=0.95,amp1=0.5,amp2=0.4,t=1,tp=0,pan=0|
+	*robot {|att=0.01,rel=0.35,highcutfreq=310,rq=0.95,amp1=0.5,amp2=0.4,t=1,tp=0,pan=0,doneAction=0|
 
 		var sna,env;
 		sna = this.signal(highcutfreq,rq,amp1,amp2);
 		sna = this.comp(sna,0.5,0.6,0.7);
-		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+		env = this.envKR(att,rel,Impulse.kr(t,tp),doneAction);
 
 		^Pan2.ar(sna*env,pan);
 
