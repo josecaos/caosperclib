@@ -9,34 +9,34 @@ CaosHats : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,gate=1,amp1=0.95,amp2=0.9,pan=0|
+	*ar {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,gate=1,amp1=0.95,amp2=0.9,pan=0,doneAction=2|
 		var hats,env;
 
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction=2);
 
 		^Pan2.ar(hats*env,pan);
 
 	}
 
-	ar {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,gate=1,amp1=0.95,amp2=0.9,pan=0|
+	ar {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,gate=1,amp1=0.95,amp2=0.9,pan=0,doneAction=2|
 		var hats,env;
 
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
-		env =this.envKR(att,rel,gate);
+		env =this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(hats*env,pan);
 
 	}
 
-	*robot {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,amp1=1,amp2=1,t=1,tp=0,pan=0 |
+	*robot {|att=0.01,rel=0.15,highcutfreq=10000,rq=0.5,amp1=1,amp2=1,t=1,tp=0,pan=0,doneAction=0|
 		var hats,env;
 
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.6,0.58,0.8);
-		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+		env = this.envKR(att,rel,Impulse.kr(t,tp),doneAction);
 
 		^Pan2.ar(hats*env,pan);
 	}

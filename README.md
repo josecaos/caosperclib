@@ -1,24 +1,24 @@
-# CaosPercLib v1.1
+# CaosPercLib v1.2
 
 ### CaosPercLib is Collection of instrument and percussion Classes for SuperCollider.
--------- 
+--------
  - Class:
     ```
     CaosKick.ar(...args)
     ```
- - Instance: 
+ - Instance:
     ```
     x = CaosKick.new()
     x.ar(...args)
     ```
-   
- - Declare it + change it's arguments (parameters)
- 
+
+ - Declare it + change it's parameters
+
 ### Use examples:
  - #### Function:
     ```
     {CaosKick.ar()}.play
-    
+
     {CaosSnare.ar(0.01,0.5)}.play
     ```
  - #### SynthDef:
@@ -35,7 +35,7 @@
   ```
     ~node = {CaosKick.robot(t:2)}
   ```
-   
+
 - #### You can also use it as an envelope wrapper for custom signals, in two ways:
   - With CaosEnv:
      ```
@@ -48,5 +48,5 @@
     {CaosKick.customSignal(x,0.01,1)}.play
     ```
 ---------
-#### Reference to Default [Timbers](test/timbres.scd)
+#### Reference to Default [Timbres](test/timbres.scd)
 #### CaosPercLib also has a sequencer: [CaosBox](https://github.com/josecaos/caosbox)
