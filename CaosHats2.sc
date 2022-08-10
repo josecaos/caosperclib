@@ -26,7 +26,7 @@ CaosHats2 : CaosEnv {
 
 		hats = this.signal(highcutfreq,rq,amp1,amp2);
 		hats = this.comp(hats,0.5,0.49,0.7);
-		env = this.envAR(att,rel,gatedoneAction);
+		env = this.envAR(att,rel,gate,doneAction);
 
 		^Pan2.ar(hats*env,pan);
 

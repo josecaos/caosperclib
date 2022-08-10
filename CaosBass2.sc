@@ -9,7 +9,7 @@ CaosBass2 : CaosEnv {
 
 	}
 
-	*ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0.doneAtion=2|
+	*ar {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,gate=1,amp1=1,amp2=1,pan=0,doneAction=2|
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);
