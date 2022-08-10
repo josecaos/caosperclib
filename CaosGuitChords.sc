@@ -9,29 +9,29 @@ CaosGuitChords : CaosEnv {
 
 	}
 
-	*ar{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, gate=1, amp=0.4, pan=0|
+	*ar{|chord='m',att=0.05,rel=1,note=60,cutf=12000,rq=0.5,gate=1,amp=0.4,pan=0,doneAction=2|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sig*env,pan);
 	}
 
-	ar{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, gate=1, amp=0.4, pan=0|
+	ar{|chord='m',att=0.05,rel=1,note=60,cutf=12000,rq=0.5,gate=1,amp=0.4,pan=0,doneAction=2|
 		var sig, env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sig*env,pan);
 	}
 
-	*robot{|chord='m', att=0.05, rel=1, note=60, cutf=12000, rq=0.5, amp=0.4, pan=0, t=1, tp=0|
+	*robot{|chord='m',att=0.05,rel=1,note=60,cutf=12000,rq=0.5,amp=0.4,pan=0,t=1, tp=0,doneAction=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,cutf,rq,amp);
-		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+		env = this.envKR(att,rel,Impulse.kr(t,tp),doneAction);
 
 		env=EnvGen.kr(Env.perc(att,rel),Impulse.kr(t,tp),0)
 		^Pan2.ar(sig*env,pan);

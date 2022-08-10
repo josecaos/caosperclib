@@ -23,13 +23,13 @@ CaosBass2 : CaosEnv {
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);
-		env = this.envKR(att,rel,gate,doneAtion);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(bass*env,pan)
 
 	}
 
-	*robot {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=1,doneAtion=0|
+	*robot {|att=0.1,rel=0.5,note=36,trig=1,filtminf=60,filtmaxf=6200,filtime=1,rq=0.5,bandw=0.5,iphase=0.25,amp1=1,amp2=1,t=1,tp=0,pan=1,doneAction=0|
 		var bass,env;
 
 		bass = this.signal(note,trig,filtminf,filtmaxf,filtime,rq,bandw,iphase,amp1,amp2);

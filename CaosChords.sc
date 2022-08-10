@@ -7,30 +7,30 @@ CaosChords : CaosEnv  {
 		^super.new;
 	}
 
-	*ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0|
+	*ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0,doneAction=2|
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env = this.envKR(att,rel,gate);
+		env = this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sig*env,pan);
 
 	}
 
-	ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0|
+	ar {|chord = 'Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,gate=1,amp=0.5,pan=0,doneAction=2|
 		var sig,env;
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env=this.envKR(att,rel,gate);
+		env=this.envKR(att,rel,gate,doneAction);
 
 		^Pan2.ar(sig*env,pan);
 
 	}
 
-	*robot{|chord='Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,amp=0.5,pan=0,t=1,tp=0|
+	*robot{|chord='Mmaj7',att=0.05,rel=1,note=60,iphase=0.025,width=0.1,cutf=1200,rq=0.5,amp=0.5,pan=0,t=1,tp=0,doneAction=0|
 		var sig,env;
 
 		sig = this.signal(chord,note,iphase,width,cutf,rq,amp);
-		env = this.envKR(att,rel,Impulse.kr(t,tp),0);
+		env = this.envKR(att,rel,Impulse.kr(t,tp),doneAction);
 
 		^Pan2.ar(sig*env,pan);
 	}
