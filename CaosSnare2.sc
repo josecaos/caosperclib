@@ -1,4 +1,4 @@
-//written by @Ill_Slide
+//written by Mixfuckedup
 //sharper like snare
 //Part of CaosPercLib 2.0
 

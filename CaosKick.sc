@@ -1,4 +1,4 @@
-//written by @Ill_Slide
+//written by Mixfuckedup
 //Simple two amp kick
 //Part of CaosPercLib 2.0
 
