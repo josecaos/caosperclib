@@ -17,6 +17,7 @@ play{CaosKick2.ar(modFreq:rrand(32,6),wave:"LFNoise0")};// Controla la fundament
 play{CaosKick2.ar(modFreq:rrand(32,2),wave:"SinOsc")};
 play{CaosKick2.ar(modFreq:rrand(32,2),wave:"LFTri")};
 play{CaosKick2.ar(modFreq:rrand(32,2),wave:"Saw")};
+play{CaosKick2.ar(0.1,32,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
 ~k2 = CaosKick2.new//instance
 play{~k2.ar};
 //snare
