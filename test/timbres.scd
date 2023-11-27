@@ -7,7 +7,6 @@ play{CaosKick.ar}//class
 ~k = CaosKick.new//instance
 play{~k.ar};
 //Kick 2
-// TODO: Revisar timbre
 s.boot;
 play{CaosKick2.ar()}//class
 play{CaosKick2.ar(modFreq:1, amp2: 0.01)}
@@ -41,6 +40,7 @@ play{~hh2.ar}//instance
 //bass
 ~b = CaosBass.new
 play{CaosBass.ar}//class
+play{CaosBass.ar(note:rrand(28,29))}//class
 play{~b.ar}//instance
 //bass 2
 ~b2 = CaosBass2.new

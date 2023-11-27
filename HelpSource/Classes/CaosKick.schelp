@@ -1,0 +1,202 @@
+TITLE:: CaosKick
+summary:: A simple two amp Kick
+categories:: Timbres, Instruments
+related:: Classes/CaosBox, Reference/SomeRelatedStuff, etc.
+
+DESCRIPTION::
+Simple Kick made with tweaking arguments for filter, modulation freqs, and two mixable amplitudes.
+
+CLASSMETHODS::
+
+METHOD:: robot
+This Method was made to play within ProxySpace enviroment, with an impulse as a trigger.
+
+ARGUMENT:: att
+(describe argument here)
+
+ARGUMENT:: rel
+(describe argument here)
+
+ARGUMENT:: modFreq
+(describe argument here)
+
+ARGUMENT:: modbw
+(describe argument here)
+
+ARGUMENT:: freq1
+(describe argument here)
+
+ARGUMENT:: freq2
+(describe argument here)
+
+ARGUMENT:: lowcutfreq
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: pan
+(describe argument here)
+
+ARGUMENT:: t
+(describe argument here)
+
+ARGUMENT:: tp
+(describe argument here)
+
+ARGUMENT:: doneAction
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: signal
+(describe method here)
+
+ARGUMENT:: modFreq
+(describe argument here)
+
+ARGUMENT:: modbw
+(describe argument here)
+
+ARGUMENT:: freq1
+(describe argument here)
+
+ARGUMENT:: freq2
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: lowcutfreq
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: new
+(describe method here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: ar
+(describe method here)
+
+ARGUMENT:: att
+(describe argument here)
+
+ARGUMENT:: rel
+(describe argument here)
+
+ARGUMENT:: modFreq
+(describe argument here)
+
+ARGUMENT:: modbw
+(describe argument here)
+
+ARGUMENT:: freq1
+(describe argument here)
+
+ARGUMENT:: freq2
+(describe argument here)
+
+ARGUMENT:: lowcutfreq
+(describe argument here)
+
+ARGUMENT:: gate
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: pan
+(describe argument here)
+
+ARGUMENT:: doneAction
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+
+INSTANCEMETHODS::
+
+METHOD:: signal
+(describe method here)
+
+ARGUMENT:: modFreq
+(describe argument here)
+
+ARGUMENT:: modbw
+(describe argument here)
+
+ARGUMENT:: freq1
+(describe argument here)
+
+ARGUMENT:: freq2
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: lowcutfreq
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: ar
+(describe method here)
+
+ARGUMENT:: att
+(describe argument here)
+
+ARGUMENT:: rel
+(describe argument here)
+
+ARGUMENT:: modFreq
+(describe argument here)
+
+ARGUMENT:: modbw
+(describe argument here)
+
+ARGUMENT:: freq1
+(describe argument here)
+
+ARGUMENT:: freq2
+(describe argument here)
+
+ARGUMENT:: lowcutfreq
+(describe argument here)
+
+ARGUMENT:: gate
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: pan
+(describe argument here)
+
+ARGUMENT:: doneAction
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+
+EXAMPLES::
+
+code::
+(some example code)
+::
