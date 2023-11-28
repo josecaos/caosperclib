@@ -1,202 +1,228 @@
 TITLE:: CaosKick
 summary:: A simple two amp Kick
 categories:: Timbres, Instruments
-related:: Classes/CaosBox, Reference/SomeRelatedStuff, etc.
+related:: Classes/CaosBox
 
 DESCRIPTION::
-Simple Kick made with tweaking arguments for filter, modulation freqs, and two mixable amplitudes.
+Simple Kick with filter, two modulation freqs, and two mixable amplitudes.
 
 CLASSMETHODS::
 
-METHOD:: robot
-This Method was made to play within ProxySpace enviroment, with an impulse as a trigger.
-
-ARGUMENT:: att
-(describe argument here)
-
-ARGUMENT:: rel
-(describe argument here)
-
-ARGUMENT:: modFreq
-(describe argument here)
-
-ARGUMENT:: modbw
-(describe argument here)
-
-ARGUMENT:: freq1
-(describe argument here)
-
-ARGUMENT:: freq2
-(describe argument here)
-
-ARGUMENT:: lowcutfreq
-(describe argument here)
-
-ARGUMENT:: amp1
-(describe argument here)
-
-ARGUMENT:: amp2
-(describe argument here)
-
-ARGUMENT:: pan
-(describe argument here)
-
-ARGUMENT:: t
-(describe argument here)
-
-ARGUMENT:: tp
-(describe argument here)
-
-ARGUMENT:: doneAction
-(describe argument here)
-
-returns:: (describe returnvalue here)
-
-METHOD:: signal
-(describe method here)
-
-ARGUMENT:: modFreq
-(describe argument here)
-
-ARGUMENT:: modbw
-(describe argument here)
-
-ARGUMENT:: freq1
-(describe argument here)
-
-ARGUMENT:: freq2
-(describe argument here)
-
-ARGUMENT:: amp1
-(describe argument here)
-
-ARGUMENT:: amp2
-(describe argument here)
-
-ARGUMENT:: lowcutfreq
-(describe argument here)
-
-returns:: (describe returnvalue here)
-
-METHOD:: new
-(describe method here)
-
-returns:: (describe returnvalue here)
-
 METHOD:: ar
-(describe method here)
+This method plays with Syntdefs or Functions
 
 ARGUMENT:: att
-(describe argument here)
+Envelope's attack time
 
 ARGUMENT:: rel
-(describe argument here)
+Envelope's release time
 
 ARGUMENT:: modFreq
-(describe argument here)
+Fundamental harmonic modulation frequency
 
 ARGUMENT:: modbw
-(describe argument here)
+Modulator's bandwith
 
 ARGUMENT:: freq1
-(describe argument here)
+Primary modulation frequency
 
 ARGUMENT:: freq2
-(describe argument here)
+Secondary modulation frequency
 
 ARGUMENT:: lowcutfreq
-(describe argument here)
+Lowcut rq
 
 ARGUMENT:: gate
-(describe argument here)
+Envelope's trigger
 
 ARGUMENT:: amp1
-(describe argument here)
+Primary oscillators amplitude (fundamental)
 
 ARGUMENT:: amp2
-(describe argument here)
+Secondary oscillators amplitude (harmonics)
 
 ARGUMENT:: pan
-(describe argument here)
+Common Left - Right Pan: Values range from -1 to 1;
 
 ARGUMENT:: doneAction
-(describe argument here)
+An integer representing an action to be executed when the env is finished playing.
+Default is 2: Erase from nodetree after release.
 
-returns:: (describe returnvalue here)
+returns:: UGen
 
+METHOD:: robot
+This Method was made to play only within ProxySpace enviroment, It has an impulse as a trigger.
+
+ARGUMENT:: att
+Envelope's attack time
+
+ARGUMENT:: rel
+Envelope's release time
+
+ARGUMENT:: modFreq
+Fundamental harmonic modulation frequency
+
+ARGUMENT:: modbw
+Modulator's bandwith
+
+ARGUMENT:: freq1
+Primary modulation frequency
+
+ARGUMENT:: freq2
+Secondary modulation frequency
+
+ARGUMENT:: lowcutfreq
+Lowcut rq
+
+ARGUMENT:: amp1
+Primary oscillators amplitude (fundamental)
+
+ARGUMENT:: amp2
+Secondary oscillators amplitude (harmonics)
+
+ARGUMENT:: pan
+Common Left - Right Pan: Values range from -1 to 1;
+
+ARGUMENT:: t
+Trigger time for the Oscillator impulse
+
+ARGUMENT:: tp
+Immpulse trigger phase
+
+ARGUMENT:: doneAction
+An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from nodetree after release.
+
+returns:: UGen
+
+METHOD:: signal
+Private method which constructs the main signal for al other methos.
+
+ARGUMENT:: modFreq
+Fundamental harmonic modulation frequency
+
+ARGUMENT:: modbw
+Modulator's bandwith
+
+ARGUMENT:: freq1
+Primary modulation frequency
+
+ARGUMENT:: freq2
+Secondary modulation frequency
+
+ARGUMENT:: amp1
+Primary oscillators amplitude (fundamental)
+
+ARGUMENT:: amp2
+Secondary oscillators amplitude (harmonics)
+
+ARGUMENT:: lowcutfreq
+Lowcut rq
+
+returns:: UGen
+
+METHOD:: new
+Creates a new instance from the Class
+
+returns:: A CaosKick
 
 INSTANCEMETHODS::
 
-METHOD:: signal
-(describe method here)
-
-ARGUMENT:: modFreq
-(describe argument here)
-
-ARGUMENT:: modbw
-(describe argument here)
-
-ARGUMENT:: freq1
-(describe argument here)
-
-ARGUMENT:: freq2
-(describe argument here)
-
-ARGUMENT:: amp1
-(describe argument here)
-
-ARGUMENT:: amp2
-(describe argument here)
-
-ARGUMENT:: lowcutfreq
-(describe argument here)
-
-returns:: (describe returnvalue here)
-
 METHOD:: ar
-(describe method here)
+This method plays with Syntdefs or Functions
 
 ARGUMENT:: att
-(describe argument here)
+Envelope's attack time
 
 ARGUMENT:: rel
-(describe argument here)
+Envelope's release time
 
 ARGUMENT:: modFreq
-(describe argument here)
+Fundamental harmonic modulation frequency
 
 ARGUMENT:: modbw
-(describe argument here)
+Modulator's bandwith
 
 ARGUMENT:: freq1
-(describe argument here)
+Primary modulation frequency
 
 ARGUMENT:: freq2
-(describe argument here)
+Secondary modulation frequency
 
 ARGUMENT:: lowcutfreq
-(describe argument here)
+Lowcut rq
 
 ARGUMENT:: gate
-(describe argument here)
+Envelope's trigger
 
 ARGUMENT:: amp1
-(describe argument here)
+Primary oscillators amplitude (fundamental)
 
 ARGUMENT:: amp2
-(describe argument here)
+Secondary oscillators amplitude (harmonics)
 
 ARGUMENT:: pan
-(describe argument here)
+Common Left - Right Pan: Values range from -1 to 1;
 
 ARGUMENT:: doneAction
-(describe argument here)
+An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from nodetree after release.
 
-returns:: (describe returnvalue here)
+returns:: UGen
 
+METHOD:: signal
+Private method which constructs the main signal for al other methos.
+
+ARGUMENT:: modFreq
+Fundamental harmonic modulation frequency
+
+ARGUMENT:: modbw
+Modulator's bandwith
+
+ARGUMENT:: freq1
+Primary modulation frequency
+
+ARGUMENT:: freq2
+Secondary modulation frequency
+
+ARGUMENT:: amp1
+Primary oscillators amplitude (fundamental)
+
+ARGUMENT:: amp2
+Secondary oscillators amplitude (harmonics)
+
+ARGUMENT:: lowcutfreq
+Lowcut rq
+
+returns:: UGen
 
 EXAMPLES::
 
 code::
-(some example code)
+// Function
+
+play{CaosKick.ar()};
+
+play{CaosSnare.ar(0.01,0.5)};
+
+// SynthDef:
+
+(
+SynthDef(\kick,{
+	var out,sig;
+	sig = CaosKick.ar(0.01,0.5,2,0.1,amp1:0.85,amp2:0.35,pan:0.02);
+	out = Out.ar(0,sig);
+}).add;
+);
+Synth(\kick);
+
+// ProxySpace support with *.robot* method:
+
+~node = {CaosKick.robot(t:2)}
+
+// You can also use it as an envelope wrapper for custom signals:
+var x;
+
+x = {LFTri.ar()}
+
+play{CaosKick.customSignal(x,0.01,1)}
+
 ::
