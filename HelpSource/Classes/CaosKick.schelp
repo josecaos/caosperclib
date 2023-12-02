@@ -9,44 +9,44 @@ Simple Kick with filter, two modulation freqs, and two mixable amplitudes.
 CLASSMETHODS::
 
 METHOD:: ar
-This method plays with Syntdefs or Functions
+Generates a real time signal.
 
 ARGUMENT:: att
-Envelope's attack time
+Envelope's attack time.
 
 ARGUMENT:: rel
-Envelope's release time
+Envelope's release time.
 
 ARGUMENT:: modFreq
-Fundamental harmonic modulation frequency
+Fundamental modulation frequency.
 
 ARGUMENT:: modbw
-Modulator's bandwith
+Modulator's bandwith.
 
 ARGUMENT:: freq1
-Primary modulation frequency
+Primary modulation frequency.
 
 ARGUMENT:: freq2
-Secondary modulation frequency
+Secondary modulation frequency.
 
 ARGUMENT:: lowcutfreq
-Lowcut rq
+Lowcut rq.
 
 ARGUMENT:: gate
-Envelope's trigger
+Envelope's trigger.
 
 ARGUMENT:: amp1
-Primary oscillators amplitude (fundamental)
+Primary oscillators amplitude (fundamental).
 
 ARGUMENT:: amp2
-Secondary oscillators amplitude (harmonics)
+Secondary oscillators amplitude (harmonics).
 
 ARGUMENT:: pan
-Common Left - Right Pan: Values range from -1 to 1;
+Two channel equal power pan. Values range from -1 to 1 or [-1,1].
 
 ARGUMENT:: doneAction
 An integer representing an action to be executed when the env is finished playing.
-Default is 2: Erase from nodetree after release.
+Default is 2: Erase from node tree after release.
 
 returns:: UGen
 
@@ -54,143 +54,143 @@ METHOD:: robot
 This Method was made to play only within ProxySpace enviroment, It has an impulse as a trigger.
 
 ARGUMENT:: att
-Envelope's attack time
+Envelope's attack time.
 
 ARGUMENT:: rel
-Envelope's release time
+Envelope's release time.
 
 ARGUMENT:: modFreq
-Fundamental harmonic modulation frequency
+Fundamental modulation frequency.
 
 ARGUMENT:: modbw
-Modulator's bandwith
+Modulator's bandwith.
 
 ARGUMENT:: freq1
-Primary modulation frequency
+Primary modulation frequency.
 
 ARGUMENT:: freq2
-Secondary modulation frequency
+Secondary modulation frequency.
 
 ARGUMENT:: lowcutfreq
-Lowcut rq
+Lowcut rq.
 
 ARGUMENT:: amp1
-Primary oscillators amplitude (fundamental)
+Primary oscillators amplitude (fundamental).
 
 ARGUMENT:: amp2
-Secondary oscillators amplitude (harmonics)
+Secondary oscillators amplitude (harmonics).
 
 ARGUMENT:: pan
-Common Left - Right Pan: Values range from -1 to 1;
+Two channel equal power pan. Values range from -1 to 1 or [-1,1].
 
 ARGUMENT:: t
-Trigger time for the Oscillator impulse
+Trigger time for the Oscillator impulse.
 
 ARGUMENT:: tp
-Immpulse trigger phase
+Immpulse trigger phase.
 
 ARGUMENT:: doneAction
-An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from nodetree after release.
+An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from node tree after release.
 
 returns:: UGen
 
 METHOD:: signal
-Private method which constructs the main signal for al other methos.
+Private method which constructs the main signal.
 
 ARGUMENT:: modFreq
-Fundamental harmonic modulation frequency
+Fundamental harmonic modulation frequency.
 
 ARGUMENT:: modbw
-Modulator's bandwith
+Modulator's bandwith.
 
 ARGUMENT:: freq1
-Primary modulation frequency
+Primary modulation frequency.
 
 ARGUMENT:: freq2
-Secondary modulation frequency
+Secondary modulation frequency.
 
 ARGUMENT:: amp1
-Primary oscillators amplitude (fundamental)
+Primary oscillators amplitude (fundamental).
 
 ARGUMENT:: amp2
-Secondary oscillators amplitude (harmonics)
+Secondary oscillators amplitude (harmonics).
 
 ARGUMENT:: lowcutfreq
-Lowcut rq
+Lowcut rq.
 
 returns:: UGen
 
 METHOD:: new
-Creates a new instance from the Class
+Creates a new instance from the Class.
 
 returns:: A CaosKick
 
 INSTANCEMETHODS::
 
 METHOD:: ar
-This method plays with Syntdefs or Functions
+Generates a real time signal for an instance.
 
 ARGUMENT:: att
-Envelope's attack time
+Envelope's attack time.
 
 ARGUMENT:: rel
-Envelope's release time
+Envelope's release time.
 
 ARGUMENT:: modFreq
-Fundamental harmonic modulation frequency
+Fundamental harmonic modulation frequency.
 
 ARGUMENT:: modbw
-Modulator's bandwith
+Modulator's bandwith.
 
 ARGUMENT:: freq1
-Primary modulation frequency
+Primary modulation frequency.
 
 ARGUMENT:: freq2
-Secondary modulation frequency
+Secondary modulation frequency.
 
 ARGUMENT:: lowcutfreq
-Lowcut rq
+Lowcut rq.
 
 ARGUMENT:: gate
-Envelope's trigger
+Envelope's trigger.
 
 ARGUMENT:: amp1
-Primary oscillators amplitude (fundamental)
+Primary oscillators amplitude (fundamental).
 
 ARGUMENT:: amp2
-Secondary oscillators amplitude (harmonics)
+Secondary oscillators amplitude (harmonics).
 
 ARGUMENT:: pan
-Common Left - Right Pan: Values range from -1 to 1;
+Two channel equal power pan. Values range from -1 to 1 or [-1,1].
 
 ARGUMENT:: doneAction
-An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from nodetree after release.
+An integer representing an action to be executed when the env is finished playing.Default is 2: Erase from node tree after release.
 
 returns:: UGen
 
 METHOD:: signal
-Private method which constructs the main signal for al other methos.
+Private method which constructs the main signal.
 
 ARGUMENT:: modFreq
-Fundamental harmonic modulation frequency
+Fundamental harmonic modulation frequency.
 
 ARGUMENT:: modbw
-Modulator's bandwith
+Modulator's bandwith.
 
 ARGUMENT:: freq1
-Primary modulation frequency
+Primary modulation frequency.
 
 ARGUMENT:: freq2
-Secondary modulation frequency
+Secondary modulation frequency.
 
 ARGUMENT:: amp1
-Primary oscillators amplitude (fundamental)
+Primary oscillators amplitude (fundamental).
 
 ARGUMENT:: amp2
-Secondary oscillators amplitude (harmonics)
+Secondary oscillators amplitude (harmonics).
 
 ARGUMENT:: lowcutfreq
-Lowcut rq
+Lowcut rq.
 
 returns:: UGen
 
@@ -201,7 +201,6 @@ code::
 
 play{CaosKick.ar()};
 
-play{CaosSnare.ar(0.01,0.5)};
 
 // SynthDef:
 
