@@ -20,9 +20,14 @@ play{CaosKick2.ar(0.1,32,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
 ~k2 = CaosKick2.new//instance
 play{~k2.ar};
 //snare
-// TODO: Nivelar amp hacia arriva / revisar timbre default
-~t = CaosSnare.new
+// TODO: Nivelar amp hacia arriba / revisar timbre default
+s.boot;
+s.scope;
 play{CaosSnare.ar}//class
+play{CaosSnare.ar(fund:60)}//class
+play{CaosSnare.ar(fund:666)}//class
+play{CaosSnare.ar(rq:1,amp2:0.25,fund:666)}//class
+~t = CaosSnare.new
 play{~t.ar}//instance
 //snare 2
 ~t2 = CaosSnare2.new
@@ -57,7 +62,7 @@ play{~p.ar('pulse',0.01,0.5,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).as
 ~p2 = CaosPad2.new
 play{CaosPad2.ar}//class
 play{~p2.ar}//instance
-play{~p2.ar(0.01,2,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).asStream.next+60,Prand(LCNE.dupOctave(Scale.dorian.degrees.scramble,4),inf).asStream.next+34,rrand(0.0125,2),12,1,2,0.1)};
+play{~p2.ar(0.01,8,Prand(LCNE.dupOctave(Scale.dorian.degrees,4),inf).asStream.next+12,Prand(LCNE.dupOctave(Scale.dorian.degrees.scramble,4),inf).asStream.next+24,rrand(0.0125,2),12,1,2,0.1)};
 //chords
 // TODO: nivelar amp
 ~ch = CaosChords.new

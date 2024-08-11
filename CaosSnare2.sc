@@ -10,7 +10,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=2920,rq=0.95,gate=1,amp1=0.75,amp2=0.5,pan=0,doneAction=2|
+	*ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=4920,rq=0.95,gate=1,amp1=0.5,amp2=0.4,pan=0,doneAction=2|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
@@ -21,7 +21,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=2920,rq=0.95,gate=1,amp1=0.75,amp2=0.5,pan=0,doneAction=2|
+	ar {|att=0.01,rel=0.35,iphase=0.01,bw=0.5,highcutfreq=2920,rq=0.95,gate=1,amp1=0.5,amp2=0.4,pan=0,doneAction=2|
 		var sna,env;
 
 		sna = this.signal(iphase,bw,highcutfreq,rq,amp1,amp2);
@@ -32,7 +32,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.75,amp2=0.5,t=1,tp=0,pan=0,doneAction=0|
+	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.5,amp2=0.4,t=1,tp=0,pan=0,doneAction=2|
 		var sna,env;
 
 		sna=Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
@@ -48,16 +48,16 @@ CaosSnare2 : CaosEnv {
 	*signal {|iphase,bw,highcutfreq,rq,amp1,amp2|
 
 		^Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
-			LFPulse.ar(220,iphase,bw,amp2/4)+
-			GrayNoise.ar(amp1/1.5),highcutfreq,rq),0.7);
+			LFPulse.ar(220,iphase,bw,amp2)+
+			GrayNoise.ar(amp1),highcutfreq,rq),0.8);
 
 	}
 
 	signal {|iphase,bw,highcutfreq,rq,amp1,amp2|
 
 		^Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
-			LFPulse.ar(220,iphase,bw,amp2/4)+
-			GrayNoise.ar(amp1/2),highcutfreq,rq),0.7);
+			LFPulse.ar(220,iphase,bw,amp2)+
+			GrayNoise.ar(amp1),highcutfreq,rq),0.8);
 
 	}
 
