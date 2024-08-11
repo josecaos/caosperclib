@@ -1,0 +1,170 @@
+TITLE:: CaosSnare2
+summary:: Snare with two oscillators
+categories:: Timbres, Instruments
+related:: Classes/CaosBox
+
+DESCRIPTION::
+PinkNoise driven snare, with two amps within a RHPF.
+
+CLASSMETHODS::
+METHOD:: ar
+Generates a real time signal.
+
+ARGUMENT:: att
+Envelope's attack time.
+
+ARGUMENT:: rel
+Envelope's release time.
+
+ARGUMENT:: iphase
+Low Frequency Pulse oscillator phase.
+
+ARGUMENT:: bw
+Low Frequency Pulse oscillator bandwith.
+
+ARGUMENT:: highcutfreq
+RHPF Frequency.
+
+ARGUMENT:: rq
+RHPF Bandwidth.
+
+ARGUMENT:: gate
+Envelope's trigger.
+
+ARGUMENT:: amp1
+Mix amplitude 1.
+
+ARGUMENT:: amp2
+Mix amplitude 2.
+
+ARGUMENT:: pan
+Two channel equal power pan. Values range from -1 to 1 or [-1,1].
+
+ARGUMENT:: doneAction
+An integer representing an action to be executed when the env is finished playing.
+Default is 2: Erase from node tree after release.
+
+returns:: UGen
+
+METHOD:: robot
+This Method was made to play only within ProxySpace enviroment, It has an impulse as a trigger.
+
+ARGUMENT:: att
+Envelope's attack time.
+
+ARGUMENT:: rel
+Envelope's release time.
+
+ARGUMENT:: iphase
+Low Frequency Pulse oscillator phase.
+
+ARGUMENT:: bw
+Low Frequency Pulse oscillator bandwith.
+
+ARGUMENT:: highcutfreq
+RHPF Frequency.
+
+ARGUMENT:: rq
+RHPF Bandwidth.
+
+ARGUMENT:: amp1
+Mix amplitude 1.
+
+ARGUMENT:: amp2
+Mix amplitude 2.
+
+ARGUMENT:: t
+Trigger impluse
+
+ARGUMENT:: tp
+Trigger impulse phase
+
+ARGUMENT:: pan
+Two channel equal power pan. Values range from -1 to 1 or [-1,1].
+
+ARGUMENT:: doneAction
+An integer representing an action to be executed when the env is finished playing.
+Default is 2: Erase from node tree after release.
+
+returns:: UGen
+
+METHOD:: signal
+(describe method here)
+
+ARGUMENT:: highcutfreq
+(describe argument here)
+
+ARGUMENT:: rq
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: new
+(describe method here)
+
+returns:: (describe returnvalue here)
+
+
+INSTANCEMETHODS::
+
+METHOD:: signal
+(describe method here)
+
+ARGUMENT:: highcutfreq
+(describe argument here)
+
+ARGUMENT:: rq
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+METHOD:: ar
+(describe method here)
+
+ARGUMENT:: att
+(describe argument here)
+
+ARGUMENT:: rel
+(describe argument here)
+
+ARGUMENT:: highcutfreq
+(describe argument here)
+
+ARGUMENT:: rq
+(describe argument here)
+
+ARGUMENT:: gate
+(describe argument here)
+
+ARGUMENT:: amp1
+(describe argument here)
+
+ARGUMENT:: amp2
+(describe argument here)
+
+ARGUMENT:: pan
+(describe argument here)
+
+ARGUMENT:: doneAction
+(describe argument here)
+
+returns:: (describe returnvalue here)
+
+
+EXAMPLES::
+
+code::
+(some example code)
+::
