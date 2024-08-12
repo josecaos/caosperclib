@@ -32,7 +32,7 @@ CaosSnare2 : CaosEnv {
 
 	}
 
-	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.5,amp2=0.4,t=1,tp=0,pan=0,doneAction=2|
+	*robot {|att= 0.01,rel= 0.35,iphase=0.01,bw=0.5,highcutfreq=220,rq=0.5,amp1=0.5,amp2=0.4,t=1,tp=0,pan=0,doneAction=0|
 		var sna,env;
 
 		sna=Limiter.ar(RHPF.ar(PinkNoise.ar(amp1)+
