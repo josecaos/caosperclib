@@ -128,36 +128,27 @@ CaosEnv {
 	*customSignal {|func=nil,att=0.01,rel=0.5,pan=0,gate=1,doneAction=2|
 		var sig,env;
 
-		if (func != nil and: {func.isFunction}, {
-
-			sig = func;
-			sig = this.comp(sig);
-			env = this.envAR(att,rel,gate,doneAction)
-
-			^Pan2.ar(sig*env,pan);
-
-		}, {
-
-			^"Use of 'func' argument is obligatory and must be a Function.";
-
-		});
+		if (func.isUGen || func.isFunction, {
+	            sig = func;
+	            sig = this.comp(sig);
+	            env = this.envAR(att, rel, gate, doneAction);
+	            ^Pan2.ar(sig * env, pan);
+	        }, {
+	            ^"Use of 'func' argument is obligatory and must be a Function or UGen.";
+	        });
 	}
 
 	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0,gate=1,doneAction=2|
 		var sig,env;
 
-		if (func != nil and: {func.isFunction}, {
-
-			sig = func;
-			sig = this.comp(sig);
-			env = this.envAR(att,rel,gate,doneAction)
-
-			^Pan2.ar(sig*env,pan);
-
-		}, {
-
-			^"Use of 'func' argument is obligatory and must be a Function.";
-		});
+		if (func.isUGen || func.isFunction, {
+	            sig = func;
+	            sig = this.comp(sig);
+	            env = this.envAR(att, rel, gate, doneAction);
+	            ^Pan2.ar(sig * env, pan);
+	        }, {
+	            ^"Use of 'func' argument is obligatory and must be a Function or UGen.";
+	        });
 
 	}
 

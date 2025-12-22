@@ -10,6 +10,10 @@
         - Add Available Classes section
     - CaosEnv
         - Add Documentation files for Help Browser
+        - Update 'customSignal' method to accept Functions or UGENs as non optional input signal
+    - CaosKick
+        - Revamp 'signal' method for better timbre control
+        - Update Documentation files for Help Browser
     - Update version number in all files
 
 

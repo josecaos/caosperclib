@@ -7,9 +7,18 @@ s.boot;
 s.scope;
 )
 //Kick
-play{CaosKick.ar}//class
-~k = CaosKick.new//instance
-play{~k.ar};
+(//class
+{CaosKick.ar}.play;
+// {CaosKick2.ar}.play;
+)
+(//class
+{CaosKick.ar(att:0.01,rel:0.5,modFreq:[1,2,4,8,16,32,64,128,256,512].choose,modbw:0.25,freq1:600,freq2:960,lowcutfreq:42,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)}.play;
+// {CaosKick2.ar}.play;
+)
+(//instance
+~k = CaosKick.new;
+{~k.ar}.play;
+)
 //Kick 2
 s.boot;
 play{CaosKick2.ar()}//class
