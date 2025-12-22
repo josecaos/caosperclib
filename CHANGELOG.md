@@ -18,6 +18,7 @@
         - Fixed: comp method bad Argument tresh breaks API
         - Signal method update to use indexOf(waveform)
         - Revamp LFO Signal for simpler and lighter performance
+        - Improved robot method
 
 - ## v1.2.0
     - General improvements and refactoring of all classes

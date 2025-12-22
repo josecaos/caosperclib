@@ -32,7 +32,7 @@ CaosEnv {
 	*kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,gate,doneAction);
+			^this.envKR(att,rel,gate,doneAction);
 		}, {
 			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
@@ -42,7 +42,7 @@ CaosEnv {
 	kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2 |
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,gate,doneAction);
+			^this.envKR(att,rel,gate,doneAction);
 		}, {
 			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
@@ -51,11 +51,12 @@ CaosEnv {
 
 	*robot {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0, doneAction = 0 |
 
-		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
-		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
-		});
+		var gate = Impulse.kr(t, tp);
+        if(waveform == 'off', {
+            ^this.envKR(att, rel, gate, doneAction);
+        }, {
+            ^this.signal(waveform,freq,tremolo) * this.envKR(att, rel, gate, doneAction);
+        });
 
 	}
 
@@ -77,7 +78,7 @@ CaosEnv {
         3, {
             iphase = 0.25;
 			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
-			}, 
+			}
     	);
 
 		^lfo
@@ -101,7 +102,7 @@ CaosEnv {
         3, {
             iphase = 0.25;
 			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
-			}, 
+			}
     	);
 
 		^lfo
