@@ -1,6 +1,6 @@
-s.boot
-220/12
-play{LFTri.ar(Array.series(24,220,18.333333333333).choose)*CaosEnv.ar('tri',0.01,8,0,1,1)}
+(s.boot;)
+play{LFTri.ar(Array.series(24,220,18.333333333333).choose)*CaosEnv.ar('sin',0.01,1,6,0.15)!2}
+play{LFTri.ar(Array.series(24,220,18.333333333333).choose)*CaosEnv.ar('sin',0.01,3,100,0.05)!2}
 play{CaosKick.ar()}
 play{CaosKick2.ar()}
 play{CaosSnare.ar()}
@@ -20,8 +20,16 @@ p.quant_(1);
 (~o.play;)
 (~o = 0;)
 (~t = 1;)
-~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('sin',0.01,0.25,2,1,~t)};
-~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('tri',0.01,0.125,0,0.5,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('sin',0.01,2,1,1,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('sin',0.01,2,4,0.5,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('sin',0.01,2,1,2,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('saw',0.01,2,1,0.25,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('saw',0.01,2,2,1,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('pulse',0.01,2,1,1,~t)};
+~play = {LFTri.ar(Array.series(12,220,18.333333333333).choose)*CaosEnv.robot('pulse',0.01,2,8,0.5,~t)};
+~play = {LFTri.ar(40.midicps)*CaosEnv.robot('pulse',0.1,1,1,1,~t)};
+~play = {LFTri.ar(40.midicps)*CaosEnv.robot('pulse',0.1,1,1,0.5,~t)};
+~play = {LFTri.ar(40.midicps)*CaosEnv.robot('pulse',0.1,1,8,0.1,~t)};
 ~kick[0] = {CaosKick.robot(0.01,0.25,8/16,0.5,60,80,55,pan:0.02,t:~t*8)};
 ~kick[1] = {CaosKick.robot(0.01,0.25,2,0.5,60,80,55,pan:0.02,t:~t*4)};
 ~snare[0] = {CaosSnare2.robot(pan:0,t:1)};
@@ -32,6 +40,9 @@ p.quant_(1);
 ~rev = {GVerb.ar(Mix([~play.ar,~hihats.ar]),42,0.85,0.5,mul:0.7)}
 ~rev = {GVerb.ar(~hihats.ar,42,2,0.5,mul:0.7)}
 //
+(
+~o = ~play;
+)
 (
 ~o = ~kick[0]+~snare[1]+~kick[1]+~snare[0];
 )

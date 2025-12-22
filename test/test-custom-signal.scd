@@ -1,9 +1,10 @@
-s. boot;
+(s. boot;)
+(SCDoc.indexAllDocuments;)
 // test
 {CaosKick.ar(gate:1)}.play;
 {CaosKick.customSignal({Pulse.ar(4)},0.1,10)}.play;
 {CaosKick2.ar(gate:1)}.play;
-{CaosKick2.customSignal({Pulse.ar(8)},0.1,10)}.play;
+{CaosKick2.customSignal({SinOsc.ar(120)},0.1,10)}.play;
 //
 a = CaosKick2.new;
 {a.ar}.play;

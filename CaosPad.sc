@@ -1,6 +1,6 @@
 //written by @Ill_Slide
 //Simple ambience pad
-//Part of CaosPercLib 2.0
+//Part of CaosPercLib v1.2.2
 CaosPad : CaosEnv {
 
 	*new {

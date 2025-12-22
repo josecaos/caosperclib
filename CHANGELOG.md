@@ -1,11 +1,20 @@
-# CaosPercLib v1.2.0
+# CaosPercLib v1.2.2
 
 ### TODOs:
-- CaosEnv: Check tremolo argument
-    - Does not seem to  oscilate in time properly
 ---
 
 ### Changelog
+
+- ## v1.2.2
+    - README.md
+        - Add Available Classes section
+    - CaosEnv
+        - Add Documentation files for Help Browser
+        - Update 'customSignal' method to accept Functions or UGENs as non optional input signal
+    - CaosKick
+        - Revamp 'signal' method for better timbre control
+        - Update Documentation files for Help Browser
+    - Update version number in all files
 
 - ## v1.2.1
     - CaosEnv
@@ -19,6 +28,7 @@
         - Signal method update to use indexOf(waveform)
         - Revamp LFO Signal for simpler and lighter performance
         - Improved robot method
+        - Arguments updated in 'signal' for semantic consistency
 
 - ## v1.2.0
     - General improvements and refactoring of all classes
