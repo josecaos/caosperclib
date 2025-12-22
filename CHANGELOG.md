@@ -1,7 +1,8 @@
 # CaosPercLib v1.2.0
 
 ### TODOs:
-    - LFO anidado: osc[waveindex].ar(osc[waveindex].ar([...]) es costoso y confuso; simplificar a un LFO básico con depth tremolo, manteniendo semántica.
+- CaosEnv: Check tremolo argument
+    - Does not seem to  oscilate in time properly
 ---
 
 ### Changelog
@@ -16,6 +17,7 @@
         - Signal method update evaluations to 'switch' for better performance
         - Fixed: comp method bad Argument tresh breaks API
         - Signal method update to use indexOf(waveform)
+        - Revamp LFO Signal for simpler and lighter performance
 
 - ## v1.2.0
     - General improvements and refactoring of all classes

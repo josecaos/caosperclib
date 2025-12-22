@@ -60,7 +60,7 @@ CaosEnv {
 	}
 
 	*signal {|waveform ,freq ,tremolo|
-		var lfo,env,osc,tag,waveindex,iphase;
+		var lfo, osc, tag, waveindex, iphase;
 
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
@@ -71,20 +71,21 @@ CaosEnv {
             7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
             lfo = nil;
         },
-        0, { lfo = nil },
-        1, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.75) }, 
-        2, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.35) }, 
+        0, { lfo = nil; },
+        1, { lfo = osc[waveindex].ar(freq,0,0.75) * (tremolo.max(0));},
+        2, { lfo = osc[waveindex].ar(freq,0.75) * (tremolo.max(0));},
         3, {
             iphase = 0.25;
-            lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), iphase, 0.125);
-        }
-    );
+			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
+			}, 
+    	);
 
 		^lfo
 	}
 
 	signal {|waveform ,freq ,tremolo|
-		var lfo,env,osc,tag,waveindex,iphase;
+		var lfo, osc, tag, waveindex, iphase;
+
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
 		waveindex=tag.indexOf(waveform);
@@ -94,14 +95,14 @@ CaosEnv {
             7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
             lfo = nil;
         },
-        0, { lfo = nil },
-        1, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.75) }, 
-        2, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.35) }, 
+        0, { lfo = nil; },
+        1, { lfo = osc[waveindex].ar(freq,0,0.75) * (tremolo.max(0));},
+        2, { lfo = osc[waveindex].ar(freq,0.75) * (tremolo.max(0));},
         3, {
             iphase = 0.25;
-            lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), iphase, 0.125);
-        }
-    );
+			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
+			}, 
+    	);
 
 		^lfo
 	}

@@ -93,10 +93,13 @@ play{~ch2.ar('m9m',0.01,2)}//Minor, minor ninth
 s.boot;
 )
 (
-~e = CaosEnv.new
+~e = CaosEnv.new;
 )
 (
 play{LFTri.ar!2*CaosEnv.ar}//class
+)
+(
+play{LFTri.ar!2*CaosEnv.ar('sin',0.01,4,2,1)}//class
 )
 (
 play{LFTri.ar!2*~e.ar}//instance
@@ -111,8 +114,8 @@ play{LFTri.ar!2*~e.ar('off',0.01,4)}
 play{LFTri.ar*~e.ar('sin',0.01,4,2,1)}//sine
 )
 (
-play{LFTri.ar*~e.ar(\saw,0.01,4,2,0)}//saw
+play{LFTri.ar*~e.ar(\saw,0.01,4,2,1)}//saw
 )
 (
-play{LFTri.ar*~e.ar(\pulse,0.01,4,8,1)}//square
+play{LFTri.ar*~e.ar(\pulse,0.01,4,3,1)}//square
 )
