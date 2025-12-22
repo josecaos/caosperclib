@@ -34,7 +34,7 @@ CaosEnv {
 		if(waveform == 'off', {
 			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
+			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
 
 	}
@@ -44,7 +44,7 @@ CaosEnv {
 		if(waveform == 'off', {
 			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
+			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
 
 	}
@@ -121,14 +121,14 @@ CaosEnv {
 	}
 
 
-	*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
+	*customSignal {|func=nil,att=0.01,rel=0.5,pan=0,gate=1,doneAction=2|
 		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
 			sig = func;
 			sig = this.comp(sig);
-			env = this.envAR(att,rel,1)
+			env = this.envAR(att,rel,gate,doneAction)
 
 			^Pan2.ar(sig*env,pan);
 
@@ -139,14 +139,14 @@ CaosEnv {
 		});
 	}
 
-	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
+	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0,gate=1,doneAction=2|
 		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
 			sig = func;
 			sig = this.comp(sig);
-			env = EnvGen.ar(Env.perc(att,rel),1,doneAction:2);
+			env = this.envAR(att,rel,gate,doneAction)
 
 			^Pan2.ar(sig*env,pan);
 
