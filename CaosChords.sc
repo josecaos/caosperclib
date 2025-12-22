@@ -1,6 +1,6 @@
 //Written by @joseCao5
 //Chord generator over LFPulse wave
-//Part of CaosPercLib 2.0
+//Part of CaosPercLib v1.2.1
 CaosChords : CaosEnv  {
 
 	*new {

@@ -1,6 +1,6 @@
 //written by @Ill_Slide
 //simple like snare
-//Part of CaosPercLib 2.0
+//Part of CaosPercLib v1.2.1
 
 CaosSnare : CaosEnv {
 

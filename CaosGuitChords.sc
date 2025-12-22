@@ -1,6 +1,6 @@
 //Written by @IllSlide
 //Chord generator as common Guitar interval disposition
-//Part of CaosPercLib  2.0
+//Part of CaosPercLib  v1.2.1
 CaosGuitChords : CaosEnv {
 
 	*new {

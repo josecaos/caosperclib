@@ -1,6 +1,6 @@
 //written by Mixfuckedup
 //sharper like snare
-//Part of CaosPercLib 2.0
+//Part of CaosPercLib v1.2.1
 
 CaosSnare2 : CaosEnv {
 
