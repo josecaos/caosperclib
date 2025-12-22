@@ -3,7 +3,12 @@
 //Part of CaosPercLib 2.0
 
 CaosKick2 : CaosEnv {
+ 
+ 	*new {
 
+		^super.new;
+
+	}
 
 	*ar {|att=0.01,rel=0.5,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=60,lowcutfreq=38, gate=1,amp=1,pan=0,doneAction=2,amp2=0.125,wave="SinOsc"| // DEBUG: orden de 'amp2' y  en ultima posicion para no romper 'CaosBox'
 		var kick,env;

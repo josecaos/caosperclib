@@ -9,7 +9,7 @@ CaosEnv {
 
 	}
 
-	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
+	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0, doneAction = 2|
 
 		if(waveform == 'off', {
 			^this.envAR(att,rel,1);
@@ -109,13 +109,13 @@ CaosEnv {
 
 	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
+		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
 
 	}
 
 	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
+		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
 
 	}
 
