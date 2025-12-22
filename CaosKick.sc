@@ -10,7 +10,7 @@ CaosKick : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=56,lowcutfreq=40,gate=1,amp1=0.75,amp2=0.5,pan=0,doneAction=2|
+	*ar {|att=0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=56,lowcutfreq=40,gate=1,amp1=0.75,amp2=0.25,pan=0,doneAction=2|
 		var sig,env;
 
 		sig = this.signal(modFreq,modbw,freq1,freq2,lowcutfreq,amp2,amp1);
@@ -20,7 +20,7 @@ CaosKick : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	ar {|att= 0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=62,lowcutfreq=40,gate=1,amp1=0.75, amp2=0.5,pan=0,doneAction=2|
+	ar {|att= 0.01,rel=0.5,modFreq=1,modbw=0.5,freq1=60,freq2=62,lowcutfreq=40,gate=1,amp1=0.75, amp2=0.25,pan=0,doneAction=2|
 		var sig,env;
 
 		sig = this.signal(modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2);
@@ -30,7 +30,7 @@ CaosKick : CaosEnv {
 		^Pan2.ar(sig*env,pan);
 	}
 
-	*robot {|att=0.01,rel=0.25,modFreq=2,modbw=0.5,freq1=60,freq2=60,lowcutfreq=58,amp1=0.75,amp2=0.5,pan=0,t=1,tp=0,doneAction=0|
+	*robot {|att=0.01,rel=0.25,modFreq=2,modbw=0.5,freq1=60,freq2=60,lowcutfreq=58,amp1=0.75,amp2=0.25,pan=0,t=1,tp=0,doneAction=0|
 		var sig,env;
 
 		sig = this.signal(modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2);
@@ -86,7 +86,7 @@ signal {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2|
     sig2 = LFTri.ar(freq2 * mod, 0, amp2);
     sig = LeakDC.ar(sig1 + sig2);
     
-    ^RHPF.ar(sig, lowcutfreq, 0.95);
+    ^RHPF.ar(sig, lowcutfreq, 0.9);
 }
 
 }

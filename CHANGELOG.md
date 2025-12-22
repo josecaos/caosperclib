@@ -16,7 +16,6 @@
         - Update Documentation files for Help Browser
     - Update version number in all files
 
-
 - ## v1.2.1
     - CaosEnv
         - Update Compander to avoid DC offset by adding LeakDC.ar to input signal

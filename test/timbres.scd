@@ -15,6 +15,38 @@ s.scope;
 {CaosKick.ar(att:0.01,rel:0.5,modFreq:[1,2,4,8,16,32,64,128,256,512].choose,modbw:0.25,freq1:600,freq2:960,lowcutfreq:42,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)}.play;
 // {CaosKick2.ar}.play;
 )
+
+( 
+Tdef(\test, {
+    var modFreq, rel;
+    loop {
+        modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
+        rel = [0.1,0.25,0.5,1].choose;
+        {CaosKick.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.25,freq1:600,freq2:960,lowcutfreq:42,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)}.play;
+        {CaosKick.ar()}.play;
+        rrand(rel, 0.125).wait;
+    }
+});
+)
+( 
+Tdef(\test, {
+    var modFreq, rel;
+    loop {
+        modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
+        rel = [0.1,0.25,0.5,1].choose;
+        {
+            FreeVerb.ar(
+                CaosKick.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.25,freq1:600,freq2:960,lowcutfreq:160,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)
+            , 0.25,4,0.7,taillevel:0.8)
+        }.play;
+        {CaosKick.ar()}.play;
+        rrand(rel, 0.125).wait;
+    }
+});
+)
+Tdef(\test).play;
+Tdef(\test).stop;
+
 (//instance
 ~k = CaosKick.new;
 {~k.ar}.play;

@@ -225,3 +225,63 @@ x = {LFTri.ar()}
 play{CaosKick.customSignal(x,0.01,1)}
 
 ::
+
+SUBSECTION:: Sequenced Modulated kick
+
+code::
+( 
+Tdef(\test, {
+    var modFreq, rel;
+    loop {
+        modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
+        rel = [0.1,0.25,0.5,1].choose;
+        {
+            FreeVerb.ar(
+                CaosKick.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.25,freq1:600,freq2:960,lowcutfreq:160,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)
+            , 0.25,4,0.7,taillevel:0.8)
+        }.play;
+        {CaosKick.ar()}.play;
+        rrand(rel, 0.125).wait;
+    }
+});
+)
+Tdef(\test).play;
+Tdef(\test).stop;
+::
+
+SUBSECTION:: Modulated kick with ProxySpace
+
+code::
+(
+p = ProxySpace.push(s.boot);
+
+// Robot method for continuous triggering
+~kick = { CaosKick.robot(
+    att: 0.005,
+    rel: 0.4,
+    modFreq: 3,
+    modbw: 0.15,
+    freq1: 45,
+    freq2: 85,
+    lowcutfreq: 35,
+    amp1: 0.8,
+    amp2: 0.4,
+    t: 2,        // trigger every 2 seconds
+    tp: 0,
+    pan: 0
+)};
+
+~kick.play;
+)
+
+// Change trigger rate on the fly
+~kick.set(\t, 4);  // trigger 4 times per second
+
+// Change pitch
+~kick.set(\freq1, 60, \freq2, 100);
+
+// Stop
+~kick.stop;
+p.clear;
+::
+
