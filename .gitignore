@@ -1,2 +1,5 @@
 *.sc~
 *.scd~
+.vscode/
+sclang
+scsynth
