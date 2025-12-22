@@ -64,22 +64,21 @@ CaosEnv {
 
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
-		waveindex=tag.find([waveform]);
+		waveindex=tag.indexOf(waveform);
 
-		if(waveindex==nil,{
-			7.do{"Only use: 'off', 'saw', 'tri' or 'pulse' as first CaosEnv argument".warn}
-		});
-
-		if(waveindex == 0, {
-			lfo = nil
-		}, {
-			if(waveindex == 2,{
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),0.75);
-			}, {
-				if(waveform == tag[3],{iphase = 0.25},{iphase = 0});
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
-			})
-		});
+		switch(waveindex,
+        nil, {
+            7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
+            lfo = nil;
+        },
+        0, { lfo = nil },
+        1, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.75) }, 
+        2, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.35) }, 
+        3, {
+            iphase = 0.25;
+            lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), iphase, 0.125);
+        }
+    );
 
 		^lfo
 	}
@@ -88,33 +87,32 @@ CaosEnv {
 		var lfo,env,osc,tag,waveindex,iphase;
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
-		waveindex=tag.find([waveform]);
+		waveindex=tag.indexOf(waveform);
 
-		if(waveindex==nil,{
-			7.do{"Only use: 'off', 'saw', 'tri' or 'pulse' as first CaosEnv argument".warn}
-		});
-
-		if(waveindex == 0, {
-			lfo = nil
-		}, {
-			if(waveindex == 2,{
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),0.75);
-			}, {
-				if(waveform == tag[3],{iphase = 0.25},{iphase = 0});
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
-			})
-		});
+		switch(waveindex,
+        nil, {
+            7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
+            lfo = nil;
+        },
+        0, { lfo = nil },
+        1, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.75) }, 
+        2, { lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), 0.35) }, 
+        3, {
+            iphase = 0.25;
+            lfo = osc[waveindex].ar(osc[waveindex].ar([freq,freq], 0, freq, freq+tremolo), iphase, 0.125);
+        }
+    );
 
 		^lfo
 	}
 
-	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
+	*comp {|in,thresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
 		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
 
 	}
 
-	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
+	comp {|in,thresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
 		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
 
