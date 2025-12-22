@@ -9,47 +9,47 @@ CaosEnv {
 
 	}
 
-	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0, doneAction = 2|
+	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
+	ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	*kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
+	*kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
+	kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2 |
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	*robot {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0 |
+	*robot {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0, doneAction = 0 |
 
 		if(waveform == 'off', {
 			^this.envAR(att,rel,1);
@@ -61,6 +61,7 @@ CaosEnv {
 
 	*signal {|waveform ,freq ,tremolo|
 		var lfo,env,osc,tag,waveindex,iphase;
+
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
 		waveindex=tag.find([waveform]);
@@ -121,37 +122,37 @@ CaosEnv {
 
 
 	*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
-		var kick,env;
+		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
-			kick = func;
-			kick = this.comp(kick);
+			sig = func;
+			sig = this.comp(sig);
 			env = this.envAR(att,rel,1)
 
-			^Pan2.ar(kick*env,pan);
+			^Pan2.ar(sig*env,pan);
 
 		}, {
 
-			^"Use of 'func' argument is obligatory";
+			^"Use of 'func' argument is obligatory and must be a Function.";
 
 		});
 	}
 
 	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
-		var kick,env;
+		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
-			kick = func;
-			kick = this.comp(kick);
+			sig = func;
+			sig = this.comp(sig);
 			env = EnvGen.ar(Env.perc(att,rel),1,doneAction:2);
 
-			^Pan2.ar(kick*env,pan);
+			^Pan2.ar(sig*env,pan);
 
 		}, {
 
-			^"Use of 'func' argument is obligatory";
+			^"Use of 'func' argument is obligatory and must be a Function.";
 		});
 
 	}
