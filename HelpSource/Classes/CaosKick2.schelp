@@ -1,7 +1,7 @@
-TITLE:: CaosKick2
-summary:: A simple two amp Kick with wave selection
-categories:: Timbres, Instruments
-related:: Classes/CaosBox
+CLASS:: CaosKick2
+SUMMARY:: A modular two amp Kick with wave selection
+CATEGORIES:: Timbres, Instruments, UGens
+RELATED:: Classes
 
 DESCRIPTION::
 Kick drum with fundamental frequency and dynamic harmonics it has two modulation frequencies, and two mixable amplitudes. You can Select the waveform for the secondary signal (harmonics).

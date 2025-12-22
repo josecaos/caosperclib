@@ -1,4 +1,4 @@
-# CaosPercLib v1.2.0
+# CaosPercLib v1.2.2
 
 ### TODOs:
 ---
@@ -6,6 +6,11 @@
 ### Changelog
 
 - ## v1.2.2
+    - README.md
+        - Add Available Classes section
+    - CaosEnv
+        - Add Documentation files for Help Browser
+    - Update version number in all files
 
 
 - ## v1.2.1

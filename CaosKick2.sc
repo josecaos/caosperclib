@@ -1,6 +1,6 @@
 //written by @mixfuckedup
 //Rough kick with two amps mix + Wave Oscillator selection
-//Part of CaosPercLib v1.2.1
+//Part of CaosPercLib v1.2.2
 
 CaosKick2 : CaosEnv {
  

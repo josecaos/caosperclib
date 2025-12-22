@@ -1,4 +1,5 @@
 (s. boot;)
+(SCDoc.indexAllDocuments;)
 // test
 {CaosKick.ar(gate:1)}.play;
 {CaosKick.customSignal({Pulse.ar(4)},0.1,10)}.play;

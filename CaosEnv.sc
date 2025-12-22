@@ -1,6 +1,6 @@
 // written by @mixfuckedup
 // A multi shape LFO Envelope:
-// Part of CaosPercLib v1.2.1
+// Part of CaosPercLib v1.2.2
 CaosEnv {
 
 	*new {

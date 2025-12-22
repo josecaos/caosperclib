@@ -1,0 +1,318 @@
+CLASS:: CaosEnv
+SUMMARY:: Multi-shape envelope with tremolo helper for CaosPercLib
+CATEGORIES:: UGens, Envelopes, Utilities
+RELATED:: Classes
+
+DESCRIPTION::
+CaosEnv provides reusable envelope generators and a light-weight LFO/tremolo signal for building percussive synths and textures. It exposes audio-rate and control-rate envelopes (EnvGen) with consistent defaults, plus a simple compressor helper that applies LeakDC to avoid DC offset before dynamic processing.
+
+Key features:
+list::
+## Has strong::tremolo:: and strong::tremoloDepth:: to create percussive modulation over signals
+## strong::robot:: method uses internal Impulse.kr(t, tp) trigger with doneAction:0 by default (ProxySpace-friendly)
+## strong::comp:: uses CompanderD with LeakDC for audio hygiene, without Limiter to keep the library lightweight
+::
+
+CLASSMETHODS::
+
+METHOD:: ar
+Returns an audio-rate envelope. When waveform != 'off', multiplies the envelope by an LFO signal.
+
+ARGUMENT:: waveform
+Symbol. One of 'off', 'sin', 'saw', 'pulse'. Default: 'off'. When 'off', no LFO modulation is applied.
+
+ARGUMENT:: att
+Attack time in seconds. Default: 0.01.
+
+ARGUMENT:: rel
+Release time in seconds. Default: 0.5.
+
+ARGUMENT:: tremolo
+LFO rate in Hz. Default: 4. This controls the speed of the tremolo oscillation.
+
+ARGUMENT:: tremoloDepth
+Tremolo depth [0..1]. Default: 2 (clipped internally to 1). Controls the intensity of the LFO modulation. 0 = no modulation, 1 = maximum modulation.
+
+ARGUMENT:: gate
+Envelope gate value. Default: 1. Typically 1 to trigger, 0 to release.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 2 (free synth when envelope completes). See link::Classes/EnvGen:: for other options.
+
+returns:: An audio-rate envelope signal, optionally modulated by an LFO.
+
+METHOD:: kr
+Returns a control-rate envelope. Identical to strong::ar:: but uses envKR() internally for efficiency.
+
+ARGUMENT:: waveform
+Symbol. One of 'off', 'sin', 'saw', 'pulse'. Default: 'off'.
+
+ARGUMENT:: att
+Attack time in seconds. Default: 0.01.
+
+ARGUMENT:: rel
+Release time in seconds. Default: 0.5.
+
+ARGUMENT:: tremolo
+LFO rate in Hz. Default: 4.
+
+ARGUMENT:: tremoloDepth
+Tremolo depth [0..1]. Default: 2 (clipped internally).
+
+ARGUMENT:: gate
+Envelope gate value. Default: 1.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 2.
+
+returns:: A control-rate envelope signal, optionally modulated by an LFO.
+
+METHOD:: robot
+Generates a control-rate envelope with an internal trigger (Impulse.kr). Useful for self-triggering patterns in ProxySpace without manual gating.
+
+ARGUMENT:: waveform
+Symbol. One of 'off', 'sin', 'saw', 'pulse'. Default: 'off'.
+
+ARGUMENT:: att
+Attack time in seconds. Default: 0.01.
+
+ARGUMENT:: rel
+Release time in seconds. Default: 0.5.
+
+ARGUMENT:: tremolo
+LFO rate in Hz. Default: 4.
+
+ARGUMENT:: tremoloDepth
+Tremolo depth [0..1]. Default: 2 (clipped internally).
+
+ARGUMENT:: t
+Trigger rate in Hz. Default: 1. Controls how often the envelope repeats.
+
+ARGUMENT:: tp
+Trigger phase [0..1]. Default: 0. Phase offset for the internal Impulse.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 0 (do not free synth). This makes it suitable for continuous use in ProxySpace.
+
+returns:: A control-rate envelope signal with internal triggering.
+
+METHOD:: signal
+Returns a lightweight LFO signal centered around 1.0 for use as a gain/tremolo factor. This is used internally by ar/kr/robot when waveform != 'off'.
+
+ARGUMENT:: waveform
+Symbol. One of 'off', 'sin', 'saw', 'pulse'. Determines the LFO shape.
+
+ARGUMENT:: tremolo
+LFO rate in Hz.
+
+ARGUMENT:: tremoloDepth
+Tremolo depth [0..1]. Clipped internally to safe range.
+
+returns:: An LFO signal oscillating around 1.0, suitable for multiplying with audio.
+
+METHOD:: envAR
+Low-level helper. Creates an audio-rate EnvGen using Env.perc with curve: -4.
+
+ARGUMENT:: att
+Attack time in seconds.
+
+ARGUMENT:: rel
+Release time in seconds.
+
+ARGUMENT:: gate
+Gate signal for the envelope.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 2.
+
+returns:: Audio-rate envelope.
+
+METHOD:: envKR
+Low-level helper. Creates a control-rate EnvGen using Env.perc with curve: -4.
+
+ARGUMENT:: att
+Attack time in seconds.
+
+ARGUMENT:: rel
+Release time in seconds.
+
+ARGUMENT:: gate
+Gate signal for the envelope.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 2.
+
+returns:: Control-rate envelope.
+
+METHOD:: comp
+Applies compression and DC filtering to a signal. Uses LeakDC.ar followed by CompanderD for simple dynamics control. No Limiter is applied to keep CPU usage low.
+
+ARGUMENT:: in
+Input signal (UGen).
+
+ARGUMENT:: thresh
+Compressor threshold. Default: 0.5.
+
+ARGUMENT:: slopeBelow
+Slope below threshold. Default: 0.5.
+
+ARGUMENT:: slopeAbove
+Slope above threshold. Default: 0.9.
+
+ARGUMENT:: clampTime
+Attack time for compressor. Default: 0.01.
+
+ARGUMENT:: relaxTime
+Release time for compressor. Default: 0.25.
+
+returns:: Compressed and DC-filtered signal.
+
+METHOD:: customSignal
+Multiplies a provided signal (Function or UGen) by an audio-rate envelope and pans it with Pan2.ar. Applies comp() (LeakDC + CompanderD) before the envelope for audio hygiene.
+
+ARGUMENT:: func
+Function or UGen. Required. If a Function is passed, it should return a UGen when evaluated.
+
+ARGUMENT:: att
+Attack time in seconds. Default: 0.01.
+
+ARGUMENT:: rel
+Release time in seconds. Default: 0.5.
+
+ARGUMENT:: pan
+Pan position [-1..1]. Default: 0 (center).
+
+ARGUMENT:: gate
+Envelope gate value. Default: 1.
+
+ARGUMENT:: doneAction
+EnvGen doneAction. Default: 2.
+
+returns:: A stereo signal (Pan2.ar) with envelope applied and compression.
+
+METHOD:: new
+Constructor method. Returns a new CaosEnv instance. Typically not needed as most methods are class methods.
+
+returns:: A CaosEnv instance.
+
+INSTANCEMETHODS::
+
+Note: Instance methods mirror the class methods. You can use either CaosEnv.ar(...) or CaosEnv.new.ar(...). The class methods are more commonly used.
+
+EXAMPLES::
+
+SUBSECTION:: Basic envelope usage
+
+code::
+// Simple audio-rate envelope - no LFO
+(
+{
+    var env = CaosEnv.ar('off', att:0.005, rel:0.3, gate:1, doneAction:2);
+    WhiteNoise.ar(0.2) * env ! 2
+}.play;
+)
+::
+
+SUBSECTION:: Envelope with tremolo
+
+code::
+// Sine wave tremolo applied to envelope
+(
+{
+    var env = CaosEnv.ar('sin', att:0.01, rel:0.4, tremolo:5, tremoloDepth:0.5, gate:1);
+    (SinOsc.ar(80) * env) ! 2
+}.play;
+)
+::
+
+code::
+// Sawtooth LFO for rhythmic envelope
+(
+{
+    var env = CaosEnv.ar('saw', att:0.005, rel:0.25, tremolo:3, tremoloDepth:0.7, gate:1);
+    (BPF.ar(WhiteNoise.ar, 1200, 0.2) * env) ! 2
+}.play;
+)
+::
+
+SUBSECTION:: Robot method - self-triggering
+
+code::
+// Robot with repeating envelope (ProxySpace-friendly)
+(
+~env = { 
+    CaosEnv.robot('saw', att:0.005, rel:0.25, tremolo:3, tremoloDepth:0.4, t:2) 
+};
+~kick = { SinOsc.ar(60 * [1, 1.01]) * ~env };
+~kick.play;
+)
+
+// Change trigger rate
+~env.set(\t, 4);
+
+// Stop
+~kick.stop; ~env.stop;
+::
+
+SUBSECTION:: customSignal method
+
+code::
+// Wrap any UGen with envelope and compression
+(
+{
+    CaosEnv.customSignal(
+        { BPF.ar(WhiteNoise.ar, 1200, 0.2) }, 
+        att:0.01, 
+        rel:0.2, 
+        pan: -0.2
+    )
+}.play;
+)
+::
+
+code::
+// More complex signal with customSignal
+(
+{
+    CaosEnv.customSignal(
+        { 
+            var sig = Mix.ar([
+                SinOsc.ar(80),
+                Saw.ar(81)
+            ]);
+            LPF.ar(sig, 2000)
+        }, 
+        att:0.02, 
+        rel:0.5, 
+        pan: 0.5
+    )
+}.play;
+)
+::
+
+SUBSECTION:: Using comp for dynamics
+
+code::
+// Apply compression to a noisy signal
+(
+{
+    var sig = PinkNoise.ar(0.8) + Impulse.ar(8, 0, 0.5);
+    CaosEnv.comp(sig, thresh:0.4, slopeAbove:0.8) ! 2
+}.play;
+)
+::
+
+SUBSECTION:: Building a simple kick with CaosEnv
+
+code::
+// Combine signal generation with CaosEnv envelope
+(
+{
+    var env = CaosEnv.ar('off', att:0.001, rel:0.3);
+    var pitch = EnvGen.ar(Env([60, 40], [0.05], \exp));
+    var sig = SinOsc.ar(pitch);
+    sig = CaosEnv.comp(sig);
+    (sig * env) ! 2
+}.play;
+)
+::

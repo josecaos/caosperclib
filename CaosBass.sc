@@ -1,6 +1,6 @@
 // written by @Ill_Slide
 //Simple Bass
-//Part of CaosPercLib v1.2.1
+//Part of CaosPercLib v1.2.2
 CaosBass : CaosEnv {
 
 	*new {

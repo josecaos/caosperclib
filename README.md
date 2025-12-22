@@ -1,6 +1,22 @@
-# CaosPercLib v1.2.1
+# CaosPercLib v1.2.2
 
 ### CaosPercLib is a Collection of percussion Classes for SuperCollider.
+
+**Available Classes:**
+- **CaosEnv** - Multi-shape envelope with tremolo helper
+- **CaosKick** - Modular two-amp kick drum
+- **CaosKick2** - Rough kick with wave oscillator selection
+- **CaosSnare** - Simple snare drum synthesis
+- **CaosSnare2** - Sharper snare drum variation
+- **CaosHats** - Simple hi-hats
+- **CaosHats2** - Rougher hi-hats and shakes
+- **CaosBass** - Simple bass synthesis
+- **CaosBass2** - Hard bass with filter sweep
+- **CaosPad** - Simple ambience pad with waveform selection
+- **CaosPad2** - Trippy ambience pad with FM synthesis
+- **CaosChords** - Chord generator over LFPulse wave
+- **CaosGuitChords** - Guitar-style chord voicing generator
+
 --------
  - Class:
     ```

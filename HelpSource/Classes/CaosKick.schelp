@@ -1,7 +1,7 @@
-TITLE:: CaosKick
-summary:: A simple two amp Kick
-categories:: Timbres, Instruments
-related:: Classes/CaosBox
+CLASS:: CaosKick
+SUMMARY:: A simple modular two amp Kick
+CATEGORIES:: Timbres, Instruments
+RELATED:: Classes
 
 DESCRIPTION::
 Simple Kick with filter, two modulation freqs, and two mixable amplitudes.
