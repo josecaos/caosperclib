@@ -9,149 +9,150 @@ CaosEnv {
 
 	}
 
-	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
+	*ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 0 |
+	ar {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envAR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	*kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
+	*kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2|
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envKR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1 |
+	kr {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, gate = 1, doneAction = 2 |
 
 		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
+			^this.envKR(att,rel,gate,doneAction);
 		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
+			^this.signal(waveform,freq,tremolo)*this.envKR(att,rel,gate,doneAction);
 		});
 
 	}
 
-	*robot {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0 |
+	*robot {|waveform = 'off',att = 0.01, rel = 0.5, freq = 4, tremolo = 2, t = 1, tp = 0, doneAction = 0 |
 
-		if(waveform == 'off', {
-			^this.envAR(att,rel,1);
-		}, {
-			^this.signal(waveform,freq,tremolo)*this.envAR(att,rel,1);
-		});
+		var gate = Impulse.kr(t, tp);
+        if(waveform == 'off', {
+            ^this.envKR(att, rel, gate, doneAction);
+        }, {
+            ^this.signal(waveform,freq,tremolo) * this.envKR(att, rel, gate, doneAction);
+        });
 
 	}
 
 	*signal {|waveform ,freq ,tremolo|
-		var lfo,env,osc,tag,waveindex,iphase;
+		var lfo, osc, tag, waveindex, iphase;
+
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
-		waveindex=tag.find([waveform]);
+		waveindex=tag.indexOf(waveform);
 
-		if(waveindex==nil,{
-			7.do{"Only use: 'off', 'saw', 'tri' or 'pulse' as first CaosEnv argument".warn}
-		});
-
-		if(waveindex == 0, {
-			lfo = nil
-		}, {
-			if(waveindex == 2,{
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),0.75);
-			}, {
-				if(waveform == tag[3],{iphase = 0.25},{iphase = 0});
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
-			})
-		});
+		switch(waveindex,
+        nil, {
+            7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
+            lfo = nil;
+        },
+        0, { lfo = nil; },
+        1, { lfo = osc[waveindex].ar(freq,0,0.75) * (tremolo.max(0));},
+        2, { lfo = osc[waveindex].ar(freq,0.75) * (tremolo.max(0));},
+        3, {
+            iphase = 0.25;
+			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
+			}
+    	);
 
 		^lfo
 	}
 
 	signal {|waveform ,freq ,tremolo|
-		var lfo,env,osc,tag,waveindex,iphase;
+		var lfo, osc, tag, waveindex, iphase;
+
 		osc=[nil,SinOsc,Saw,Pulse];
 		tag=['off','sin','saw','pulse'];
-		waveindex=tag.find([waveform]);
+		waveindex=tag.indexOf(waveform);
 
-		if(waveindex==nil,{
-			7.do{"Only use: 'off', 'saw', 'tri' or 'pulse' as first CaosEnv argument".warn}
-		});
-
-		if(waveindex == 0, {
-			lfo = nil
-		}, {
-			if(waveindex == 2,{
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),0.75);
-			}, {
-				if(waveform == tag[3],{iphase = 0.25},{iphase = 0});
-				lfo=osc[waveindex].ar(osc[waveindex].ar([freq,freq],0,freq,freq+tremolo),iphase,0.75);
-			})
-		});
+		switch(waveindex,
+        nil, {
+            7.do{"Only use: 'off', 'sin', 'saw' or 'pulse' as first CaosEnv argument".warn};
+            lfo = nil;
+        },
+        0, { lfo = nil; },
+        1, { lfo = osc[waveindex].ar(freq,0,0.75) * (tremolo.max(0));},
+        2, { lfo = osc[waveindex].ar(freq,0.75) * (tremolo.max(0));},
+        3, {
+            iphase = 0.25;
+			lfo = osc[waveindex].ar(freq, iphase, 0.35) * (tremolo.max(0));
+			}
+    	);
 
 		^lfo
 	}
 
-	*comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
+	*comp {|in,thresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
-
-	}
-
-	comp {|in,tresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
-
-		^CompanderD.ar(in,tresh,slopeBelow,slopeAbove,clampTime,relaxTime);
+		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
 
 	}
 
+	comp {|in,thresh=0.5,slopeBelow=0.5,slopeAbove=0.9,clampTime=0.01,relaxTime=0.25|
 
-	*customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
-		var kick,env;
+		^CompanderD.ar(LeakDC.ar(in), thresh, slopeBelow, slopeAbove, clampTime, relaxTime);
+
+	}
+
+
+	*customSignal {|func=nil,att=0.01,rel=0.5,pan=0,gate=1,doneAction=2|
+		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
-			kick = func;
-			kick = this.comp(kick);
-			env = this.envAR(att,rel,1)
+			sig = func;
+			sig = this.comp(sig);
+			env = this.envAR(att,rel,gate,doneAction)
 
-			^Pan2.ar(kick*env,pan);
+			^Pan2.ar(sig*env,pan);
 
 		}, {
 
-			^"Use of 'func' argument is obligatory";
+			^"Use of 'func' argument is obligatory and must be a Function.";
 
 		});
 	}
 
-	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0|
-		var kick,env;
+	customSignal {|func = nil,att= 0.01, rel= 0.5,pan=0,gate=1,doneAction=2|
+		var sig,env;
 
 		if (func != nil and: {func.isFunction}, {
 
-			kick = func;
-			kick = this.comp(kick);
-			env = EnvGen.ar(Env.perc(att,rel),1,doneAction:2);
+			sig = func;
+			sig = this.comp(sig);
+			env = this.envAR(att,rel,gate,doneAction)
 
-			^Pan2.ar(kick*env,pan);
+			^Pan2.ar(sig*env,pan);
 
 		}, {
 
-			^"Use of 'func' argument is obligatory";
+			^"Use of 'func' argument is obligatory and must be a Function.";
 		});
 
 	}

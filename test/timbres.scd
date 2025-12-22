@@ -1,7 +1,11 @@
 // CaosPercLib default timbres
 // Declare each line
+(
 s.boot;
+)
+(
 s.scope;
+)
 //Kick
 play{CaosKick.ar}//class
 ~k = CaosKick.new//instance
@@ -90,10 +94,33 @@ play{~ch2.ar('M9m',0.01,2)}//Major, minor ninth
 play{~ch2.ar('m9',0.01,2)}//Minor ninth
 play{~ch2.ar('m9m',0.01,2)}//Minor, minor ninth
 // wave driven envelope
-~e = CaosEnv.new
+(
+s.boot;
+)
+(
+~e = CaosEnv.new;
+)
+(
 play{LFTri.ar!2*CaosEnv.ar}//class
+)
+(
+play{LFTri.ar!2*CaosEnv.ar('sin',0.01,4,2,1)}//class
+)
+(
 play{LFTri.ar!2*~e.ar}//instance
-play{LFTri.ar!2*~e.ar(\off,0.01,4)}
-play{LFTri.ar*~e.ar(\sin,0.01,4,2,1)}//sine
+)
+( // waveform argument error handling
+play{LFTri.ar!2*~e.ar('XXX',0.01,4)}
+)
+(
+play{LFTri.ar!2*~e.ar('off',0.01,4)}
+)
+(
+play{LFTri.ar*~e.ar('sin',0.01,4,2,1)}//sine
+)
+(
 play{LFTri.ar*~e.ar(\saw,0.01,4,2,1)}//saw
-play{LFTri.ar*~e.ar(\pulse,0.01,4,2,1)}//square
+)
+(
+play{LFTri.ar*~e.ar(\pulse,0.01,4,3,1)}//square
+)
