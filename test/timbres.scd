@@ -33,14 +33,14 @@ Tdef(\test, {
     var modFreq, rel;
     loop {
         modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
-        rel = [0.1,0.25,0.5,1].choose;
+        rel = [0.1,0.25,0.5,1].choose*4;
         {
             FreeVerb.ar(
                 CaosKick.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.25,freq1:600,freq2:960,lowcutfreq:160,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)
-            , 0.25,4,0.7,taillevel:0.8)
-        }.play;
-        {CaosKick.ar()}.play;
-        rrand(rel, 0.125).wait;
+            ,0.75,0.85,0.95)
+        !2}.play;
+        {CaosKick.ar()!2}.play;
+        rrand(rel, 0.5).wait;
     }
 });
 )
@@ -52,7 +52,7 @@ Tdef(\test).stop;
 {~k.ar}.play;
 )
 //Kick 2
-s.boot;
+(s.boot;)
 play{CaosKick2.ar()}//class
 play{CaosKick2.ar(modFreq:1, amp2: 0.01)}
 play{CaosKick2.ar(1,1,1)}//class
@@ -62,6 +62,25 @@ play{CaosKick2.ar(modFreq:rrand(32,2),wave:"SinOsc")};
 play{CaosKick2.ar(modFreq:rrand(32,2),wave:"LFTri")};
 play{CaosKick2.ar(modFreq:rrand(32,2),wave:"Saw")};
 play{CaosKick2.ar(0.1,32,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
+play{CaosKick2.ar(0.1,12,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
+
+( 
+Tdef(\test, {
+    var modFreq, rel;
+    loop {
+        modFreq = rrand(2,4) * [1,2,4,8,16,32,64,128,256,512].choose;
+        rel = [0.1,0.25,0.5,1].choose;
+        {
+        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.25,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:0,wave:"Saw")
+        }.play;
+        {CaosKick2.ar()}.play;
+        rrand(rel, 0.25).wait;
+    }
+});
+)
+Tdef(\test).play;
+Tdef(\test).stop;
+
 ~k2 = CaosKick2.new//instance
 play{~k2.ar};
 //snare

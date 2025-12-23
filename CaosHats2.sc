@@ -1,6 +1,6 @@
 //written by @Ill_Slide
 //rougher hihats / shakes
-//Part of CaosPercLib v1.2.2
+//Part of CaosPercLib v1.2.3
 
 CaosHats2 : CaosEnv {
 

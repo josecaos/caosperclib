@@ -1,6 +1,6 @@
 //written by @mixfuckedup
 //Simple two amp kick
-//Part of CaosPercLib v1.2.2
+//Part of CaosPercLib v1.2.3
 
 CaosKick : CaosEnv {
 

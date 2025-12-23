@@ -1,9 +1,26 @@
-# CaosPercLib v1.2.2
+# CaosPercLib v1.2.3
 
 ### TODOs:
+1. Pulse.ar(modFreq,modbw,freq1,freq2) - Mismo error que en CaosKick
+Problema: Pulse.ar solo acepta 3 argumentos: (freq, width, mul, add)
+Estás pasando 4: modFreq, modbw, freq1, freq2
+Este error se repite en TODAS las formas de onda del switch
+2. sig2 tiene el mismo problema y peor:
+Pulse.kr(modFreq,modbw,freq1*0.24,freq2*48) - 4 argumentos a Pulse
+Los valores freq1*0.24 y freq2*48 están mal escalados (uno muy bajo, otro muy alto)
+3. Falta LeakDC
+Debería tener LeakDC antes del filtro: LeakDC.ar(sig + sig2)
+4. TODO sin resolver
+Si recibes float en lugar de string, hay un bug en cómo llamas al método desde otro lugar (probablemente CaosBox)
+5. Inconsistencia de método ar (clase vs instancia)
+*ar usa envKR  → debería usar envAR
+ar (instancia) usa envKR → debería usar envAR
 ---
 
 ### Changelog
+
+- ## v1.2.3
+    - CaosKick2
 
 - ## v1.2.2
     - README.md

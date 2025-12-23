@@ -238,7 +238,7 @@ Tdef(\test, {
         {
             FreeVerb.ar(
                 CaosKick.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.25,freq1:600,freq2:960,lowcutfreq:160,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)
-            , 0.25,4,0.7,taillevel:0.8)
+            ,0.75,0.85,0.95)
         }.play;
         {CaosKick.ar()}.play;
         rrand(rel, 0.125).wait;
