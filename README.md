@@ -1,4 +1,4 @@
-# CaosPercLib v1.2.3
+# CaosPercLib v1.2.4
 
 ### CaosPercLib is a Collection of percussion Classes for SuperCollider.
 
