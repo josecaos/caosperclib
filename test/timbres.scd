@@ -1,21 +1,14 @@
 // CaosPercLib default timbres
 // Declare each line
-(
 s.boot;
-)
-(
 s.scope;
-)
 //Kick
-(//class
+//class
 {CaosKick.ar}.play;
 // {CaosKick2.ar}.play;
-)
-(//class
+//class
 {CaosKick.ar(att:0.01,rel:0.5,modFreq:[1,2,4,8,16,32,64,128,256,512].choose,modbw:0.25,freq1:600,freq2:960,lowcutfreq:42,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)}.play;
 // {CaosKick2.ar}.play;
-)
-
 ( 
 Tdef(\test, {
     var modFreq, rel;
@@ -68,12 +61,12 @@ play{CaosKick2.ar(0.1,12,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
 Tdef(\test, {
     var modFreq, rel;
     loop {
-        modFreq = rrand(2,4) * [1,2,4,8,16,32,64,128,256,512].choose;
+        modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
         rel = [0.1,0.25,0.5,1].choose;
         {
-        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.25,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:0,wave:"Saw")
+        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.5,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:1,wave:"SinOsc")
         }.play;
-        {CaosKick2.ar()}.play;
+        // {CaosKick2.ar()}.play;
         rrand(rel, 0.25).wait;
     }
 });

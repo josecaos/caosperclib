@@ -1,25 +1,13 @@
 # CaosPercLib v1.2.4
 
 ### TODOs:
-1. sig2 tiene el mismo problema y peor:
-Pulse.kr(modFreq,modbw,freq1*0.24,freq2*48) - 4 argumentos a Pulse
-Los valores freq1*0.24 y freq2*48 están mal escalados (uno muy bajo, otro muy alto)
-2. Falta LeakDC
-Debería tener LeakDC antes del filtro: LeakDC.ar(sig + sig2)
-3. TODO sin resolver
-Si recibes float en lugar de string, hay un bug en cómo llamas al método desde otro lugar (probablemente CaosBox)
-4. Inconsistencia de método ar (clase vs instancia)
-*ar usa envKR  → debería usar envAR
-ar (instancia) usa envKR → debería usar envAR
+
 ---
 
 ### Changelog   
 
 - ## v1.2.4
-    - CaosKick
-        - Bugfix: Metodo .ar tiene mal el orden de argumentos
-        - Limpia código muerto y comentarios de depuración
-     
+    - Debug estructura base de clases 
 
 - ## v1.2.3
     - CaosKick2
