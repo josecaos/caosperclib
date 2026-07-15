@@ -54,13 +54,13 @@ Tdef(\test).stop;
 //Kick 2
 (s.boot;)
 play{CaosKick2.ar()}//class
-play{CaosKick2.ar(modFreq:1, amp2: 0.01)}
-play{CaosKick2.ar(1,1,1)}//class
+play{CaosKick2.ar(0.01,1)}
+play{CaosKick2.ar(0.01,2,2)}//class
 play{CaosKick2.ar(modFreq:rrand(32,2))};// La fundamental de CaosKick2 solo modula si el valor de 'modFreq' es mayora a '1'
-play{CaosKick2.ar(modFreq:rrand(32,6),wave:"LFNoise0")};// Controla la fundamental con 'wave'
-play{CaosKick2.ar(modFreq:rrand(32,2),wave:"SinOsc")};
-play{CaosKick2.ar(modFreq:rrand(32,2),wave:"LFTri")};
-play{CaosKick2.ar(modFreq:rrand(32,2),wave:"Saw")};
+play{CaosKick2.ar(modFreq:rrand(32,6),oscType:"LFNoise0")};// Controla la fundamental con 'oscType'
+play{CaosKick2.ar(modFreq:rrand(32,2),oscType:"SinOsc")};
+play{CaosKick2.ar(modFreq:rrand(32,2),oscType:"LFTri")};
+play{CaosKick2.ar(modFreq:rrand(32,2),oscType:"Saw")};
 play{CaosKick2.ar(0.1,32,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
 play{CaosKick2.ar(0.1,12,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
 
@@ -71,7 +71,7 @@ Tdef(\test, {
         modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
         rel = [0.1,0.25,0.5,1].choose;
         {
-        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.5,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:1,wave:"SinOsc")
+        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.5,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:1,oscType:"SinOsc")
         }.play;
         // {CaosKick2.ar()}.play;
         rrand(rel, 0.25).wait;

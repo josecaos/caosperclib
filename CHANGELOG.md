@@ -1,10 +1,19 @@
 # CaosPercLib v1.2.4
 
 ### TODOs:
-
+- CaosKick2: Do along with CaosBox updates
+    - Reorder arguments for semantic consistency
+        - amp argument must be amp1
+        - Amps must be together
+        - Oscillator type must not be last
 ---
 
 ### Changelog   
+
+- ## v1.2.6
+    - CaosKick2
+        - Change wave argument name to oscType for semantic consistency
+        - Clean code to avoid duplicated method content
 
 - ## v1.2.5
     - Caos Env: Clean code to avoid duplicated method content
@@ -14,11 +23,11 @@
 
 - ## v1.2.4
     - Debug base signal method in CaosKick class 
-        - Controlled MModulation to avoid clipping on longer releases
+        - Control modulation to avoid clipping on longer releases
         - Fix: amp1 and amp2 does not balance timbre properly
 
 - ## v1.2.3
-    - CaosKick2
+    - CaosKick2 debug
 
 - ## v1.2.2
     - README.md
