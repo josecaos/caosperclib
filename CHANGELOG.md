@@ -9,6 +9,7 @@
 - ## v1.2.4
     - Debug base signal method in CaosKick class 
         - Controlled MModulation to avoid clipping on longer releases
+    - Clean code to avoid duplicated .signal method
 
 - ## v1.2.3
     - CaosKick2
