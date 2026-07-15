@@ -5,7 +5,10 @@ s.scope;
 //Kick
 //class
 {CaosKick.ar}.play;
-// {CaosKick2.ar}.play;
+{CaosKick.ar(0.1)}.play;
+{CaosKick.ar(0.25)}.play;
+{CaosKick.ar(0.1,1)}.play;
+{CaosKick.ar(0.01,2)}.play;
 //class
 {CaosKick.ar(att:0.01,rel:0.5,modFreq:[1,2,4,8,16,32,64,128,256,512].choose,modbw:0.25,freq1:600,freq2:960,lowcutfreq:42,gate:1,amp1:0.5,amp2:0.15,pan:0,doneAction:2)}.play;
 // {CaosKick2.ar}.play;

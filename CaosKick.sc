@@ -42,52 +42,28 @@ CaosKick : CaosEnv {
 
 	}
 
-	// *signal {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2|
-
-	// 	^RHPF.ar(
-	// 		LFTri.ar(
-	// 			Pulse.ar(modFreq,modbw,freq1,freq2),
-	// 		0,amp1) +
-	// 		LFTri.ar(
-	// 			Pulse.ar(modFreq,modbw,freq1,freq2),
-	// 		0,amp2),
-	// 	lowcutfreq,0.95);
-	// }
-
-	// signal {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2|
-
-	// 	^RHPF.ar(
-	// 		LFTri.ar(
-	// 			Pulse.ar(modFreq,modbw,freq1,freq2),
-	// 		0,amp1) +
-	// 		LFTri.ar(
-	// 			Pulse.ar(modFreq,modbw,freq1,freq2),
-	// 		0,amp2),
-	// 	lowcutfreq,0.95);
-
-	// }
-
-	// Debug
 	*signal {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2|
-    var mod, sig1, sig2, sig;
+    var mod, sig1, sig2, sig, floor;
     
-	mod = Pulse.ar(modFreq, modbw, mul: 1, add: 0);
-    sig1 = LFTri.ar(freq1 * mod, 0, amp1);
-    sig2 = LFTri.ar(freq2 * mod, 0, amp2);
+	floor = 20;
+	mod = Pulse.ar(modFreq, modbw,freq1,freq2).max(floor);
+    sig1 = LFTri.ar(mod, 0, amp1);
+    sig2 = LFTri.ar(mod, 0, amp2);
     sig = LeakDC.ar(sig1 + sig2);
     
-    ^RHPF.ar(sig, lowcutfreq, 0.95);
+    ^RHPF.ar(sig, lowcutfreq, 1);
 }
 
 	signal {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2|
-    var mod, sig1, sig2, sig;
-    
-    mod = Pulse.ar(modFreq, modbw, mul: 1, add: 0);
-    sig1 = LFTri.ar(freq1 * mod, 0, amp1);
-    sig2 = LFTri.ar(freq2 * mod, 0, amp2);
+    var mod, sig1, sig2, sig, floor;
+     
+	 floor = 20;
+	mod = Pulse.ar(modFreq, modbw,freq1,freq2).max(floor);
+    sig1 = LFTri.ar(mod, 0, amp1);
+    sig2 = LFTri.ar(mod, 0, amp2);
     sig = LeakDC.ar(sig1 + sig2);
     
-    ^RHPF.ar(sig, lowcutfreq, 0.9);
+    ^RHPF.ar(sig, lowcutfreq, 1);
 }
 
 	*signalRobot {|modFreq,modbw,freq1,freq2,lowcutfreq,amp1,amp2,trig=0|

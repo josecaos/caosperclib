@@ -7,7 +7,8 @@
 ### Changelog   
 
 - ## v1.2.4
-    - Debug estructura base de clases 
+    - Debug base signal method in CaosKick class 
+        - Controlled MModulation to avoid clipping on longer releases
 
 - ## v1.2.3
     - CaosKick2
