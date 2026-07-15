@@ -6,10 +6,16 @@
 
 ### Changelog   
 
+- ## v1.2.5
+    - Caos Env: Clean code to avoid duplicated method content
+    - CaosKick: Debug .robot method
+        - Create new signalRobot method
+            - Syncs internal trigger / Modulation
+
 - ## v1.2.4
     - Debug base signal method in CaosKick class 
         - Controlled MModulation to avoid clipping on longer releases
-    - Clean code to avoid duplicated .signal method
+        - Fix: amp1 and amp2 does not balance timbre properly
 
 - ## v1.2.3
     - CaosKick2
