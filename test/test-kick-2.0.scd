@@ -34,23 +34,30 @@ play{CaosKick.ar(freq1:60, freq2:60*6)}
 play{CaosKick.ar(freq1:60, freq2:60*7)}
 
 play{CaosKick.ar(0.01,8,2,freq1:60, freq2:60*4)}
-// robot test
+// Fixed robot method test
 // ///////////////
 p = ProxySpace.push();
 ~out.play;
 ~out.quant_(4);
-s.scope(0,2);
+// s.scope(0,2);
 ~t = 1;
 ~kontrol = {Demand.kr(Impulse.kr(~t),0,Dxrand((60..8400),inf))};
 
-~kick.quant_(4)[0] = {CaosKick.robot(att:0.01,rel:0.5,modFreq:~t,t:~t,amp1:1,amp2:0.5)}
-~kick.quant_(4)[1] = {CaosKick.robot(0.5)}
+~kick = {CaosKick.robot()}
+~kick = {CaosKick.robot(0.5)}
+~kick = {CaosKick.robot(att:0.01,rel:0.5,modFreq:~t,t:~t,amp1:1,amp2:0.5)}
+~kick = {CaosKick.robot(0.01,0.25,t:0.5,amp1:1,amp2:0)}
+~kick = {CaosKick.robot(0.01,0.25,t:4,amp1:1,amp2:0)}
+~kick = {CaosKick.robot(0.01,0.25,0.125,t:2,amp1:1,amp2:0)}
+~kick = {CaosKick.robot(0.01,1,8,t:2,amp1:1,amp2:0)}
+~kick = {CaosKick.robot(0.01,1,2,t:2,tp:[0.1,0.25],amp1:1,amp2:0)}
+~kick = {CaosKick.robot(0.01,0.5,4,t:4,amp1:0.5,amp2:1)}
 
-~ambient.quant_(4)[0] = {CaosKick.robot(att:1,rel:0.1,modFreq:~kontrol.kr,modbw:0.5,lowcutfreq:~kontrol.kr/1.25,t:~t,amp1:0.5,amp2:0.5)}
+~ambient = {CaosKick.robot(att:1,rel:0.1,modFreq:~kontrol.kr,modbw:0.5,lowcutfreq:~kontrol.kr/1.25,t:~t,amp1:0.5,amp2:0.5)}
 
 ~rev = {GVerb.ar(~ambient.ar,48,4,0.5,0.75,15,0.2,0.5,0.8,300,0.5)};
 
-~out.fadeTime = 16;
+// ~out.fadeTime = 16;
 ~out = ~kick;
 ~out = ~ambient+~rev;
 ~out = ~rev;
