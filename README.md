@@ -5,7 +5,7 @@
 **Available Classes:**
 - **CaosEnv** - Multi-shape envelope with tremolo helper
 - **CaosKick** - Modular two-amp kick drum
-- **CaosKick2** - Rough kick with wave oscillator selection
+- **CaosKick2** - Modular two-amp kick with oscillator type selection
 - **CaosSnare** - Simple snare drum synthesis
 - **CaosSnare2** - Sharper snare drum variation
 - **CaosHats** - Simple hi-hats

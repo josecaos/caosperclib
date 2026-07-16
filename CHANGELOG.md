@@ -6,15 +6,18 @@
         - amp argument must be amp1
         - Amps must be together
         - Oscillator type must not be last
+- Update CAosKick and CaosKick2 Documentation
 ---
 
 ### Changelog   
 
 - ## v1.2.6
-    - CaosKick2
+    - CaosKick2:
         - Change wave argument name to oscType for semantic consistency
         - Clean code to avoid duplicated method content
         - New signal algorythm + more controlled amps
+        - Create new signalRobot method
+            - Syncs internal trigger / Modulation
 
 - ## v1.2.5
     - Caos Env: Clean code to avoid duplicated method content

@@ -1,5 +1,5 @@
 //written by @mixfuckedup
-//Rough kick with two amps mix + Oscillator type selection
+//kick with two amps mix + Oscillator type selection
 //Part of CaosPercLib v1.2.6
 
 CaosKick2 : CaosEnv {
@@ -45,22 +45,12 @@ CaosKick2 : CaosEnv {
 		mod = Pulse.ar(modFreq, modbw, freq1, freq2).max(floor);
         
 		switch(oscType,
-			"LFTri", {
-                sig2 = LFTri.ar(mod, 0, amp2);
-            },
-            "Saw", {
-                sig2 = Saw.ar(mod, amp2);
-            },
-            "LFNoise0", {
-                sig2 = LFNoise0.ar(mod, amp2);
-            },
-            "SinOsc", {
-                sig2 = SinOsc.ar(mod, 0, amp2);
-            },
-            "Pulse",{ 
-                sig2 = Pulse.ar(mod, 0.5, amp2);
-            },
-            { 
+			"LFTri", {sig2 = LFTri.ar(mod, 0, amp2)},
+            "Saw", {sig2 = Saw.ar(mod, amp2)},
+            "LFNoise0", {sig2 = LFNoise0.ar(mod, amp2)},
+            "SinOsc", {sig2 = SinOsc.ar(mod, 0, amp2)},
+            "Pulse",{sig2 = Pulse.ar(mod, 0.5, amp2)},
+            {// default 
                 sig2 = Pulse.ar(mod, 0.5, amp2);
 				"CaosKick2: Wrong oscType value.\n\nUsing default secondary oscillator 'Pulse'. \n\nUse only: 'LFTri', 'Saw', 'LFNoise0', 'SinOsc', 'Pulse' strings".warn;
             }
@@ -87,6 +77,45 @@ CaosKick2 : CaosEnv {
 		
 		^this.class.signal(modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType);
 	
+	}
+
+	*signalRobot{|modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType,trig=0|
+		var sig, sig1, sig2, mod, phase, low, high, floor;
+
+		floor = 20;
+		low = freq2 - freq1;
+		high = freq2 + freq1;
+
+		phase = Phasor.ar(trig, modFreq / SampleRate.ir, 0, 1, 0);
+		mod = Select.ar(phase < modbw, [CD.ar(low), DC.ar(high)]).max(floor);
+
+		switch(oscType,
+			"LFTri", {sig2 = LFTri.ar(mod, 0, amp2)},
+            "Saw", {sig2 = Saw.ar(mod, amp2)},
+            "LFNoise0", {sig2 = LFNoise0.ar(mod, amp2)},
+            "SinOsc", {sig2 = SinOsc.ar(mod, 0, amp2)},
+            "Pulse",{sig2 = Pulse.ar(mod, 0.5, amp2)},
+            {// default 
+                sig2 = Pulse.ar(mod, 0.5, amp2);
+				"CaosKick2: Wrong oscType value.\n\nUsing default secondary oscillator 'Pulse'. \n\nUse only: 'LFTri', 'Saw', 'LFNoise0', 'SinOsc', 'Pulse' strings".warn;
+            }
+        );
+
+
+		sig1 = SinOsc.ar(mod, bw, amp);
+		
+		if(oscType.isString, {
+
+        	sig = LeakDC.ar(sig1 + sig2);
+
+	        ^RHPF.ar(sig, lowcutfreq, 0.99);
+
+		}, {
+	
+			"CaosKick2: Invalid oscillator type, use only: 'LFTri', 'Saw', 'LFNoise0', 'SinOsc', 'Pulse' strings".warn;
+	
+		});
+
 	}
 
 }
