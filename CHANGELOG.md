@@ -14,6 +14,7 @@
     - CaosKick2
         - Change wave argument name to oscType for semantic consistency
         - Clean code to avoid duplicated method content
+        - New signal algorythm + more controlled amps
 
 - ## v1.2.5
     - Caos Env: Clean code to avoid duplicated method content
