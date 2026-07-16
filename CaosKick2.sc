@@ -28,11 +28,12 @@ CaosKick2 : CaosEnv {
 	}
 
 	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=60,lowcutfreq=40,amp=1,t=1,tp=0,pan=0,doneAction=0,amp2=0.75,oscType="Pulse"|
-		var sig,env;
+		var sig,env, trig;
 
-		sig = this.signal(modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType);
+		trig = Impulse.kr(t,tp.wrap(0,1));
+		sig = this.signalRobot(modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType,trig);
 		sig = this.comp(sig);
-		env = this.envAR(att,rel,Impulse.kr(t,tp),doneAction);
+		env = this.envAR(att,rel,trig,doneAction);
 
 		^Pan2.ar(sig*env,pan);
 	}
@@ -87,7 +88,7 @@ CaosKick2 : CaosEnv {
 		high = freq2 + freq1;
 
 		phase = Phasor.ar(trig, modFreq / SampleRate.ir, 0, 1, 0);
-		mod = Select.ar(phase < modbw, [CD.ar(low), DC.ar(high)]).max(floor);
+		mod = Select.ar(phase < modbw, [DC.ar(low), DC.ar(high)]).max(floor);
 
 		switch(oscType,
 			"LFTri", {sig2 = LFTri.ar(mod, 0, amp2)},
