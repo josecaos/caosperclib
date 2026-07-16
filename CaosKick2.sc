@@ -10,7 +10,7 @@ CaosKick2 : CaosEnv {
 
 	}
 
-	*ar {|att=0.01,rel=0.5,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=60,lowcutfreq=40,gate=1,amp=1,pan=0,doneAction=2,amp2=0.125,oscType="LFTri"| // DEBUG: orden de 'amp2' y  en ultima posicion para no romper 'CaosBox'
+	*ar {|att=0.01,rel=0.5,modFreq=1,modbw=0.1,bw=0.1,freq1=60,freq2=60,lowcutfreq=40,gate=1,amp=1,pan=0,doneAction=2,amp2=0.75,oscType="Pulse"|
 		var sig,env;
 
 		sig = this.signal(modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType);
@@ -21,13 +21,13 @@ CaosKick2 : CaosEnv {
 
 	}
 
-	ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=60,lowcutfreq=40,gate=1,amp=1,pan=0,doneAction=2,amp2=0.5,oscType="LFTri"|
+	ar {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=60,lowcutfreq=40,gate=1,amp=1,pan=0,doneAction=2,amp2=0.75,oscType="Pulse"|
 		
 		^this.class.ar(att,rel,modFreq,modbw,bw,freq1,freq2,lowcutfreq,gate,amp,pan,doneAction,amp2,oscType);
 
 	}
 
-	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=60,lowcutfreq=40amp=1,t=1,tp=0,pan=0,doneAction=0,amp2=0.5,oscType="LFTri"|
+	*robot {|att=0.01,rel=0.25,modFreq=1,modbw=0.5,bw=0.5,freq1=60,freq2=60,lowcutfreq=40,amp=1,t=1,tp=0,pan=0,doneAction=0,amp2=0.75,oscType="Pulse"|
 		var sig,env;
 
 		sig = this.signal(modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType);
@@ -38,35 +38,36 @@ CaosKick2 : CaosEnv {
 	}
 
 	*signal {|modFreq,modbw,bw,freq1,freq2,lowcutfreq,amp,amp2,oscType|
-        var sig, mod, floor;
+        var sig, sig1, sig2, mod, floor;
 
 		floor = 20;
+
+		mod = Pulse.ar(modFreq, modbw, freq1, freq2).max(floor);
         
-        mod = Pulse.ar(modFreq, modbw, freq1, freq2).max(floor);
-         
 		switch(oscType,
 			"LFTri", {
-                mod = LFTri.ar(modFreq, 0, amp2);
+                sig2 = LFTri.ar(mod, 0, amp2);
             },
             "Saw", {
-                mod = Saw.ar(modFreq, amp2);
+                sig2 = Saw.ar(mod, amp2);
             },
             "LFNoise0", {
-                mod = LFNoise0.ar(modFreq, amp2);
+                sig2 = LFNoise0.ar(mod, amp2);
             },
             "SinOsc", {
-                mod = SinOsc.ar(modFreq, 0, amp2);
+                sig2 = SinOsc.ar(mod, 0, amp2);
             },
             "Pulse",{ 
-                mod = Pulse.ar(modFreq, 0.5, amp2);
+                sig2 = Pulse.ar(mod, 0.5, amp2);
             },
             { 
-                mod = Pulse.ar(modFreq, 0.5, amp2);
+                sig2 = Pulse.ar(mod, 0.5, amp2);
+				"CaosKick2: Wrong oscType value.\n\nUsing default secondary oscillator 'Pulse'. \n\nUse only: 'LFTri', 'Saw', 'LFNoise0', 'SinOsc', 'Pulse' strings".warn;
             }
         );
 
-		sig = LFTri.ar(mod, bw, amp); // fundamental
-
+		sig1 = SinOsc.ar(mod, bw, amp); // Fundamental
+		
 		// oscType error handling
 		if(oscType.isString, {
 

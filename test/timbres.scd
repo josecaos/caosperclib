@@ -52,12 +52,11 @@ Tdef(\test).stop;
 {~k.ar(amp1:0,amp2:1)}.play;
 {~k.ar(amp1:1,amp2:0)}.play;
 //Kick 2
-(s.boot;)
+(s.boot)
 play{CaosKick2.ar()}//class
 play{CaosKick2.ar(0.01,1)}
 play{CaosKick2.ar(0.01,2,2)}//class
-play{CaosKick2.ar(modFreq:rrand(32,2))};// La fundamental de CaosKick2 solo modula si el valor de 'modFreq' es mayora a '1'
-play{CaosKick2.ar(oscType:"LFNoise0")};// Controla la fundamental con 'oscType'
+play{CaosKick2.ar(modFreq:rrand(16,2))};
 play{CaosKick2.ar(0.01,2,oscType:"LFNoise0")};// Controla la fundamental con 'oscType'
 play{CaosKick2.ar(oscType:"SinOsc")};
 play{CaosKick2.ar(0.01,2,oscType:"SinOsc")};
@@ -66,11 +65,18 @@ play{CaosKick2.ar(0.01,2,oscType:"LFTri")};
 play{CaosKick2.ar(oscType:"Saw")};
 play{CaosKick2.ar(0.01,2,oscType:"Saw")};
 play{CaosKick2.ar(oscType:"Pulse")};
-play{CaosKick2.ar(0.01,2,oscType:"Pulse")};
-play{CaosKick2.ar(oscType:3)}//oscType error handling
-play{CaosKick2.ar(oscType:"Not allowed string uses default oscillator type")}//oscType error handling
-play{CaosKick2.ar(0.1,32,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
-play{CaosKick2.ar(0.1,12,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
+play{CaosKick2.ar(0.01,1,amp:0,amp2:1,oscType:"LFNoise0")};// Controla la fundamental con 'oscType'
+play{CaosKick2.ar(0.01,1,amp:0,amp2:1,oscType:"SinOsc")};
+play{CaosKick2.ar(0.01,1,amp:0,amp2:1,oscType:"LFTri")};
+play{CaosKick2.ar(0.01,1,amp:0,amp2:1,oscType:"Saw")};
+play{CaosKick2.ar(0.01,1,amp:0,amp2:1,oscType:"Pulse")};
+play{CaosKick2.ar(0.01,0.125,oscType:"Pulse")};
+// oscType error handling
+play{CaosKick2.ar(oscType:3)}//not a string, no sound
+play{CaosKick2.ar(oscType:"Not allowed string uses default oscillator type")}// wrong string, use default osc
+//
+play{CaosKick2.ar(0.1,8,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
+play{CaosKick2.ar(0.1,8,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
 
 (
         {
