@@ -21,7 +21,7 @@ play{CaosKick2.ar(freq1:60, freq2:60*8,oscType:["LFTri","SinOsc","Saw","LFNoise0
 
 // Fixed robot method test
 // ///////////////
-p = ProxySpace.push();
+p = ProxySpace.push(s);
 ~out.play;
 ~out.quant_(4);
 ~t = 4;

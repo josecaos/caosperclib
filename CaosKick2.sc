@@ -1,6 +1,6 @@
 //written by @mixfuckedup
 //kick with two amps mix + Oscillator type selection
-//Part of CaosPercLib v1.2.6
+//Part of CaosPercLib v1.2.7
 
 CaosKick2 : CaosEnv {
  

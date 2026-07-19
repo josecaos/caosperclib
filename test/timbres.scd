@@ -79,20 +79,22 @@ play{CaosKick2.ar(0.1,8,2,0.5,0.45,60,66,36,1,1,0,2,0.25,"Saw")}//class
 play{CaosKick2.ar(0.1,8,2,0.15,0.45,60,60,40,1,1,0,2,0.25,"Pulse")}//class
 
 (
-        {
-            // var variable = 3;
-            var variable = "3";
-            if(variable.isString, {"si es".warn},{"no es".error})
-        }.value;
+    {
+        // var variable = 3;
+        var variable = "3";
+        if(variable.isString, {"si es".warn},{"no es".error})
+    }.value;
 );
-
+(
 Tdef(\test, {
-    var modFreq, rel;
+    var modFreq,rel,osc,freq;
     loop {
         modFreq = rrand(1,4) * [1,2,4,8,16,32,64,128,256,512].choose;
         rel = [0.1,0.25,0.5,1].choose;
+        osc = ["SinOsc","Pulse","LFTri","Saw"].choose;
+        freq = (Scale.minor.degrees.midicps * 24 ).choose.postln;
         {
-        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.5,bw:0.5,freq1:60,freq2:60,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:1,oscType:"SinOsc")
+        CaosKick2.ar(att:0.01,rel:rel,modFreq:modFreq,modbw:0.95,bw:1,freq1:60,freq2:freq,lowcutfreq:40,gate:1,amp:0.01,pan:0,doneAction:2,amp2:1,oscType:osc)
         }.play;
         // {CaosKick2.ar()}.play;
         rrand(rel, 0.25).wait;
@@ -101,19 +103,28 @@ Tdef(\test, {
 )
 Tdef(\test).play;
 Tdef(\test).stop;
-
+s.scope
 ~k2 = CaosKick2.new//instance
 play{~k2.ar};
+
 //snare
-// TODO: Nivelar amp hacia arriba / revisar timbre default
-s.boot;
-s.scope;
 play{CaosSnare.ar}//class
-play{CaosSnare.ar(fund:60)}//class
-play{CaosSnare.ar(fund:666)}//class
-play{CaosSnare.ar(rq:1,amp2:0.25,fund:666)}//class
+play{CaosSnare.ar(0.01,1)};
+play{CaosSnare.ar(0.01,4)};
+play{CaosSnare.ar(amp1:1,amp2:0)};
+play{CaosSnare.ar(amp1:0,amp2:1)};
+play{CaosSnare.ar(0.01,1,amp1:0,amp2:1)};
+play{CaosSnare.ar(0.01,1,amp1:1,amp2:0)};
+play{CaosSnare.ar(fund:60)};
+play{CaosSnare.ar(fund:666)};
+play{CaosSnare.ar(rq:1,amp2:0.25,fund:666)};
+play{CaosSnare.ar(0.01,2,rq:1,amp2:0.25,fund:666,fundGlideTime:0.01)};
+play{CaosSnare.ar(0.01,2,rq:1,amp2:0.25,fund:333,fundGlideTime:0.25)};
+play{CaosSnare.ar(0.01,2,rq:1,amp2:0.25,fund:333,fundGlideTime:2)};
+
 ~t = CaosSnare.new
 play{~t.ar}//instance
+
 //snare 2
 ~t2 = CaosSnare2.new
 play{CaosSnare2.ar}//class

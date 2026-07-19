@@ -14,6 +14,10 @@
 - ## v1.2.7
     - CaosSnare: 
         - Clean code to avoid duplicated method content
+        - Signal method revamp
+            - Structure
+            - Add new argument .fundGlideTime
+
 
 - ## v1.2.6
     - CaosKick2:
