@@ -44,7 +44,7 @@ CaosSnare : CaosEnv {
 		var pitchEnv, tone, noise;
 
 		pitchEnv = XLine.kr(fund * 1.5, fund, 0.3);
-		tone = LFTri.ar(fund,0,amp2/3);
+		tone = LFTri.ar(pitchEnv,0,amp2/3);
 		noise = PinkNoise.ar(amp1) + GrayNoise.ar(amp1/1.75);
 		
 		^Limiter.ar(RHPF.ar(tone + noise,highcutfreq,rq),0.9);
