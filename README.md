@@ -1,4 +1,4 @@
-# CaosPercLib v1.2.6
+# CaosPercLib v1.2.7
 
 ### CaosPercLib is a Collection of percussion Classes for SuperCollider.
 
@@ -6,7 +6,7 @@
 - **CaosEnv** - Multi-shape envelope with tremolo helper
 - **CaosKick** - Modular two-amp kick drum
 - **CaosKick2** - Modular two-amp kick with oscillator type selection
-- **CaosSnare** - Simple snare drum synthesis
+- **CaosSnare** - Simple snare drum
 - **CaosSnare2** - Sharper snare drum variation
 - **CaosHats** - Simple hi-hats
 - **CaosHats2** - Rougher hi-hats and shakes

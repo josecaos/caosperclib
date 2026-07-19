@@ -1,15 +1,19 @@
-# CaosPercLib v1.2.4
+# CaosPercLib v1.2.7
 
 ### TODOs:
-- CaosKick2: Do along with CaosBox updates
+- CaosKick2: Do along with CaosBox updates:
     - Reorder arguments for semantic consistency
-        - amp argument must be amp1
         - Amps must be together
+        - amp argument must be amp1
         - Oscillator type must not be last
-- Update CAosKick and CaosKick2 Documentation
+- Update CaosKick and CaosKick2 Documentation
 ---
 
 ### Changelog   
+
+- ## v1.2.7
+    - CaosSnare: 
+        - Clean code to avoid duplicated method content
 
 - ## v1.2.6
     - CaosKick2:
