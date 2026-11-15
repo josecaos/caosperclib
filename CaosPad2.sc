@@ -16,7 +16,7 @@ CaosPad2 :CaosEnv {
 		sig = this.comp(sig);
 		env = this.envKR(att,rel,gate,doneAction);
 
-		^Pan2.ar(sig,pan);
+		^Pan2.ar(sig*env,pan);
 
 	}
 

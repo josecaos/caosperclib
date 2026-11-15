@@ -11,6 +11,10 @@
 
 ### Changelog   
 
+- ## v1.2.8
+    - Bigfixes:
+        - CaosPad2 *ar out does not multiplies for envelope
+
 - ## v1.2.7
     - CaosSnare: 
         - Clean code to avoid duplicated method content
