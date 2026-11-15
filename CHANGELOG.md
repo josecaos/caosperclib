@@ -1,4 +1,4 @@
-# CaosPercLib v1.2.7
+# CaosPercLib v1.2.8
 
 ### TODOs:
 - CaosKick2: Do along with CaosBox updates:

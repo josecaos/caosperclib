@@ -1,6 +1,6 @@
 //written by @joseCao5
 //Pad of trippy ambience
-//Part of CaosPercLib 1.1
+//Part of CaosPercLib 1.2.8
 CaosPad2 :CaosEnv {
 
 	*new {
