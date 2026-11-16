@@ -62,14 +62,14 @@ CaosPad : CaosEnv {
 				phase,
 				amp
 				);
-	});
+		});
 
-	filt = RLPF.ar(sig,cutf,rq);
-	^filt;
+		filt = RLPF.ar(sig,cutf,rq);
+		^filt;
 
-	}, {
-	^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
-	});
+		}, {
+		^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
+		});
 
 	}
 
@@ -94,13 +94,14 @@ CaosPad : CaosEnv {
 				phase,
 				amp
 				);
-	});
+		});
 
-	filt = RLPF.ar(sig,cutf,rq);
-	^filt;
+		filt = RLPF.ar(sig,cutf,rq);
+		^filt;
 
-	}, {
-	^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
-	});
+		}, {
+			^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
+		});
 
+	}
 }
