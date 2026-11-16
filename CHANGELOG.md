@@ -13,7 +13,9 @@
 
 - ## v1.2.8
     - Bigfixes:
-        - CaosPad2 *ar out does not multiplies for envelope
+        - CaosPad2: *ar out does not multiplies for envelope
+        - CaosHats: *ar has a delcaration in an argument position
+        - CaosPad: Distinguish between phase and width
 
 - ## v1.2.7
     - CaosSnare: 

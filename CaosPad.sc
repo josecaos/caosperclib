@@ -50,19 +50,26 @@ CaosPad : CaosEnv {
 
 		if(waveindex != nil, {
 
-			if(waveform == tag[2],{
-				if(phase == 0,{
-					phase = 0.25;
-					"Can't use 0 for 'phase' argument in 'Pulse' waveform, setted to 0.25".warn;
-				});
-			});
-
-			sig = osc[waveindex].ar(Mix([note.midicps,(note+semi).midicps]),phase,amp);
-			filt = RLPF.ar(sig,cutf,rq);
-			^filt;
+			if(waveform == tag[2], {
+				sig = Pulse.ar(
+				Mix([note.midicps, (note+semi).midicps]),
+				phase.clip(0.01, 0.99),
+				amp
+				);
 		}, {
-			^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
-		});
+			sig = osc[waveindex].ar(
+				Mix([note.midicps, (note+semi).midicps]),
+				phase,
+				amp
+				);
+	});
+
+	filt = RLPF.ar(sig,cutf,rq);
+	^filt;
+
+	}, {
+	^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
+	});
 
 	}
 
@@ -75,20 +82,25 @@ CaosPad : CaosEnv {
 
 		if(waveindex != nil, {
 
-			if(waveform == tag[2],{
-				if(phase == 0,{
-					phase = 0.25;
-					"Can't use 0 for 'phase' argument in 'Pulse' waveform, setted to 0.25".warn;
-				});
-			});
-
-			sig = osc[waveindex].ar(Mix([note.midicps,(note+semi).midicps]),phase,amp);
-			filt = RLPF.ar(sig,cutf,rq);
-			^filt;
+			if(waveform == tag[2], {
+				sig = Pulse.ar(
+				Mix([note.midicps, (note+semi).midicps]),
+				phase.clip(0.01, 0.99),
+				amp
+				);
 		}, {
-			^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
-		});
+			sig = osc[waveindex].ar(
+				Mix([note.midicps, (note+semi).midicps]),
+				phase,
+				amp
+				);
+	});
 
-	}
+	filt = RLPF.ar(sig,cutf,rq);
+	^filt;
+
+	}, {
+	^"Use only: 'sin', 'tri' or 'pulse' as first CaosPad argument".warn;
+	});
 
 }
